@@ -47,12 +47,13 @@ const Card = styled.div`
   text-align: center;
   width: 100%;
   max-width: 1000px;
-  min-height: 500px;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   word-break: break-all;
+  margin-top: 20px;
 `;
 
 const ImageWrapper = styled.div`
