@@ -70,6 +70,10 @@ const GoodButton = styled.button`
   height: 150px;
   padding: 0;
   font-size: 1.5rem;
+  transition: background-color 0.8s;
+  &:hover {
+    background-color: #2e8b57;
+  }
 `;
 
 const BadButton = styled.button`
@@ -82,4 +86,8 @@ const BadButton = styled.button`
   height: 150px;
   padding: 0;
   font-size: 1.5rem;
+  transition: background-color 0.8s;
+  &:hover {
+    background-color: #a10b2d;
+  }
 `;
