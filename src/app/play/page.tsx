@@ -3,14 +3,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import Image from 'next/image';
 
 function Play() {
   return (
     <div>
       <Wrapper>
         <Card>
+          <ImageWrapper>
+            <Image src="/static.jpeg" width={300} height={200}alt="sample kapibara" />
+          </ImageWrapper>
           <Question>
-            この質問はテストです。この質問はテストです。
+            この質問はテストです。この質問はテストです。この質問はテストです。この質問はテストです。
           </Question>
         </Card>
         <Buttons>
@@ -29,9 +33,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  min-height: 120vh;
+  min-height: 100vh;
   background-color: #f0ffff;
-  padding-top: 100px;
+  padding-top: 10px;
   padding-bottom: 150px;
 `;
 
@@ -42,22 +46,31 @@ const Card = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 100%;
-  max-width: 700px;
-  min-height: 300px;
+  max-width: 1000px;
+  min-height: 500px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   word-break: break-all;
 `;
 
+const ImageWrapper = styled.div`
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
 const Question = styled.p`
   font-size: 1.8rem;
   color: #333;
+  padding-top: 40px;
 `;
 
 const Buttons = styled.div`
   display: flex;
-  gap: 100px;
+  gap: 150px;
   margin-top: 50px;
 `;
 const GoodButton = styled.button`
