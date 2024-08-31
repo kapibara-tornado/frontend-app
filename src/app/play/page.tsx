@@ -11,7 +11,12 @@ function Play() {
       <Wrapper>
         <Card>
           <ImageWrapper>
-            <Image src="/static.jpeg" width={300} height={200}alt="sample kapibara" />
+            <Image
+              src="/static.jpeg"
+              width={300}
+              height={200}
+              alt="sample"
+            />
           </ImageWrapper>
           <Question>
             この質問はテストです。この質問はテストです。この質問はテストです。この質問はテストです。
@@ -34,7 +39,7 @@ const Wrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
-  background-color: #f0ffff;
+  background-color: #eaf4fe;
   padding-top: 10px;
   padding-bottom: 150px;
 `;
