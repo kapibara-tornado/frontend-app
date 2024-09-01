@@ -1,7 +1,14 @@
 export interface TypeInfo {
     id: number;
-    TypeAlphabet: string;
-    TypeCharacter: string;
+    typeAlphabet: string;
+    typeCharacter: string;
     feature: string;
     senseOfValue: string;
+}
+
+export interface PoliticianInfo {
+    id: number;
+    politicianName: string;
+    partyName: string;
+    explanation: string;
 }

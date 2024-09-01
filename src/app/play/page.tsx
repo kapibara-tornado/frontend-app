@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import Image from 'next/image';
 
+//質問回答画面
 function Play() {
   return (
     <div>

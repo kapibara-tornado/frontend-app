@@ -6,9 +6,9 @@ import {
 } from '@/components/ui/card';
 import React from 'react';
 import styled from 'styled-components';
-import { YourTypes } from '../data/yourTypesData';
-import { Description } from '@radix-ui/react-toast';
+import { YourTypes } from '@/app/data/yourTypesData';
 
+//政治版mbti
 const TypeCard = ({ id }: { id: number }) => {
   const type = YourTypes.find((type) => type.id === id);
   if (!type) {
@@ -17,22 +17,24 @@ const TypeCard = ({ id }: { id: number }) => {
   return (
     <div>
       <CardContainer>
-      <StyledCard>
-        <CardTitle>あなたのタイプ</CardTitle>
-        <CardContent>
-          <TypeAlphabet>{type.TypeAlphabet}</TypeAlphabet>
-          <TypeCharacter>{type.TypeCharacter}</TypeCharacter>
-          <CardDescription>
-            <DescriptionTitle>特徴</DescriptionTitle>
-            {type.feature}
-          </CardDescription>
-          <CardDescription>
-            <DescriptionTitle>価値観</DescriptionTitle>
-            {type.senseOfValue}
-          </CardDescription>
-        </CardContent>
-      </StyledCard>
-    </CardContainer>
+        <StyledCard>
+          <CardTitle>あなたのタイプ</CardTitle>
+          <CardContent>
+            <TypeAlphabet>{type.typeAlphabet}</TypeAlphabet>
+            <TypeCharacter>
+              {type.typeCharacter}
+            </TypeCharacter>
+            <Explanation>
+              <DescriptionTitle>特徴</DescriptionTitle>
+              {type.feature}
+            </Explanation>
+            <Explanation>
+              <DescriptionTitle>価値観</DescriptionTitle>
+              {type.senseOfValue}
+            </Explanation>
+          </CardContent>
+        </StyledCard>
+      </CardContainer>
     </div>
   );
 };
@@ -40,20 +42,22 @@ const TypeCard = ({ id }: { id: number }) => {
 export default TypeCard;
 
 const CardContainer = styled.div`
-    display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
   width: 100%;
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
+  height: 400px;
 `;
 
 const StyledCard = styled(Card)`
-  border-radius: 12px;  
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  background-color: #fff; 
+  width: 100%;
+  height: 100%;
 `;
 
 const TypeAlphabet = styled.h1`
@@ -70,9 +74,13 @@ const TypeCharacter = styled.h2`
   margin-bottom: 20px;
 `;
 
+const Explanation = styled(CardDescription)`
+    padding: 15px;
+`;
+
 const DescriptionTitle = styled.span`
-  font-weight: bold;
+  font-weight: 700;
   color: #0070f3;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 `;
