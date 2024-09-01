@@ -9,7 +9,7 @@ function Play() {
   return (
     <div>
       <Wrapper>
-        <Card>
+        <QuestionArea>
           <ImageWrapper>
             <Image
               src="/static.jpeg"
@@ -21,7 +21,7 @@ function Play() {
           <Question>
             この質問はテストです。この質問はテストです。この質問はテストです。この質問はテストです。
           </Question>
-        </Card>
+        </QuestionArea>
         <Buttons>
           <BadButton>Bad</BadButton>
           <GoodButton>Good</GoodButton>
@@ -36,15 +36,14 @@ export default Play;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   min-height: 100vh;
   background-color: #eaf4fe;
-  padding-top: 10px;
-  padding-bottom: 150px;
+  padding: 20px;
 `;
 
-const Card = styled.div`
+const QuestionArea = styled.div`
   background-color: #fff;
   border-radius: 10px;
   padding: 40px;
@@ -89,7 +88,7 @@ const GoodButton = styled.button`
   height: 150px;
   padding: 0;
   font-size: 1.5rem;
-  transition: background-color 0.8s;
+  transition: background-color 0.3s;
   &:hover {
     background-color: #2e8b57;
   }
