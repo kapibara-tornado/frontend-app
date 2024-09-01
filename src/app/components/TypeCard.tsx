@@ -75,7 +75,7 @@ const TypeCharacter = styled.h2`
 `;
 
 const Explanation = styled(CardDescription)`
-    padding: 15px;
+  padding: 15px;
 `;
 
 const DescriptionTitle = styled.span`

@@ -5,9 +5,7 @@ import {
 } from '@/components/ui/card';
 import styled from 'styled-components';
 import React from 'react';
-import {SimilarPolitician} from '@/app/data/similarPoliticianData';
-
-
+import { SimilarPolitician } from '@/app/data/similarPoliticianData';
 
 const SimilarPoliticianCard = ({ id }: { id: number }) => {
   const type = SimilarPolitician.find(
