@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+//indexページ
 export default function Home() {
   return (
     <div>
