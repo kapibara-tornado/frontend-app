@@ -20,7 +20,6 @@ function Page() {
           ></SimilarPoliticianCard>
         </Container>
         </BackgroundImage>
-        
       </Wrapper>
     </div>
   );
