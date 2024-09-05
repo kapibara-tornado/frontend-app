@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Question } from '../types/types';
 import { useRouter } from 'next/navigation';
+import { setCookie } from '@/lib/Cookie/client';
 
 export const useQuestions = (questions: Question[]) => {
   const router = useRouter();
@@ -33,7 +34,11 @@ export const useQuestions = (questions: Question[]) => {
     setScores(updatedScores);
     // 次の質問へ
     if (currentQuestionIndex >= questions.length - 1) {
-      // TODO: データを渡す処理
+      setCookie(
+        'scores',
+        JSON.stringify(updatedScores),
+        30
+      );
       router.push('/result');
       return;
     }
@@ -51,7 +56,11 @@ export const useQuestions = (questions: Question[]) => {
     setScores(updatedScores);
     // 次の質問へ
     if (currentQuestionIndex >= questions.length - 1) {
-      // TODO: データを渡す処理
+      setCookie(
+        'scores',
+        JSON.stringify(updatedScores),
+        30
+      );
       router.push('/result');
       return;
     }
