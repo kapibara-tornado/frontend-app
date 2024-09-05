@@ -3,7 +3,7 @@
 import styled from 'styled-components';
 import { BackgroundImageProps } from '../../types/types';
 
-const BackgroundImage = ({
+export const BackgroundImage = ({
   id,
   children,
 }: BackgroundImageProps) => {
@@ -41,8 +41,6 @@ const BackgroundImage = ({
     </div>
   );
 };
-
-export default BackgroundImage;
 
 const Wrapper = styled.div<{ bdimagepath: string }>`
   background-repeat: no-repeat;

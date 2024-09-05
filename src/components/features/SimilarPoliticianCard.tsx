@@ -7,7 +7,11 @@ import styled from 'styled-components';
 import React from 'react';
 import { SimilarPolitician } from '@/app/data/similarPoliticianData';
 
-const SimilarPoliticianCard = ({ id }: { id: number }) => {
+export const SimilarPoliticianCard = ({
+  id,
+}: {
+  id: number;
+}) => {
   const type = SimilarPolitician.find(
     (type) => type.id === id
   );
@@ -31,8 +35,6 @@ const SimilarPoliticianCard = ({ id }: { id: number }) => {
     </div>
   );
 };
-
-export default SimilarPoliticianCard;
 
 const CardContainer = styled.div`
   display: flex;

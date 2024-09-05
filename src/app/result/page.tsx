@@ -2,9 +2,9 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import TypeCard from '../components/TypeCard';
-import SimilarPoliticianCard from '../components/SimilarPoliticianCard';
-import BackgroundImage from '../components/BackgroundImage';
+import { TypeCard } from '../../components/features/TypeCard';
+import { SimilarPoliticianCard } from '../../components/features/SimilarPoliticianCard';
+import { BackgroundImage } from '../../components/features/BackgroundImage';
 
 //診断結果ページ
 function Page() {

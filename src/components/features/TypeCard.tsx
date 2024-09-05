@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import { YourTypes } from '@/app/data/yourTypesData';
 
 //政治版mbti
-const TypeCard = ({ id }: { id: number }) => {
+export const TypeCard = ({ id }: { id: number }) => {
   const type = YourTypes.find((type) => type.id === id);
   if (!type) {
     return null;
@@ -38,8 +38,6 @@ const TypeCard = ({ id }: { id: number }) => {
     </div>
   );
 };
-
-export default TypeCard;
 
 const CardContainer = styled.div`
   display: flex;
