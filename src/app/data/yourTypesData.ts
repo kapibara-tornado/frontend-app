@@ -1,4 +1,4 @@
-import { TypeInfo } from '../types/types';
+import { TypeInfo } from '../../types/types';
 
 //政治版mbti 16タイプのデータ
 export const YourTypes: TypeInfo[] = [
@@ -56,8 +56,7 @@ export const YourTypes: TypeInfo[] = [
     typeCharacter: '国家的自由主義者',
     feature:
       '経済的自由を重視し、自国の安定と主権を守ることを最優先に考える。新たな社会政策を推進しつつ、国家の安全保障を重視。',
-    senseOfValue:
-      '経済的自由、自国の安定、新たな価値観',
+    senseOfValue: '経済的自由、自国の安定、新たな価値観',
   },
   {
     id: 8,
