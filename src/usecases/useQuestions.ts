@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Question } from '../app/types/types';
+import { Question } from '../types/types';
 import { useRouter } from 'next/navigation';
 
 export const useQuestions = (questions: Question[]) => {

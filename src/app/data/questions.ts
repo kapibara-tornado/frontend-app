@@ -1,4 +1,4 @@
-import { Question } from '../types/types';
+import { Question } from '../../types/types';
 
 export const questions: Question[] = [
   // 経済重視 (E) vs. 進歩的価値観 (P) - 追加の質問

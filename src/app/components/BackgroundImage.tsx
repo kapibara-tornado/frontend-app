@@ -1,14 +1,14 @@
 'use client';
 
-import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-import { BackgroundImageProps } from '../types/types';
+import { BackgroundImageProps } from '../../types/types';
 
 const BackgroundImage = ({
   id,
   children,
 }: BackgroundImageProps) => {
-  let backgroundImagePath: string = '/backgroundImage/defaultBackground.png';
+  let backgroundImagePath: string =
+    '/backgroundImage/defaultBackground.png';
 
   //idに基づいて画像パスを決定
   switch (true) {
@@ -28,13 +28,14 @@ const BackgroundImage = ({
       backgroundImagePath =
         '/backgroundImage/resultBackgroundInternational.png';
       break;
-      default:
-        backgroundImagePath = '/backgroundImage/defaultBackground.png';
+    default:
+      backgroundImagePath =
+        '/backgroundImage/defaultBackground.png';
   }
 
   return (
     <div>
-      <Wrapper backgroundImagePath={backgroundImagePath}>
+      <Wrapper bdimagepath={backgroundImagePath}>
         {children}
       </Wrapper>
     </div>
@@ -43,9 +44,10 @@ const BackgroundImage = ({
 
 export default BackgroundImage;
 
-const Wrapper = styled.div<{ backgroundImagePath: string }>`
-  background-image: url(${props => props.backgroundImagePath});
+const Wrapper = styled.div<{ bdimagepath: string }>`
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+
+  background-image: url(${(props) => props.bdimagepath});
 `;
