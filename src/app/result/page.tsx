@@ -4,18 +4,24 @@ import React from 'react';
 import styled from 'styled-components';
 import TypeCard from '../components/TypeCard';
 import SimilarPoliticianCard from '../components/SimilarPoliticianCard';
+import BackgroundImage from '../components/BackgroundImage';
 
+//診断結果ページ
 function Page() {
+  //BackgroundImage、Typecard、SimilarPoliticianCardにidを渡す
+  const id = 2;
   return (
     <div>
       <Wrapper>
-        <Title>診断結果</Title>
-        <Container>
-          <TypeCard id={1}></TypeCard>
-          <SimilarPoliticianCard
-            id={3}
-          ></SimilarPoliticianCard>
-        </Container>
+        <BackgroundImage id={id}>
+          <Title>診断結果</Title>
+          <Container>
+            <TypeCard id={id}></TypeCard>
+            <SimilarPoliticianCard
+              id={id}
+            ></SimilarPoliticianCard>
+          </Container>
+        </BackgroundImage>
       </Wrapper>
     </div>
   );
@@ -27,7 +33,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
 `;
 
 const Container = styled.div`
@@ -35,10 +40,12 @@ const Container = styled.div`
   justify-content: space-around;
   align-items: flex-end;
   padding: 50px;
+  margin-top: 30px;
 `;
 
 const Title = styled.h1`
-  text-align: center;
+  text-align: left;
   padding-top: 100px;
+  padding-left: 250px;
   font-size: 3rem;
 `;

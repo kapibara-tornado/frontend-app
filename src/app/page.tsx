@@ -7,7 +7,7 @@ import styled from 'styled-components';
 export default function Home() {
   return (
     <div>
-      <BackgroundDiv>
+      <Wrapper>
         <ConceptText>
           government of the people, <br />
           <ColoredText>by the people,</ColoredText> for the
@@ -16,13 +16,13 @@ export default function Home() {
         <StartButton>
           <Link href={'/play'}>診断スタート</Link>
         </StartButton>
-      </BackgroundDiv>
+      </Wrapper>
     </div>
   );
 }
 
-const BackgroundDiv = styled.div`
-  background-image: url('/indexBackground.png');
+const Wrapper = styled.div`
+  background-image: url('/backgroundImage/indexBackground.png');
   background-size: cover;
   background-position: center;
   height: 100vh;
