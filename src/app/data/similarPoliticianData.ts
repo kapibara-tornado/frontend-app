@@ -1,5 +1,6 @@
 import { PoliticianInfo } from '../types/types';
 
+//実際の立候補者のデータ
 export const SimilarPolitician: PoliticianInfo[] = [
   {
     id: 1,
