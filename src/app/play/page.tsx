@@ -43,14 +43,15 @@ function Play() {
 export default Play;
 
 const Wrapper = styled.div`
+  background-image: url(/backgroundImage/questionBackground.png);
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #eaf4fe;
-  padding: 20px;
-`;
+  `;
 
 const QuestionArea = styled.div`
   background-color: #fff;
