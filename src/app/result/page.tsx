@@ -8,17 +8,19 @@ import BackgroundImage from '../components/BackgroundImage';
 
 //診断結果ページ
 function Page() {
+  //BackgroundImage、Typecard、SimilarPoliticianCardにidを渡す
+  const id = 2;
   return (
     <div>
       <Wrapper>
-        <BackgroundImage id={16}>
-        <Title>診断結果</Title>
-        <Container>
-          <TypeCard id={1}></TypeCard>
-          <SimilarPoliticianCard
-            id={3}
-          ></SimilarPoliticianCard>
-        </Container>
+        <BackgroundImage id={id}>
+          <Title>診断結果</Title>
+          <Container>
+            <TypeCard id={id}></TypeCard>
+            <SimilarPoliticianCard
+              id={id}
+            ></SimilarPoliticianCard>
+          </Container>
         </BackgroundImage>
       </Wrapper>
     </div>
