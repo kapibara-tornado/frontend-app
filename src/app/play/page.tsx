@@ -1,12 +1,18 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import Image from 'next/image';
+import { questions } from '../data/questions';
+import { useQuestions } from '@/usecases/useQuestions';
 
 //質問回答画面
 function Play() {
+  const {
+    currentQuestion,
+    onClickBadHandler,
+    onClickGoodHandler,
+  } = useQuestions(questions);
+
   return (
     <div>
       <Wrapper>
@@ -19,13 +25,15 @@ function Play() {
               alt="sample"
             />
           </ImageWrapper>
-          <Question>
-            この質問はテストです。この質問はテストです。この質問はテストです。この質問はテストです。
-          </Question>
+          <Question>{currentQuestion.question}</Question>
         </QuestionArea>
         <Buttons>
-          <BadButton>Bad</BadButton>
-          <GoodButton>Good</GoodButton>
+          <BadButton onClick={onClickBadHandler}>
+            Bad
+          </BadButton>
+          <GoodButton onClick={onClickGoodHandler}>
+            Good
+          </GoodButton>
         </Buttons>
       </Wrapper>
     </div>
