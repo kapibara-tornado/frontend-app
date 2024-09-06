@@ -4,178 +4,176 @@ import React from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 
+//診断結果一覧のデータ
+const sections = [
+  {
+    title: '保守的な経済統制派',
+    bgImage:
+      '/backgroundImage/resultDetailBackgroundConservative.png',
+    cards: [
+      {
+        src: '/Types/EACN.jpg',
+        alt: 'EACN',
+        labels: ['EACN', '経済的保守主義者'],
+      },
+      {
+        src: '/Types/PACN.jpg',
+        alt: 'PACN',
+        labels: ['PACN', '進歩的保守主義者'],
+      },
+      {
+        src: '/Types/EACI.jpg',
+        alt: 'EACI',
+        labels: ['EACI', '国際経済的保守主義者'],
+      },
+      {
+        src: '/Types/PACI.jpg',
+        alt: 'PACI',
+        labels: ['PACI', '国際進歩的保守主義者'],
+      },
+    ],
+  },
+  {
+    title: '自由市場主義派',
+    bgImage:
+      '/backgroundImage/resultDetailBackgroundLiberal.png',
+    cards: [
+      {
+        src: '/Types/ELCN.jpg',
+        alt: 'ELCN',
+        labels: ['ELCN', '自由市場的国際主義者'],
+      },
+      {
+        src: '/Types/PLCN.jpg',
+        alt: 'PLCN',
+        labels: ['PLCN', '保守的自由主義者'],
+      },
+      {
+        src: '/Types/ELCI.jpg',
+        alt: 'ELCI',
+        labels: ['ELCI', '自由市場的国際主義者'],
+      },
+      {
+        src: '/Types/PLCI.jpg',
+        alt: 'PLCI',
+        labels: ['PLCI', '保守的国際自由主義者'],
+      },
+    ],
+  },
+  {
+    title: '進歩的国家主義派',
+    bgImage:
+      '/backgroundImage/resultDetailBackgroundProgressive.png',
+    cards: [
+      {
+        src: '/Types/EALN.jpg',
+        alt: 'EALN',
+        labels: ['EALN', '経済的国家自由主義者'],
+      },
+      {
+        src: '/Types/ELLN.jpg',
+        alt: 'ELLN',
+        labels: ['ELLN', '国家的自由主義者'],
+      },
+      {
+        src: '/Types/PALN.jpg',
+        alt: 'PALN',
+        labels: ['PALN', '進歩的国家自由主義者'],
+      },
+      {
+        src: '/Types/PLLN.jpg',
+        alt: 'PLLN',
+        labels: ['PLLN', '進歩的自由国家主義者'],
+      },
+    ],
+  },
+  {
+    title: '国際協力重視派',
+    bgImage:
+      'backgroundImage/resultDetailBackgroundInternational.png',
+    cards: [
+      {
+        src: '/Types/EALI.jpg',
+        alt: 'EALI',
+        labels: ['EALI', '国際経済的自由主義者'],
+      },
+      {
+        src: '/Types/ELLI.jpg',
+        alt: 'ELLI',
+        labels: ['ELLI', '国際的自由主義者'],
+      },
+      {
+        src: '/Types/PALI.jpg',
+        alt: 'PALI',
+        labels: ['PALI', '国際進歩的自由主義者'],
+      },
+      {
+        src: '/Types/PLLI.jpg',
+        alt: 'PLLI',
+        labels: ['PLLI', '進歩的国際自由主義者'],
+      },
+    ],
+  },
+];
+
+const Card = ({
+  src,
+  alt,
+  labels,
+}: {
+  src: string;
+  alt: string;
+  labels: string[];
+}) => {
+  return (
+    <CardContainer>
+      <StyledImage
+        src={src}
+        alt={alt}
+        width={150}
+        height={150}
+      />
+      {labels.map((label, index) => (
+        <Label key={index}>{label}</Label>
+      ))}
+    </CardContainer>
+  );
+};
+
 function ListResult() {
   return (
     <div>
       <Wrapper>
         <Title>診断結果一覧</Title>
-        <Content>
-          <SectionTitle>保守的な経済統制派</SectionTitle>
-          <CardWrapper>
-            <Card>
-              <Avator 
-              src = '/Types/EACN.jpeg'
-              alt = "EACN">
-              </Avator>
-              <Label>EACN</Label>
-              <Label>経済的保守主義者</Label>
-            </Card>
-            <Card>
-              <Avator
-              src = '/Types/PACN.jpeg'
-              alt = "PACN">
-              </Avator>
-              <Label>PACN</Label>
-              <Label>進歩的保守主義者</Label>
-            </Card>
-            </CardWrapper>
+        {sections.map((section, index) => (
+          <SectionContent
+            key={index}
+            bgImage={section.bgImage}
+          >
+            <SectionTitle>{section.title}</SectionTitle>
             <CardWrapper>
-            <Card>
-              <Avator 
-              src = '/Types/EACI.jpeg'
-              alt = "EACI">
-              </Avator>
-              <Label>EACI</Label>
-              <Label>国際経済保守主義者</Label>
-            </Card>
-            <Card>
-              <Avator
-              src = '/Types/PACI.jpeg'
-              alt = "PACI">
-              </Avator>
-              <Label>PACI</Label>
-              <Label>国際進歩的保守主義者</Label>
-            </Card>
+              {section.cards.map((card, idx) => (
+                <Card
+                  key={idx}
+                  src={card.src}
+                  alt={card.alt}
+                  labels={card.labels}
+                />
+              ))}
             </CardWrapper>
-        </Content>
-        <Content>
-          <SectionTitle>自由市場主義派</SectionTitle>
-          <CardWrapper>
-            <Card>
-              <Avator 
-              src = '/Types/ELCN.jpeg'
-              alt = "ELCN">
-              </Avator>
-              <Label>ELCN</Label>
-              <Label>自由市場国家主義者</Label>
-            </Card>
-            <Card>
-              <Avator
-              src = '/Types/PLCN.jpeg'
-              alt = "PLCN">
-              </Avator>
-              <Label>PLCN</Label>
-              <Label>自由主義保守主義者</Label>
-            </Card>
-            </CardWrapper>
-            <CardWrapper>
-            <Card>
-              <Avator 
-              src = '/Types/ELCI.jpeg'
-              alt = "ELCI">
-              </Avator>
-              <Label>ELCI</Label>
-              <Label>自由市場国際主義者</Label>
-            </Card>
-            <Card>
-              <Avator
-              src = '/Types/PLCI.jpeg'
-              alt = "PLCI">
-              </Avator>
-              <Label>PLCI</Label>
-              <Label>国際自由主義保守主義者</Label>
-            </Card>
-            </CardWrapper>
-        </Content>
-        <Content>
-          <SectionTitle>進歩的国家主義派</SectionTitle>
-          <CardWrapper>
-            <Card>
-              <Avator 
-              src = '/Types/EALN.jpeg'
-              alt = "EALN">
-              </Avator>
-              <Label>EALN</Label>
-              <Label>経済的国家自由主義者</Label>
-            </Card>
-            <Card>
-              <Avator
-              src = '/Types/ELLN.jpeg'
-              alt = "ELLN">
-              </Avator>
-              <Label>ELLN</Label>
-              <Label>自由主義国家主義者</Label>
-            </Card>
-            </CardWrapper>
-            <CardWrapper>
-            <Card>
-              <Avator 
-              src = '/Types/PALN.jpeg'
-              alt = "PALN">
-              </Avator>
-              <Label>PALN</Label>
-              <Label>進歩的国家自由主義者</Label>
-            </Card>
-            <Card>
-              <Avator
-              src = '/Types/PLLN.jpeg'
-              alt = "PLLN">
-              </Avator>
-              <Label>PLLN</Label>
-              <Label>進歩的自由国家主義者</Label>
-            </Card>
-            </CardWrapper>
-        </Content>
-        <Content>
-          <SectionTitle>国際協力重視派</SectionTitle>
-          <CardWrapper>
-            <Card>
-              <Avator 
-              src = '/Types/EALI.jpg'
-              alt = "EALI">
-              </Avator>
-              <Label>EALI</Label>
-              <Label>国際経済自由主義者</Label>
-            </Card>
-            <Card>
-              <Avator
-              src = '/Types/ELLI.jpeg'
-              alt = "ELLI">
-              </Avator>
-              <Label>ELLI</Label>
-              <Label>自由主義国際主義者</Label>
-            </Card>
-            </CardWrapper>
-            <CardWrapper>
-            <Card>
-              <Avator 
-              src = '/Types/PALI.jpeg'
-              alt = "PALI">
-              </Avator>
-              <Label>PALI</Label>
-              <Label>国際進歩的自由主義者</Label>
-            </Card>
-            <Card>
-              <Avator
-              src = '/Types/PLLI.jpeg'
-              alt = "PLLI">
-              </Avator>
-              <Label>PLLI</Label>
-              <Label>国際自由進歩主義者</Label>
-            </Card>
-            </CardWrapper>
-        </Content>
+          </SectionContent>
+        ))}
       </Wrapper>
     </div>
   );
-};
+}
 
 export default ListResult;
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  overflow-y: auto;
 `;
 
 const Title = styled.h1`
@@ -184,50 +182,48 @@ const Title = styled.h1`
   font-size: 3rem;
 `;
 
-
-const Content = styled.div`
+const SectionContent = styled.div<{ bgImage: string }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
+  height: 100vh;
+  background-image: url(${(props) => props.bgImage});
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 40px;
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 3rem;
-  margin-top: 200px;
+  font-size: 2.5rem;
   text-align: center;
-  width: 100%;
+  padding-top: 150px;
 `;
 
 const CardWrapper = styled.div`
-  display: grid;
+  display: flex;
   flex-wrap: wrap;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 20px;
-  margin:0 auto;
+  margin: 0 auto;
   padding: 0;
-`
+  justify-content: center;
+`;
 
-const Card = styled.div`
+const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50px;
+  padding: 20px;
+  text-align: center;
 `;
 
-const Avator = styled.img` 
-  width: 50%;
-  aspect-ratio: 1 / 1;
+const StyledImage = styled(Image)`
   border-radius: 50%;
   object-fit: cover;
-  max-witdth: 150px; 
 `;
-
 const Label = styled.p`
   margin-top: 10px;
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin: 0 auto;
   text-align: center;
-`
+`;

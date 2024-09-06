@@ -46,6 +46,5 @@ const Wrapper = styled.div<{ bdimagepath: string }>`
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
-
   background-image: url(${(props) => props.bdimagepath});
 `;
