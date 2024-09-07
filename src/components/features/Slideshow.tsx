@@ -1,6 +1,7 @@
 import React, { useState, useEffect, ReactNode, CSSProperties}from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
+import { PcViewOnly, MobileViewOnly } from '@/components/Responsive';
 
 // スライドショーのプロパティ型
 interface SlideshowProps{
@@ -11,6 +12,8 @@ interface SlideshowProps{
 interface SlideProps {
   src: string;
   alt: string;
+  width?: number;   
+  height?: number;
   duration?: number; // 表示時間（ミリ秒）
   style?: CSSProperties;
 }
@@ -75,7 +78,20 @@ const SlidesContainer = styled.div`
 // スライドの画像スタイル
 const SlideImageWrapper = styled.div`
   // position: absolute;
-  padding-bottom: 450px;
+  padding-bottom: 320px;
+  // top: 0;
+  // left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+`;
+
+const MobileSlideImageWrapper = styled.div`
+  // position: absolute;
+  padding-bottom: 250px;
   // top: 0;
   // left: 0;
   width: 100%;
@@ -86,15 +102,29 @@ const SlideImageWrapper = styled.div`
   overflow: hidden;
 `;
 // スライドのコンポーネント
-const Slide: React.FC<SlideProps> = ({ src, alt, duration, style }) => (
+const Slide: React.FC<SlideProps> = ({ src, alt, width = 500, height = 300,duration, style }) => (
+  <div>
+  <PcViewOnly>
   <SlideImageWrapper style={style}>
     <Image
       src={src}
       alt={alt}
-      width={500}
-      height={300}
+      width={width}
+      height={height}
       />
   </SlideImageWrapper>
+  </PcViewOnly>
+  <MobileViewOnly>
+    <MobileSlideImageWrapper style={style}>
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      />
+    </MobileSlideImageWrapper>
+  </MobileViewOnly>
+  </div>
 
 );
 
