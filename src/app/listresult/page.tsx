@@ -3,6 +3,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
+import { CardInfo } from '@/types/types';
 
 //診断結果一覧のデータ
 const sections = [
@@ -116,15 +117,7 @@ const sections = [
   },
 ];
 
-const Card = ({
-  src,
-  alt,
-  labels,
-}: {
-  src: string;
-  alt: string;
-  labels: string[];
-}) => {
+const Card = ({ src, alt, labels }: CardInfo) => {
   return (
     <CardContainer>
       <StyledImage
@@ -152,9 +145,9 @@ function ListResult() {
           >
             <SectionTitle>{section.title}</SectionTitle>
             <CardWrapper>
-              {section.cards.map((card, idx) => (
+              {section.cards.map((card, index) => (
                 <Card
-                  key={idx}
+                  key={index}
                   src={card.src}
                   alt={card.alt}
                   labels={card.labels}

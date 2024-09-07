@@ -63,3 +63,10 @@ export interface Question {
     ];
   };
 }
+
+//診断結果一覧画面のキャラ情報
+export interface CardInfo {
+  src: string;
+  alt: string;
+  labels: string[];
+}
