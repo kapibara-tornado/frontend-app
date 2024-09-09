@@ -5,11 +5,13 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { PcViewOnly, MobileViewOnly } from '@/components/Responsive';
+import HamburgerMenu from '@/components/features/HamburgerMenu';
 
 //indexページ
 export default function Home() {
   return (
     <div>
+      <HamburgerMenu />
       <PcViewOnly>
       <Wrapper>
         <Container>
@@ -55,6 +57,13 @@ export default function Home() {
     </div>
   );
 }
+
+const Nav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+`;
 
 const Wrapper = styled.div`
   background-image: url('/backgroundImage/indexBackground.png');
