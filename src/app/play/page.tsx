@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { questions } from '../data/questions';
 import { useQuestions } from '@/usecases/useQuestions';
+import ProgressBarWithCount from '@/components/features/ProgressBarWithCount';
 
 //質問回答画面
 function Play() {
@@ -13,6 +14,12 @@ function Play() {
     onClickGoodHandler,
   } = useQuestions(questions);
 
+  const currentquestion = currentQuestion.id; //現在の問題id
+  const totalQuestions = 16; //総質問数
+
+  const progress = ((currentquestion - 1) / totalQuestions) * 100; //プログレス
+
+  console.log(progress)
   return (
     <div>
       <Wrapper>
@@ -35,6 +42,11 @@ function Play() {
             Good
           </GoodButton>
         </Buttons>
+        <ProgressBarWithCount
+          progress={progress}
+          currentQuestion={currentquestion - 1}
+          totalQuestions={totalQuestions}
+        />
       </Wrapper>
     </div>
   );
@@ -51,6 +63,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding: 60px;
   `;
 
 const QuestionArea = styled.div`
