@@ -5,6 +5,7 @@ export interface TypeInfo {
   typeCharacter: string;
   feature: string;
   senseOfValue: string;
+  characterImage: string;
 }
 
 //似ている政治家カードコンポーネントのプロパティ定義
@@ -13,6 +14,7 @@ export interface PoliticianInfo {
   politicianName: string;
   partyName: string;
   explanation: string;
+  politicianImage: string;
 }
 
 // 軸の型定義

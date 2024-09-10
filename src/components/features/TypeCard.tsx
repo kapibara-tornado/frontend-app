@@ -6,6 +6,7 @@ import {
 } from '@/components/ui/card';
 import React from 'react';
 import styled from 'styled-components';
+import Image from 'next/image';
 import { YourTypes } from '@/app/data/yourTypesData';
 
 //政治版mbti
@@ -20,10 +21,22 @@ export const TypeCard = ({ id }: { id: number }) => {
         <StyledCard>
           <CardTitle>あなたのタイプ</CardTitle>
           <CardContent>
-            <TypeAlphabet>{type.typeAlphabet}</TypeAlphabet>
-            <TypeCharacter>
-              {type.typeCharacter}
-            </TypeCharacter>
+            <ContentHeader>
+              <CharacterImage
+                src={type.characterImage}
+                alt="Character Image"
+                width={100}
+                height={100}
+              />
+              <TypeInfo>
+                <TypeAlphabet>
+                  {type.typeAlphabet}
+                </TypeAlphabet>
+                <TypeCharacter>
+                  {type.typeCharacter}
+                </TypeCharacter>
+              </TypeInfo>
+            </ContentHeader>
             <Explanation>
               <DescriptionTitle>特徴</DescriptionTitle>
               {type.feature}
@@ -47,7 +60,7 @@ const CardContainer = styled.div`
   width: 100%;
   max-width: 650px;
   margin: 0 auto;
-  height: 400px;
+  height: 450px;
 `;
 
 const StyledCard = styled(Card)`
@@ -56,6 +69,20 @@ const StyledCard = styled(Card)`
   padding: 20px;
   width: 100%;
   height: 100%;
+  justify-content: space-between;
+`;
+
+const ContentHeader = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 20px;
+`;
+
+const TypeInfo = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const TypeAlphabet = styled.h1`
@@ -81,4 +108,9 @@ const DescriptionTitle = styled.span`
   color: #0070f3;
   display: block;
   margin-bottom: 10px;
+`;
+
+const CharacterImage = styled(Image)`
+  border-radius: 50%;
+  object-fit: cover;
 `;

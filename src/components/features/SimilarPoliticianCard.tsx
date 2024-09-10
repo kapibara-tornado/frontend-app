@@ -4,6 +4,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import styled from 'styled-components';
+import Image from 'next/image';
 import React from 'react';
 import { SimilarPolitician } from '@/app/data/similarPoliticianData';
 
@@ -24,10 +25,20 @@ export const SimilarPoliticianCard = ({
         <StyledCard>
           <CardTitle>あなたの考え方に似た政治家</CardTitle>
           <CardContent>
-            <PoliticianName>
-              {type.politicianName}
-            </PoliticianName>
-            <PartyName>{type.partyName}</PartyName>
+            <ContentHeader>
+              <PoliticianImage
+                src={type.politicianImage}
+                alt="Character Image"
+                width={100}
+                height={100}
+              />
+              <PoliticianInfo>
+                <PoliticianName>
+                  {type.politicianName}
+                </PoliticianName>
+                <PartyName>{type.partyName}</PartyName>
+              </PoliticianInfo>
+            </ContentHeader>
             <Explanation>{type.explanation}</Explanation>
           </CardContent>
         </StyledCard>
@@ -44,7 +55,7 @@ const CardContainer = styled.div`
   width: 100%;
   max-width: 650px;
   margin: 0 auto;
-  height: 400px;
+  height: 450px;
 `;
 
 const StyledCard = styled(Card)`
@@ -53,6 +64,25 @@ const StyledCard = styled(Card)`
   padding: 20px;
   width: 100%;
   height: 100%;
+  justify-content: space-between;
+`;
+
+const ContentHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 40px;
+`;
+
+const PoliticianImage = styled(Image)`
+  border-radius: 50%;
+  object-fit: cover;
+`;
+
+const PoliticianInfo = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const PoliticianName = styled.h1`
@@ -72,9 +102,8 @@ const PartyName = styled.h2`
 `;
 
 const Explanation = styled.span`
-  font-weight: 700;
-  color: #555;
-  display: block;
-  margin: 10px;
-  padding: 20px;
+color: #64748b;
+  display: inline-block;
+  margin-top: 60px;
+  line-height: 30px;
 `;

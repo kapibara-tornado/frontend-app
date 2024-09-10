@@ -8,6 +8,7 @@ export const SimilarPolitician: PoliticianInfo[] = [
     partyName: '無所属',
     explanation:
       '経済成長と国防産業の強化などの経済安定を重視し、強い政府の統制を支持する保守的な政策を展開している。',
+    politicianImage: '/Politician/ToshioTamogami.jpg',
   },
   {
     id: 2,
@@ -15,6 +16,7 @@ export const SimilarPolitician: PoliticianInfo[] = [
     partyName: '無所属',
     explanation:
       '経済成長と国際協力を重視しつつ、保守的な政策を維持する。環境政策やインフラ整備などで国際的な連携を推進し、東京のグローバルな競争力を強化する。',
+    politicianImage: '/Politician/YurikoKoike.jpg',
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ export const SimilarPolitician: PoliticianInfo[] = [
     partyName: '未来党',
     explanation:
       '経済的自由を強調し、国家の安定と主権を重視。新たな社会政策も推進するが、政府の干渉を最小限に抑える方針である。',
+    politicianImage: '/Politician/MitsukiKimiya.jpg',
   },
   {
     id: 4,
@@ -29,6 +32,7 @@ export const SimilarPolitician: PoliticianInfo[] = [
     partyName: '無所属',
     explanation:
       '経済の自由化と国際協力を重視する。新たな社会政策や価値観を支持しつつ、政府の干渉を最小限に抑える姿勢である。',
+    politicianImage: '/Politician/TakahiroAnno.jpg',
   },
   {
     id: 5,
@@ -36,6 +40,7 @@ export const SimilarPolitician: PoliticianInfo[] = [
     partyName: '未来党',
     explanation:
       '経済的自由を強調し、国家の安定と主権を重視。新たな社会政策も推進するが、政府の干渉を最小限に抑える方針である。',
+    politicianImage: '/Politician/MitsukiKimiya.jpg',
   },
   {
     id: 6,
@@ -43,6 +48,7 @@ export const SimilarPolitician: PoliticianInfo[] = [
     partyName: '無所属',
     explanation:
       '自由市場経済を支持し、国家主権や地方自治を強調する政策を提案する。規制緩和と経済的自由を推進し、政府の干渉を最小限に抑える姿勢。',
+    politicianImage: '/Politician/ShinjiIshimaru.jpg',
   },
   {
     id: 7,
@@ -50,6 +56,7 @@ export const SimilarPolitician: PoliticianInfo[] = [
     partyName: '未来党',
     explanation:
       ' 経済的自由を重視し、自国の安定と主権を守ることを最優先に考える。新たな社会政策も推進するが、政府の介入を最小限に抑える。',
+    politicianImage: '/Politician/MitsukiKimiya.jpg',
   },
   {
     id: 8,
@@ -57,6 +64,7 @@ export const SimilarPolitician: PoliticianInfo[] = [
     partyName: '無所属',
     explanation:
       '経済の自由化と国際協力を重視する。新たな社会政策や価値観を支持しつつ、政府の干渉を最小限に抑える姿勢である。',
+    politicianImage: '/Politician/TakahiroAnno.jpg',
   },
   {
     id: 9,
@@ -64,6 +72,7 @@ export const SimilarPolitician: PoliticianInfo[] = [
     partyName: '無所属',
     explanation:
       '社会的進歩と平等を推進しつつ、保守的な政策を維持する。自国の経済の安定のために強力な政府の統制を支持する。',
+    politicianImage: '/Politician/YurikoKoike.jpg',
   },
   {
     id: 10,
@@ -71,6 +80,7 @@ export const SimilarPolitician: PoliticianInfo[] = [
     partyName: '無所属',
     explanation:
       '社会的進歩と国際協力を推進しつつ、安定した統治を重視する。環境問題や社会保障などの改革に力を入れ、進歩的な政策を進めるが、保守的な側面も持つ。',
+    politicianImage: '/Politician/Renho.jpg',
   },
   {
     id: 11,
@@ -78,6 +88,7 @@ export const SimilarPolitician: PoliticianInfo[] = [
     partyName: '諸派',
     explanation:
       '社会的進歩を推進しつつ、自国の安定と主権を重視し、政府の介入を最小限に抑えた政策を支持している。',
+    politicianImage: '/Politician/SatoruUtsumi.jpg',
   },
   {
     id: 12,
@@ -85,6 +96,7 @@ export const SimilarPolitician: PoliticianInfo[] = [
     partyName: '無所属',
     explanation:
       '国家の安定のために国際協力を重視し、リベラルな社会政策を推進する。政府の干渉を最小限に抑えつつ、グローバルな課題に対応する方針である。',
+    politicianImage: '/Politician/AkaneHimasora.jpg',
   },
   {
     id: 13,
@@ -92,6 +104,7 @@ export const SimilarPolitician: PoliticianInfo[] = [
     partyName: '諸派',
     explanation:
       '政府の統制を抑えた経済的自由と市場競争を重視し、国家主権と保守的な価値観を尊重する政策を展開している。',
+    politicianImage: '/Politician/YukitoIshimaru.jpg',
   },
   {
     id: 14,
@@ -99,6 +112,7 @@ export const SimilarPolitician: PoliticianInfo[] = [
     partyName: '無所属',
     explanation:
       '政府の統制を抑えた自由市場と経済的自由を支持する。国家の安定と保守的な価値観を尊重する政策を展開する。',
+    politicianImage: '/Politician/YukioYamato.jpg',
   },
   {
     id: 15,
@@ -106,6 +120,7 @@ export const SimilarPolitician: PoliticianInfo[] = [
     partyName: '未来党',
     explanation:
       '社会的進歩と新たな価値観を推進しつつ、国家の安定と主権を重視し、政府の介入を最小限に抑えた政策を支持している。',
+    politicianImage: '/Politician/SatoruUtsumi.jpg',
   },
   {
     id: 16,
@@ -113,5 +128,6 @@ export const SimilarPolitician: PoliticianInfo[] = [
     partyName: '無所属',
     explanation:
       '国際協力を重視し、新たな社会政策を推進する。政府の干渉を最小限に抑えつつ、グローバルな課題に対応する方針である。',
+    politicianImage: '/Politician/AkaneHimasora.jpg',
   },
 ];
