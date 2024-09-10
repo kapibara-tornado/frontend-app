@@ -1,7 +1,23 @@
 [build]
   publish = ".next"
   command = "yarn build"
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
 [[plugins]]
   package = "netlify-plugin-cache-nextjs"
+
+[[headers]]
+  for = "/*"  # すべてのページに適用
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[redirects]]
+from = "/*"  # すべてのパスを含む
+to = "/index.html"  # Next.jsで動的なページも正しく処理
+status = 200  # リダイレクトではなく、通常のページ処理として扱う
