@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { Noto_Sans_JP } from 'next/font/google';
 import './globals.css';
-import StyledComponentsRegistry from './registry';
 import { Toaster } from '@/components/ui/toaster';
+import { Suspense } from 'react';
+import GoogleAnalytics from '@/components/functions/GoogleAnalytics';
+import StyledComponentsRegistry from '@/components/functions/StyledComponentsRegistry';
 
 const notoSansJP = Noto_Sans_JP({ subsets: ['latin'] });
 
@@ -18,6 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
+      <head>
+        <Suspense>
+          <GoogleAnalytics />
+        </Suspense>
+      </head>
       <body className={notoSansJP.className}>
         <StyledComponentsRegistry>
           {children}
