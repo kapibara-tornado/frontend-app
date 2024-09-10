@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Suspense } from 'react';
 import GoogleAnalytics from '@/components/functions/GoogleAnalytics';
 import StyledComponentsRegistry from '@/components/functions/StyledComponentsRegistry';
+import { Header } from '@/components/features/Header';
 
 const notoSansJP = Noto_Sans_JP({ subsets: ['latin'] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
       </head>
       <body className={notoSansJP.className}>
         <StyledComponentsRegistry>
+          <Header />
           {children}
           <Toaster />
         </StyledComponentsRegistry>
