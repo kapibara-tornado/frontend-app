@@ -18,6 +18,12 @@
     Cache-Control = "public, max-age=0, must-revalidate"
 
 [[redirects]]
-from = "/*"  # すべてのパスを含む
-to = "/index.html"  # Next.jsで動的なページも正しく処理
-status = 200  # リダイレクトではなく、通常のページ処理として扱う
+from = "/*"
+to = "/index.html"
+status = 200
+force = true
+
+[[redirects]]
+from = "/_next/static/*"
+to = "/_next/static/:splat"
+status = 200
