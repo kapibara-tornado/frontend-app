@@ -5,6 +5,7 @@ import { TypeCard } from '../../components/features/TypeCard';
 import { SimilarPoliticianCard } from '../../components/features/SimilarPoliticianCard';
 import { BackgroundImage } from '../../components/features/BackgroundImage';
 import { useResult } from '@/usecases/useResult';
+import Loader from '@/components/features/Loader';
 
 // 診断結果ページ
 function Result() {
@@ -13,7 +14,11 @@ function Result() {
 
   // ローディング中の画面
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <LoadingWrapper>
+        <Loader />
+      </LoadingWrapper>
+    );
   }
 
   // 1.5秒経過してクッキーが取得できなかった場合
@@ -39,6 +44,13 @@ function Result() {
 }
 
 export default Result;
+
+const LoadingWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
 
 const Wrapper = styled.div`
   display: flex;

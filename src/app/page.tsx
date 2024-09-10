@@ -31,8 +31,8 @@ export default function Home() {
           <br />
           政治がわからない/判断できない人の手助けをするツールです。
         </ConceptText>
-        <StartButton>
-          <Link href={'/play'}>診断スタート→</Link>
+        <StartButton href={'/play'}>
+          診断スタート→
         </StartButton>
       </Container>
     </Wrapper>
@@ -98,7 +98,7 @@ const ConceptText = styled.p`
   }
 `;
 
-const StartButton = styled.button`
+const StartButton = styled(Link)`
   font-size: 1.5rem;
   color: #000;
   background: #cff4f9;
