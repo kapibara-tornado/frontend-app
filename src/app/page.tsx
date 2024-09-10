@@ -49,10 +49,10 @@ const Wrapper = styled.div`
   justify-content: center;
   height: 100vh;
   width: 100%;
+  padding: 50px 20px;
 
   @media screen and (max-width: ${BREAKPOINTS.SP}) {
     background-image: url('/backgroundImage/indexMobileBackground.png');
-    padding: 50px 20px;
   }
 `;
 
