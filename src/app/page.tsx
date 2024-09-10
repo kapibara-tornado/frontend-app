@@ -71,10 +71,7 @@ const Container = styled.div`
   align-items: center;
   word-break: break-all;
   position: relative;
-
-  @media screen and (max-width: ${BREAKPOINTS.SP}) {
-    padding: 15px;
-  }
+  padding: 15px;
 `;
 
 const ImageWrapper = styled.div`
