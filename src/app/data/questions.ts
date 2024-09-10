@@ -65,31 +65,10 @@ export const questions: Question[] = [
       ],
     },
   },
-  {
-    id: 4,
-    type: 'economicVsProgressive',
-    title: '経済重視 (E) vs. 進歩的価値観 (P)',
-    question:
-      '持続可能な社会の実現のために、経済活動に制約がかかるのは仕方がないと思う。',
-    options: {
-      yes: [
-        {
-          value: 'P',
-          point: 1,
-        },
-      ],
-      no: [
-        {
-          value: 'E',
-          point: 1,
-        },
-      ],
-    },
-  },
 
   // 権威主義 (A) vs. 自由主義 (S) - 追加の質問
   {
-    id: 5,
+    id: 4,
     type: 'authoritarianVsLibertarian',
     title: '権威主義 (A) vs. 自由主義 (S)',
     question:
@@ -110,7 +89,7 @@ export const questions: Question[] = [
     },
   },
   {
-    id: 6,
+    id: 5,
     type: 'authoritarianVsLibertarian',
     title: '権威主義 (A) vs. 自由主義 (S)',
     question:
@@ -131,7 +110,7 @@ export const questions: Question[] = [
     },
   },
   {
-    id: 7,
+    id: 6,
     type: 'authoritarianVsLibertarian',
     title: '権威主義 (A) vs. 自由主義 (S)',
     question:
@@ -151,31 +130,10 @@ export const questions: Question[] = [
       ],
     },
   },
-  {
-    id: 8,
-    type: 'authoritarianVsLibertarian',
-    title: '権威主義 (A) vs. 自由主義 (S)',
-    question:
-      '表現の自由を守るために、政府の監視を最小限に抑えるべきだと思う。',
-    options: {
-      yes: [
-        {
-          value: 'S',
-          point: 1,
-        },
-      ],
-      no: [
-        {
-          value: 'A',
-          point: 1,
-        },
-      ],
-    },
-  },
 
   // 保守 (C) vs. リベラル (L) - 追加の質問
   {
-    id: 9,
+    id: 7,
     type: 'conservativeVsLiberal',
     title: '保守 (C) vs. リベラル (L)',
     question:
@@ -196,7 +154,7 @@ export const questions: Question[] = [
     },
   },
   {
-    id: 10,
+    id: 8,
     type: 'conservativeVsLiberal',
     title: '保守 (C) vs. リベラル (L)',
     question:
@@ -217,7 +175,7 @@ export const questions: Question[] = [
     },
   },
   {
-    id: 11,
+    id: 9,
     type: 'conservativeVsLiberal',
     title: '保守 (C) vs. リベラル (L)',
     question:
@@ -237,31 +195,10 @@ export const questions: Question[] = [
       ],
     },
   },
-  {
-    id: 12,
-    type: 'conservativeVsLiberal',
-    title: '保守 (C) vs. リベラル (L)',
-    question:
-      '移民や難民の受け入れを促進することは、日本にとってプラスだと思う。',
-    options: {
-      yes: [
-        {
-          value: 'L',
-          point: 1,
-        },
-      ],
-      no: [
-        {
-          value: 'C',
-          point: 1,
-        },
-      ],
-    },
-  },
 
   // 国家主義 (N) vs. 国際主義 (I) - 追加の質問
   {
-    id: 13,
+    id: 10,
     type: 'nationalismVsInternationalism',
     title: '国家主義 (N) vs. 国際主義 (I)',
     question:
@@ -282,7 +219,7 @@ export const questions: Question[] = [
     },
   },
   {
-    id: 14,
+    id: 11,
     type: 'nationalismVsInternationalism',
     title: '国家主義 (N) vs. 国際主義 (I)',
     question:
@@ -303,7 +240,7 @@ export const questions: Question[] = [
     },
   },
   {
-    id: 15,
+    id: 12,
     type: 'nationalismVsInternationalism',
     title: '国家主義 (N) vs. 国際主義 (I)',
     question:
@@ -318,27 +255,6 @@ export const questions: Question[] = [
       no: [
         {
           value: 'N',
-          point: 1,
-        },
-      ],
-    },
-  },
-  {
-    id: 16,
-    type: 'nationalismVsInternationalism',
-    title: '国家主義 (N) vs. 国際主義 (I)',
-    question:
-      '自国の文化やアイデンティティを守るために、他国からの影響を制限するべきだと思う。',
-    options: {
-      yes: [
-        {
-          value: 'N',
-          point: 1,
-        },
-      ],
-      no: [
-        {
-          value: 'I',
           point: 1,
         },
       ],

@@ -4,7 +4,10 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
-import { PcViewOnly, MobileViewOnly } from '@/components/Responsive';
+import {
+  PcViewOnly,
+  MobileViewOnly,
+} from '@/components/Responsive';
 import HamburgerMenu from '@/components/features/HamburgerMenu';
 
 //indexページ
@@ -13,44 +16,58 @@ export default function Home() {
     <div>
       <HamburgerMenu />
       <PcViewOnly>
-      <Wrapper>
-        <Container>
-          <ImageWrapper>
-            <Image
-              src="/logo.png"
-              width={450}
-              height={300}
-              alt="logo"/>
-          </ImageWrapper>
-          <ConceptText>
-          この診断は<ColoredBoldText>政治</ColoredBoldText>と<ColoredBoldText>性格診断</ColoredBoldText>
-          を組み合わせることで、より政治を身近に感じてもらうこ
-          とを目的としています。この診断では、<ColoredText>あなたの政治における思想</ColoredText>が分かります。
-          </ConceptText>
-          <StartButton>
-          <Link href={'/play'}>診断スタート→</Link>
-        </StartButton>
-        </Container>
-      </Wrapper>
+        <Wrapper>
+          <Container>
+            <ImageWrapper>
+              <Image
+                src="/logo.png"
+                width={450}
+                height={300}
+                alt="logo"
+              />
+            </ImageWrapper>
+            <ConceptText>
+              この診断は
+              <ColoredBoldText>政治</ColoredBoldText>と
+              <ColoredBoldText>性格診断</ColoredBoldText>
+              を組み合わせることで、より政治を身近に感じてもらうこ
+              とを目的としています。この診断では、
+              <ColoredText>
+                あなたの政治における思想
+              </ColoredText>
+              が分かります。
+            </ConceptText>
+            <StartButton>
+              <Link href={'/play'}>診断スタート→</Link>
+            </StartButton>
+          </Container>
+        </Wrapper>
       </PcViewOnly>
       <MobileViewOnly>
         <MobileWrapper>
           <MobileContainer>
             <MobileImageWrapper>
-            <Image
-              src="/logo.png"
-              width={300}
-              height={200}
-              alt="logo"/>
+              <Image
+                src="/logo.png"
+                width={300}
+                height={200}
+                alt="logo"
+              />
             </MobileImageWrapper>
             <MobileConceptText>
-            この診断は<ColoredBoldText>政治</ColoredBoldText>と<ColoredBoldText>性格診断</ColoredBoldText>
-            を組み合わせることで、より政治を身近に感じてもらうこ
-            とを目的としています。この診断では、<ColoredText>あなたの政治における思想</ColoredText>が分かります。
+              この診断は
+              <ColoredBoldText>政治</ColoredBoldText>と
+              <ColoredBoldText>性格診断</ColoredBoldText>
+              を組み合わせることで、より政治を身近に感じてもらうこ
+              とを目的としています。この診断では、
+              <ColoredText>
+                あなたの政治における思想
+              </ColoredText>
+              が分かります。
             </MobileConceptText>
             <MobileStartButton>
-            <Link href={'/play'}>診断スタート→</Link>
-          </MobileStartButton>
+              <Link href={'/play'}>診断スタート→</Link>
+            </MobileStartButton>
           </MobileContainer>
         </MobileWrapper>
       </MobileViewOnly>
@@ -83,10 +100,9 @@ const MobileWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-contetn: center;
+  justify-content: center;
   min-height: 100vh;
 `;
-
 
 const Container = styled.div`
   background-color: #fff;
@@ -132,9 +148,9 @@ const ImageWrapper = styled.div`
 `;
 
 const MobileImageWrapper = styled.div`
-  width; 100%;
+  width: 100%;
   display: flex;
-  jutsify-content: center;
+  justify-content: center;
   padding-bottom: 10px;
   margin-bottom: 10px;
 `;
@@ -146,7 +162,7 @@ const ConceptText = styled.p`
   font-style: normal;
   padding-left: 40px;
   padding-right: 40px;
-`; 
+`;
 
 const MobileConceptText = styled.p`
   color: #333;
@@ -161,7 +177,7 @@ const MobileConceptText = styled.p`
 const StartButton = styled.button`
   font-size: 1.5rem;
   color: #000;
-  background: #D9D9D9;
+  background: #d9d9d9;
   padding: 15px 25px;
   margin-top: 30px;
   width: 100%;
@@ -184,7 +200,7 @@ const StartButton = styled.button`
 const MobileStartButton = styled.button`
   font-size: 1.5rem;
   color: #000;
-  background: #D9D9D9;
+  background: #d9d9d9;
   padding: 15px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -205,15 +221,11 @@ const MobileStartButton = styled.button`
   }
 `;
 
-
 const ColoredBoldText = styled.span`
-  color: #1E90FF;
+  color: #1e90ff;
   font-weight: bold;
 `;
 
 const ColoredText = styled.span`
-  color: #00BFFF;
+  color: #00bfff;
 `;
-
-
-
