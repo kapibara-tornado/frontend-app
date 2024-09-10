@@ -10,16 +10,16 @@ import ProgressBarWithCount from '@/components/features/ProgressBarWithCount';
 function Play() {
   const {
     currentQuestion,
+    currentQuestionIndex,
     onClickBadHandler,
     onClickGoodHandler,
   } = useQuestions(questions);
 
-  const currentquestion = currentQuestion.id; //現在の問題id
-  const totalQuestions = 16; //総質問数
+  const totalQuestions = questions.length; //総質問数
 
-  const progress = ((currentquestion - 1) / totalQuestions) * 100; //プログレス
+  const progress =
+    (currentQuestionIndex / totalQuestions) * 100; //プログレス
 
-  console.log(progress)
   return (
     <div>
       <Wrapper>
@@ -44,7 +44,7 @@ function Play() {
         </Buttons>
         <ProgressBarWithCount
           progress={progress}
-          currentQuestion={currentquestion - 1}
+          currentQuestion={currentQuestionIndex}
           totalQuestions={totalQuestions}
         />
       </Wrapper>
@@ -64,7 +64,7 @@ const Wrapper = styled.div`
   align-items: center;
   min-height: 100vh;
   padding: 60px;
-  `;
+`;
 
 const QuestionArea = styled.div`
   background-color: #fff;

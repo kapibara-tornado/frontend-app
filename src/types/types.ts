@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 //政治版mbtiカードコンポーネントのプロパティ定義
 export interface TypeInfo {
   id: number;
@@ -15,12 +13,6 @@ export interface PoliticianInfo {
   politicianName: string;
   partyName: string;
   explanation: string;
-}
-
-//BackgroundImageコンポーネントのプロパティ定義
-export interface BackgroundImageProps {
-  id: number;
-  children: ReactNode;
 }
 
 // 軸の型定義
@@ -69,4 +61,15 @@ export interface CardInfo {
   src: string;
   alt: string;
   labels: string[];
+}
+
+export interface Scores {
+  E: number;
+  P: number;
+  A: number;
+  S: number;
+  L: number;
+  C: number;
+  I: number;
+  N: number;
 }

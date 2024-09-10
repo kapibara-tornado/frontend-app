@@ -1,38 +1,40 @@
 'use client';
 
-import React from 'react';
 import styled from 'styled-components';
 import { TypeCard } from '../../components/features/TypeCard';
 import { SimilarPoliticianCard } from '../../components/features/SimilarPoliticianCard';
 import { BackgroundImage } from '../../components/features/BackgroundImage';
-import { getCookie } from '@/lib/Cookie/client';
+import { useResult } from '@/usecases/useResult';
 
-//診断結果ページ
+// 診断結果ページ
 function Result() {
-  //BackgroundImage、Typecard、SimilarPoliticianCardにidを渡す
-  const scores = getCookie('scores');
+  const { parsedScores, resultedId, loading, timeout } =
+    useResult();
 
-  // TODO: scoresからどの政治家に近いかを判定する処理を追加
+  // ローディング中の画面
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  const id = 2;
+  // 1.5秒経過してクッキーが取得できなかった場合
+  if (
+    !parsedScores ||
+    resultedId === undefined ||
+    timeout
+  ) {
+    return <div>診断結果がありません</div>;
+  }
+
   return (
-    <div>
-      <Wrapper>
-        {scores ? (
-          <BackgroundImage id={id}>
-            <Title>診断結果</Title>
-            <Container>
-              <TypeCard id={id}></TypeCard>
-              <SimilarPoliticianCard
-                id={id}
-              ></SimilarPoliticianCard>
-            </Container>
-          </BackgroundImage>
-        ) : (
-          <div>診断結果がありません</div>
-        )}
-      </Wrapper>
-    </div>
+    <Wrapper>
+      <BackgroundImage resultedId={resultedId}>
+        <Title>診断結果</Title>
+        <Container>
+          <TypeCard id={resultedId} />
+          <SimilarPoliticianCard id={resultedId} />
+        </Container>
+      </BackgroundImage>
+    </Wrapper>
   );
 }
 

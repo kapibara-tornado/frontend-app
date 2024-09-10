@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Question } from '../types/types';
+import { Question, Scores } from '../types/types';
 import { useRouter } from 'next/navigation';
 import { setCookie } from '@/lib/Cookie/client';
 
@@ -7,9 +7,9 @@ export const useQuestions = (questions: Question[]) => {
   const router = useRouter();
   // 現在の質問のインデックス
   const [currentQuestionIndex, setCurrentQuestionIndex] =
-    useState(0);
+    useState<number>(1);
 
-  const [scores, setScores] = useState({
+  const [scores, setScores] = useState<Scores>({
     E: 0,
     P: 0,
     A: 0,
@@ -69,6 +69,7 @@ export const useQuestions = (questions: Question[]) => {
 
   return {
     currentQuestion,
+    currentQuestionIndex,
     scores,
     onClickGoodHandler,
     onClickBadHandler,

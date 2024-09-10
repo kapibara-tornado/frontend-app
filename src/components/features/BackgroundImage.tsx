@@ -1,10 +1,14 @@
 'use client';
 
 import styled from 'styled-components';
-import { BackgroundImageProps } from '../../types/types';
+
+interface BackgroundImageProps {
+  resultedId: number;
+  children: React.ReactNode;
+}
 
 export const BackgroundImage = ({
-  id,
+  resultedId,
   children,
 }: BackgroundImageProps) => {
   let backgroundImagePath: string =
@@ -12,19 +16,19 @@ export const BackgroundImage = ({
 
   //idに基づいて画像パスを決定
   switch (true) {
-    case [1, 2, 9, 10].includes(id):
+    case [1, 2, 9, 10].includes(resultedId):
       backgroundImagePath =
         '/backgroundImage/resultBackgroundConservative.png';
       break;
-    case [5, 6, 13, 14].includes(id):
+    case [5, 6, 13, 14].includes(resultedId):
       backgroundImagePath =
         '/backgroundImage/resultBackgroundLiberal.png';
       break;
-    case [3, 7, 11, 15].includes(id):
+    case [3, 7, 11, 15].includes(resultedId):
       backgroundImagePath =
         '/backgroundImage/resultBackgroundProgressive.png';
       break;
-    case [4, 8, 12, 16].includes(id):
+    case [4, 8, 12, 16].includes(resultedId):
       backgroundImagePath =
         '/backgroundImage/resultBackgroundInternational.png';
       break;
