@@ -1,85 +1,101 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import styled from 'styled-components';
 import Link from 'next/link';
+import {
+  Cross1Icon,
+  HamburgerMenuIcon,
+} from '@radix-ui/react-icons';
 
-// ModalMenuコンポーネント
-const ModalMenu: React.FC<ModalMenuProps> = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
-
-  return (
-    <Overlay onClick={onClose}>
-      <ModalContent onClick={(e) => e.stopPropagation()}>
-        <CloseButton onClick={onClose}>×</CloseButton>
-        <MenuList>
-          <MenuItem>
-            <StyledLink href={'/'} onClick={onClose}>Home</StyledLink>
-          </MenuItem>
-          <MenuItem>
-            <StyledLink href={'/listresult'} onClick={onClose}>診断結果一覧</StyledLink>
-          </MenuItem>     
-        </MenuList>
-      </ModalContent>
-    </Overlay>
-  );
+type Props = {
+  isResult: boolean;
 };
 
-// ModalMenuPropsインターフェース
-interface ModalMenuProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-// HamburgerMenuコンポーネント
-const HamburgerMenu: React.FC = () => {
+export const HamburgerMenu = ({ isResult }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
 
+  const onClose = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <Nav>
-      <MenuIcon onClick={toggleModal}>
-        <div />
-        <div />
-        <div />
-      </MenuIcon>
-      <ModalMenu isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <MenuButton onClick={toggleModal}>
+        {isModalOpen ? (
+          <Overlay onClick={onClose}>
+            <ModalContent
+              onClick={(e) => e.stopPropagation()}
+            >
+              <FlexEnd>
+                <CloseButton onClick={onClose}>
+                  <Cross1Icon width={40} height={40} />
+                </CloseButton>
+              </FlexEnd>
+              <NavList>
+                <NavItem>
+                  <StyledLink href={'/'} onClick={onClose}>
+                    ホーム
+                  </StyledLink>
+                </NavItem>
+                {isResult && (
+                  <NavItem>
+                    <StyledLink
+                      href={'/result'}
+                      onClick={onClose}
+                    >
+                      結果
+                    </StyledLink>
+                  </NavItem>
+                )}
+                <NavItem>
+                  <StyledLink
+                    href={'/listresult'}
+                    onClick={onClose}
+                  >
+                    診断結果一覧
+                  </StyledLink>
+                </NavItem>
+                <NavItem>
+                  <StyledLink
+                    href={'/printdemo'}
+                    onClick={onClose}
+                  >
+                    印刷
+                  </StyledLink>
+                </NavItem>
+              </NavList>
+            </ModalContent>
+          </Overlay>
+        ) : (
+          <HamburgerMenuIcon width={40} height={40} />
+        )}
+      </MenuButton>
     </Nav>
   );
 };
 
-export default HamburgerMenu;
-
-// スタイリング（Styled Components）
-const Nav = styled.nav`
+const Nav = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
+  top: 3px;
+  right: 0;
 `;
 
-const MenuIcon = styled.div`
-  cursor: pointer;
-  padding: 10px;
-  div {
-    width: 30px;
-    height: 3px;
-    background-color: #333;
-    margin: 5px 0;
-    transition: 0.4s;
-  }
+const MenuButton = styled.button`
+  padding: 15px;
 `;
 
 const Overlay = styled.div`
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: flex-start;
@@ -88,41 +104,37 @@ const Overlay = styled.div`
 `;
 
 const ModalContent = styled.div`
-  background: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  width: 300px;
+  padding: 15px;
+  width: 250px;
   height: 100%;
-  position: relative;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  z-index: 1001;
+`;
+
+const FlexEnd = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 3px;
 `;
 
 const CloseButton = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
+  background-color: transparent;
   border: none;
-  font-size: 24px;
-  cursor: pointer;
 `;
 
-const MenuList = styled.ul`
+const NavList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 100%;
 `;
 
-const MenuItem = styled.li`
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-
-  &:last-child {
-    border-bottom: none;
-  }
-
-  &:hover {
-    background-color: #f0f0f0;
-  }
+const NavItem = styled.li`
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
 `;
 
 const StyledLink = styled(Link)`
@@ -130,8 +142,5 @@ const StyledLink = styled(Link)`
   color: #333;
   display: block;
   width: 100%;
-
-  &:hover {
-    background-color: #f0f0f0;
-  }
+  font-size: 1.2rem;
 `;

@@ -13,7 +13,7 @@ export default function Home() {
       <Container>
         <ImageWrapper>
           <Image
-            src="/logo.png"
+            src="/logo.svg"
             width={450}
             height={300}
             alt="logo"
@@ -70,7 +70,6 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   word-break: break-all;
-  position: relative;
   padding: 15px;
 `;
 

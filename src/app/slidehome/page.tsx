@@ -3,50 +3,93 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import Image from 'next/image';
-import {Slideshow, Slide} from '../../components/features/Slideshow';
-import { PcViewOnly, MobileViewOnly } from '@/components/Responsive';
+import {
+  Slideshow,
+  Slide,
+} from '../../components/features/Slideshow';
+import {
+  PcViewOnly,
+  MobileViewOnly,
+} from '@/components/Responsive';
 
 //indexページ
 function SlideHome() {
   return (
     <div>
       <PcViewOnly>
-      <Wrapper>
-        <Container>
-          <ImageWrapper>
-            <Slideshow>
-              <Slide src="/logo.png" alt="logo" duration={3000}></Slide>
-              <Slide src="/static.jpeg" alt="sample" duration = {5000}></Slide>
-              <Slide src="/static.jpeg" alt="sample2" duration = {5000}></Slide>
-              <Slide src="/static.jpeg" alt="sample3" duration={6000}></Slide>
-            </Slideshow>
-          </ImageWrapper>
-          <ConceptText>
-            あなたはどのタイプ？
-          </ConceptText>
-          <StartButton>
-          <Link href={'/play'}>政治家診断→</Link>
-        </StartButton>
-        </Container>
-      </Wrapper>
+        <Wrapper>
+          <Container>
+            <ImageWrapper>
+              <Slideshow>
+                <Slide
+                  src="/logo.png"
+                  alt="logo"
+                  duration={3000}
+                ></Slide>
+                <Slide
+                  src="/static.jpeg"
+                  alt="sample"
+                  duration={5000}
+                ></Slide>
+                <Slide
+                  src="/static.jpeg"
+                  alt="sample2"
+                  duration={5000}
+                ></Slide>
+                <Slide
+                  src="/static.jpeg"
+                  alt="sample3"
+                  duration={6000}
+                ></Slide>
+              </Slideshow>
+            </ImageWrapper>
+            <ConceptText>あなたはどのタイプ？</ConceptText>
+            <StartButton>
+              <Link href={'/play'}>政治家診断→</Link>
+            </StartButton>
+          </Container>
+        </Wrapper>
       </PcViewOnly>
       <MobileViewOnly>
         <MobileWrapper>
           <MobileContainer>
             <MobileImageWrapper>
-            <Slideshow>
-              <Slide src="/logo.png" alt="logo"  width = {300} height = {200}  duration={3000}></Slide>
-              <Slide src="/static.jpeg" alt="sample" width = {300} height = {200}duration = {5000}></Slide>
-              <Slide src="/static.jpeg" alt="sample2" width = {300} height = {200}duration = {5000}></Slide>
-              <Slide src="/static.jpeg" alt="sample3" width = {300} height = {200}duration={6000}></Slide>
-            </Slideshow>
+              <Slideshow>
+                <Slide
+                  src="/logo.png"
+                  alt="logo"
+                  width={300}
+                  height={200}
+                  duration={3000}
+                ></Slide>
+                <Slide
+                  src="/static.jpeg"
+                  alt="sample"
+                  width={300}
+                  height={200}
+                  duration={5000}
+                ></Slide>
+                <Slide
+                  src="/static.jpeg"
+                  alt="sample2"
+                  width={300}
+                  height={200}
+                  duration={5000}
+                ></Slide>
+                <Slide
+                  src="/static.jpeg"
+                  alt="sample3"
+                  width={300}
+                  height={200}
+                  duration={6000}
+                ></Slide>
+              </Slideshow>
             </MobileImageWrapper>
             <MobileConceptText>
               あなたはどのタイプ？
             </MobileConceptText>
             <MobileStartButton>
-            <Link href={'/play'}>政治家診断→</Link>
+              <Link href={'/play'}>政治家診断→</Link>
             </MobileStartButton>
           </MobileContainer>
         </MobileWrapper>
@@ -78,7 +121,6 @@ const MobileWrapper = styled.div`
   justify-content: center;
   min-height: 100vh;
 `;
-
 
 const Container = styled.div`
   background-color: #fff;
@@ -117,7 +159,6 @@ const MobileContainer = styled.div`
   position: relative;
 `;
 
-
 const ImageWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -126,14 +167,13 @@ const ImageWrapper = styled.div`
   padding-top: 20px;
 `;
 
-const MobileImageWrapper  = styled.div`
-  width; 100%;
+const MobileImageWrapper = styled.div`
+  width: 100%;
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
   margin-top: 125px;
 `;
-
 
 const ConceptText = styled.p`
   color: #333;
@@ -143,7 +183,7 @@ const ConceptText = styled.p`
   padding-left: 40px;
   padding-right: 40px;
   margin-bottom: 30px;
-`; 
+`;
 
 const MobileConceptText = styled.p`
   color: #333;
@@ -158,7 +198,7 @@ const MobileConceptText = styled.p`
 const StartButton = styled.button`
   font-size: 1.5rem;
   color: #000;
-  background: #D9D9D9;
+  background: #d9d9d9;
   padding: 15px 25px;
   margin-top: 30px;
   width: 100%;
@@ -181,7 +221,7 @@ const StartButton = styled.button`
 const MobileStartButton = styled.button`
   font-size: 1.5rem;
   color: #000;
-  background: #D9D9D9;
+  background: #d9d9d9;
   padding: 15px 25px;
   margin-top: 30px;
   width: 100%;
@@ -202,10 +242,10 @@ const MobileStartButton = styled.button`
 `;
 
 const ColoredBoldText = styled.span`
-  color: #1E90FF;
+  color: #1e90ff;
   font-weight: bold;
 `;
 
 const ColoredText = styled.span`
-  color: #00BFFF;
+  color: #00bfff;
 `;
