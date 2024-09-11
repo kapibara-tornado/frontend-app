@@ -51,4 +51,7 @@ const Wrapper = styled.div<{ bdimagepath: string }>`
   background-size: cover;
   height: 100vh;
   background-image: url(${(props) => props.bdimagepath});
+
+  // コンポーネント内でスクロールさせる
+  overflow-y: scroll;
 `;
