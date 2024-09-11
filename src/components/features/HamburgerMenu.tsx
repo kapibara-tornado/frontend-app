@@ -86,7 +86,7 @@ const Nav = styled.div`
   right: 0;
 `;
 
-const MenuButton = styled.button`
+const MenuButton = styled.div`
   padding: 15px;
 `;
 
@@ -129,6 +129,7 @@ const NavList = styled.ul`
   padding: 0;
   margin: 0;
   width: 100%;
+  text-align: center;
 `;
 
 const NavItem = styled.li`
