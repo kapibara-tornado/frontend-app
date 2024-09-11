@@ -16,39 +16,37 @@ export const TypeCard = ({ id }: { id: number }) => {
     return null;
   }
   return (
-    <div>
-      <CardContainer>
-        <StyledCard>
-          <CardTitle>あなたのタイプ</CardTitle>
-          <CardContent>
-            <ContentHeader>
-              <CharacterImage
-                src={type.characterImage}
-                alt="Character Image"
-                width={100}
-                height={100}
-              />
-              <TypeInfo>
-                <TypeAlphabet>
-                  {type.typeAlphabet}
-                </TypeAlphabet>
-                <TypeCharacter>
-                  {type.typeCharacter}
-                </TypeCharacter>
-              </TypeInfo>
-            </ContentHeader>
-            <Explanation>
-              <DescriptionTitle>特徴</DescriptionTitle>
-              {type.feature}
-            </Explanation>
-            <Explanation>
-              <DescriptionTitle>価値観</DescriptionTitle>
-              {type.senseOfValue}
-            </Explanation>
-          </CardContent>
-        </StyledCard>
-      </CardContainer>
-    </div>
+    <CardContainer>
+      <StyledCard>
+        <CardTitle>あなたのタイプ</CardTitle>
+        <CardContent>
+          <ContentHeader>
+            <CharacterImage
+              src={type.characterImage}
+              alt="Character Image"
+              width={100}
+              height={100}
+            />
+            <TypeInfo>
+              <TypeAlphabet>
+                {type.typeAlphabet}
+              </TypeAlphabet>
+              <TypeCharacter>
+                {type.typeCharacter}
+              </TypeCharacter>
+            </TypeInfo>
+          </ContentHeader>
+          <Explanation>
+            <DescriptionTitle>特徴</DescriptionTitle>
+            {type.feature}
+          </Explanation>
+          <Explanation>
+            <DescriptionTitle>価値観</DescriptionTitle>
+            {type.senseOfValue}
+          </Explanation>
+        </CardContent>
+      </StyledCard>
+    </CardContainer>
   );
 };
 
@@ -60,7 +58,7 @@ const CardContainer = styled.div`
   width: 100%;
   max-width: 650px;
   margin: 0 auto;
-  height: 450px;
+  min-height: 450px;
 `;
 
 const StyledCard = styled(Card)`
