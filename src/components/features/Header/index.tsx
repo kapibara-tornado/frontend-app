@@ -71,6 +71,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1000;
 `;
 
 const ImageWrapper = styled.div`

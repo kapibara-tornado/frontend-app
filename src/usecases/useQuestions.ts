@@ -7,7 +7,7 @@ export const useQuestions = (questions: Question[]) => {
   const router = useRouter();
   // 現在の質問のインデックス
   const [currentQuestionIndex, setCurrentQuestionIndex] =
-    useState<number>(1);
+    useState<number>(0);
 
   const [scores, setScores] = useState<Scores>({
     E: 0,
@@ -24,6 +24,7 @@ export const useQuestions = (questions: Question[]) => {
   const currentQuestion = questions[currentQuestionIndex];
 
   const onClickGoodHandler = () => {
+    console.log('good');
     const updatedScores = { ...scores };
 
     currentQuestion.options.yes.forEach((option) => {
