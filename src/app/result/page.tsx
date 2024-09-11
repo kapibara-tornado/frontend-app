@@ -5,6 +5,7 @@ import { TypeCard } from '../../components/features/TypeCard';
 import { SimilarPoliticianCard } from '../../components/features/SimilarPoliticianCard';
 import { BackgroundImage } from '../../components/features/BackgroundImage';
 import { useResult } from '@/usecases/useResult';
+import Link from 'next/link';
 
 // 診断結果ページ
 function Result() {
