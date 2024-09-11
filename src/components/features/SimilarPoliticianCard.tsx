@@ -20,30 +20,28 @@ export const SimilarPoliticianCard = ({
     return null;
   }
   return (
-    <div>
-      <CardContainer>
-        <StyledCard>
-          <CardTitle>あなたの考え方に似た政治家</CardTitle>
-          <CardContent>
-            <ContentHeader>
-              <PoliticianImage
-                src={type.politicianImage}
-                alt="Character Image"
-                width={100}
-                height={100}
-              />
-              <PoliticianInfo>
-                <PoliticianName>
-                  {type.politicianName}
-                </PoliticianName>
-                <PartyName>{type.partyName}</PartyName>
-              </PoliticianInfo>
-            </ContentHeader>
-            <Explanation>{type.explanation}</Explanation>
-          </CardContent>
-        </StyledCard>
-      </CardContainer>
-    </div>
+    <CardContainer>
+      <StyledCard>
+        <CardTitle>あなたの考え方に似た政治家</CardTitle>
+        <CardContent>
+          <ContentHeader>
+            <PoliticianImage
+              src={type.politicianImage}
+              alt="Character Image"
+              width={100}
+              height={100}
+            />
+            <PoliticianInfo>
+              <PoliticianName>
+                {type.politicianName}
+              </PoliticianName>
+              <PartyName>{type.partyName}</PartyName>
+            </PoliticianInfo>
+          </ContentHeader>
+          <Explanation>{type.explanation}</Explanation>
+        </CardContent>
+      </StyledCard>
+    </CardContainer>
   );
 };
 
@@ -55,7 +53,7 @@ const CardContainer = styled.div`
   width: 100%;
   max-width: 650px;
   margin: 0 auto;
-  height: 450px;
+  min-height: 450px;
 `;
 
 const StyledCard = styled(Card)`
@@ -102,7 +100,7 @@ const PartyName = styled.h2`
 `;
 
 const Explanation = styled.span`
-color: #64748b;
+  color: #64748b;
   display: inline-block;
   margin-top: 60px;
   line-height: 30px;

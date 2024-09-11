@@ -6,6 +6,7 @@ import { SimilarPoliticianCard } from '../../components/features/SimilarPolitici
 import { BackgroundImage } from '../../components/features/BackgroundImage';
 import { useResult } from '@/usecases/useResult';
 import Loader from '@/components/features/Loader';
+import { BREAKPOINTS } from '@/components/Responsive';
 
 // 診断結果ページ
 function Result() {
@@ -52,25 +53,20 @@ const LoadingWrapper = styled.div`
   height: 100vh;
 `;
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-  overflow: hidden;
+const Wrapper = styled.div``;
+
+const Title = styled.h1`
+  font-size: 2.8rem;
+  text-align: center;
+  padding: 80px 0 40px 0;
 `;
 
 const Container = styled.div`
   display: flex;
   justify-content: space-around;
-  align-items: flex-end;
-  padding: 50px;
-  margin-top: 30px;
-`;
 
-const Title = styled.h1`
-  text-align: left;
-  padding-top: 100px;
-  padding-left: 250px;
-  font-size: 3rem;
+  @media screen and (max-width: ${BREAKPOINTS.SP}) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
