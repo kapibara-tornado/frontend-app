@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { questions } from '../data/questions';
 import { useQuestions } from '@/usecases/useQuestions';
-import ProgressBarWithCount from '@/components/features/ProgressBarWithCount';
+import { ProgressBarWithCount } from '@/components/features/ProgressBarWithCount';
+import { BREAKPOINTS } from '@/components/Responsive';
 
 //質問回答画面
 function Play() {
@@ -18,59 +19,63 @@ function Play() {
   const totalQuestions = questions.length; //総質問数
 
   const progress =
-    (currentQuestionIndex / totalQuestions) * 100; //プログレス
+    ((currentQuestionIndex + 1) / totalQuestions) * 100;
 
   return (
-    <div>
-      <Wrapper>
-        <QuestionArea>
-          <ImageWrapper>
-            <Image
-              src="/static.jpeg"
-              width={300}
-              height={200}
-              alt="sample"
-            />
-          </ImageWrapper>
-          <Question>{currentQuestion.question}</Question>
-        </QuestionArea>
-        <Buttons>
-          <BadButton onClick={onClickBadHandler}>
-            Bad
-          </BadButton>
-          <GoodButton onClick={onClickGoodHandler}>
-            Good
-          </GoodButton>
-        </Buttons>
-        <ProgressBarWithCount
-          progress={progress}
-          currentQuestion={currentQuestionIndex}
-          totalQuestions={totalQuestions}
-        />
-      </Wrapper>
-    </div>
+    <Wrapper>
+      <ProgressBarWithCount
+        progress={progress}
+        currentQuestionIndex={currentQuestionIndex}
+        totalQuestions={totalQuestions}
+      />
+      <QuestionArea>
+        <ImageWrapper>
+          <Image
+            src="/static.jpeg"
+            width={300}
+            height={200}
+            alt="sample"
+          />
+        </ImageWrapper>
+        <Question>{currentQuestion.question}</Question>
+      </QuestionArea>
+      <Buttons>
+        <BadButton onClick={onClickBadHandler}>
+          Bad
+        </BadButton>
+        <GoodButton onClick={onClickGoodHandler}>
+          Good
+        </GoodButton>
+      </Buttons>
+    </Wrapper>
   );
 }
 
 export default Play;
 
 const Wrapper = styled.div`
-  background-image: url(/backgroundImage/questionBackground.png);
-  background-repeat: no-repeat;
+  background-image: url('/backgroundImage/questionBackground.png');
+  background-position: center;
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
   padding: 60px;
+
+  @media screen and (max-width: ${BREAKPOINTS.SP}) {
+    padding: 30px;
+  }
 `;
 
 const QuestionArea = styled.div`
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 27px;
   padding: 40px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-top: 10px solid #cff4f9;
+  border-bottom: 10px solid #cff4f9;
   text-align: center;
   width: 100%;
   max-width: 1000px;
@@ -94,14 +99,22 @@ const Question = styled.p`
   font-size: 1.8rem;
   color: #333;
   padding-top: 40px;
+
+  @media screen and (max-width: ${BREAKPOINTS.SP}) {
+    font-size: 1.4rem;
+  }
 `;
 
 const Buttons = styled.div`
   display: flex;
-  gap: 150px;
+  width: 100%;
+  justify-content: space-around;
   margin-top: 50px;
 `;
 const GoodButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #fff;
   font-weight: 800;
   background-color: #3cb371;
@@ -115,9 +128,18 @@ const GoodButton = styled.button`
   &:hover {
     background-color: #2e8b57;
   }
+
+  @media screen and (max-width: ${BREAKPOINTS.SP}) {
+    width: 64px;
+    height: 64px;
+    font-size: 1rem;
+  }
 `;
 
 const BadButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #fff;
   font-weight: 800;
   background-color: #dc143c;
@@ -130,5 +152,11 @@ const BadButton = styled.button`
   transition: background-color 0.8s;
   &:hover {
     background-color: #a10b2d;
+  }
+
+  @media screen and (max-width: ${BREAKPOINTS.SP}) {
+    width: 64px;
+    height: 64px;
+    font-size: 1rem;
   }
 `;
