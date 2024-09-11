@@ -5,6 +5,7 @@ import {
   Cross1Icon,
   HamburgerMenuIcon,
 } from '@radix-ui/react-icons';
+import Image from 'next/image';
 
 type Props = {
   isResult: boolean;
@@ -67,6 +68,12 @@ export const HamburgerMenu = ({ isResult }: Props) => {
                   </StyledLink>
                 </NavItem>
               </NavList>
+              <KapibaraImage
+                src="/kapibara.svg"
+                alt="カピバラ"
+                width={130}
+                height={130}
+              />
             </ModalContent>
           </Overlay>
         ) : (
@@ -111,6 +118,10 @@ const ModalContent = styled.div`
   right: 0;
   background-color: #fff;
   z-index: 1001;
+  background-image: url('/backgroundImage/hamburgerBg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
 const FlexEnd = styled.div`
@@ -144,4 +155,8 @@ const StyledLink = styled(Link)`
   display: block;
   width: 100%;
   font-size: 1.2rem;
+`;
+
+const KapibaraImage = styled(Image)`
+  margin: 5rem auto;
 `;
