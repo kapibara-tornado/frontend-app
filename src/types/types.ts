@@ -75,3 +75,12 @@ export interface Scores {
   I: number;
   N: number;
 }
+
+//診断結果詳細の情報
+export interface ResultDetailInfo {
+  id: number;
+  genre: string;
+  genreImage: string;
+  yourType: string;
+  typeDescription: string;
+}
