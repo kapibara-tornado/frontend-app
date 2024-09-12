@@ -3,15 +3,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import PrintButton from '@/components/features/PrintButton';
 
 function PrintDemo() {
   return(
     <div>
       <Wrapper>
         <Title>印刷機能デモ</Title>
-        <PrintButton>
-          診断結果<br />Print
-        </PrintButton>
+        <PrintButton/>
       </Wrapper>
     </div>
   );
@@ -31,7 +30,7 @@ const Title = styled.h1`
   font-size: 3rem;
 `;
 
-const PrintButton = styled.button`
+const Printbutton = styled.button`
   background-color: red;
   border: 2px solid red;
   color: white;
