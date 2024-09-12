@@ -4,20 +4,18 @@ import styled from 'styled-components';
 import React from 'react';
 import { SimpleSlider } from '@/components/features/SimpleSlider';
 
-const resultDetail = () => {
+const ResultDetail = () => {
   return (
-    <div>
-      <Wrapper>
-        <SimpleSlider />
-      </Wrapper>
-    </div>
+    <Wrapper>
+      <SimpleSlider />
+    </Wrapper>
   );
 };
 
-export default resultDetail;
+export default ResultDetail;
 
 const Wrapper = styled.div`
-  background-image: url(/backgroundImage/resultDetailBackground.png);
+  background-image: url('/backgroundImage/resultDetailBackground.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

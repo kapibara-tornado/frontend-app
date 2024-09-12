@@ -24,7 +24,6 @@ export const useQuestions = (questions: Question[]) => {
   const currentQuestion = questions[currentQuestionIndex];
 
   const onClickGoodHandler = () => {
-    console.log('good');
     const updatedScores = { ...scores };
 
     currentQuestion.options.yes.forEach((option) => {
