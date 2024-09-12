@@ -7,6 +7,8 @@ import { BackgroundImage } from '../../components/features/BackgroundImage';
 import { useResult } from '@/usecases/useResult';
 import Loader from '@/components/features/Loader';
 import { BREAKPOINTS } from '@/components/Responsive';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 // 診断結果ページ
 function Result() {
@@ -39,6 +41,17 @@ function Result() {
           <TypeCard id={resultedId} />
           <SimilarPoliticianCard id={resultedId} />
         </Container>
+
+        <CenterText>
+          <Link href={`/result/detail`}>
+            <Button
+              variant="outline"
+              className="bg-[#33679a] text-white p-6 rounded-md text-center"
+            >
+              診断結果詳細へ
+            </Button>
+          </Link>
+        </CenterText>
       </BackgroundImage>
     </Wrapper>
   );
@@ -69,4 +82,10 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: center;
   }
+`;
+
+const CenterText = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
 `;
