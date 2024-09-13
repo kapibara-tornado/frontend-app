@@ -70,7 +70,7 @@ const Explanation = styled.div`
 `;
 
 const StyledImage = styled(Image)`
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+padding-top: 40px;
 `;
 
 const YourType = styled.div<{ colorid: string }>`

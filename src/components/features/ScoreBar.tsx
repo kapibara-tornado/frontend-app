@@ -24,11 +24,15 @@ export const ScoreBar = ({
   return (
     <div>
       <ScoreBarWrapper>
-        <PercentageText>{percentage}%</PercentageText>
+      <ScoreInfo>
+          <PercentageText>{percentage}%</PercentageText>
+          <TypeText id={id} />
+        </ScoreInfo>
         <BarContainer>
           <Bar
             percentage={percentage}
             direction={direction}
+            id={id}
           />
         </BarContainer>
         <ShowType>
@@ -62,6 +66,47 @@ export const ScoreBar = ({
   );
 };
 
+const getColorById = (id: number) => {
+  switch (id) {
+    case 1:
+      return '#97ac12';
+    case 3:
+      return '#6d2cc9';
+    case 5:
+      return '#b22a2a';
+    case 7:
+      return '#0b8697';
+  }
+};
+
+const TypeText = ({ id }: { id: number }) => {
+  const text = getTypeText(id);
+  return <TypeTextSpan>{text}</TypeTextSpan>;
+};
+
+const getTypeText = (id: number) => {
+  switch (id) {
+    case 1:
+      return 'の経済重視型';
+    case 2:
+      return 'の進歩的型';
+    case 3:
+      return 'の権威主義型';
+    case 4:
+      return 'の自由主義型';
+    case 5:
+      return 'のリベラル型';
+    case 6:
+      return '保守型';
+    case 7:
+      return 'の国際主義型';
+    case 8:
+      return 'の愛国主義型';
+    default:
+      return '';
+  }
+};
+
 const ScoreBarWrapper = styled.div`
   width: 100%;
   text-align: left;
@@ -75,12 +120,19 @@ const BarContainer = styled.div`
   margin: 0 auto;
 `;
 
+const ScoreInfo = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+`;
+
 const Bar = styled.div<{
   percentage: number;
   direction: 'left' | 'right';
+  id: number;
 }>`
   width: ${({ percentage }) => percentage}%;
-  background-color: #4169e1;
+  background-color: ${({ id }) => getColorById(id)};
   height: 30px;
   transition: width 0.3s ease;
   border-radius: 10px;
@@ -92,7 +144,12 @@ const PercentageText = styled.span`
   font-weight: bold;
   padding-left: 150px;
   display: block;
-  margin-bottom: 10px;
+`;
+
+const TypeTextSpan = styled.span`
+  margin-left: 10px;
+  color: #666;
+  font-weight: normal;
 `;
 
 const ShowType = styled.div`
