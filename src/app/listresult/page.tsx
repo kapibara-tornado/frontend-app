@@ -4,12 +4,13 @@ import React from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { CardInfo } from '@/types/types';
+import { BREAKPOINTS } from '@/components/Responsive';
 
 //診断結果一覧のデータ
 const sections = [
   {
     title: '保守的な経済統制派',
-    bgImage:
+    bgimage:
       '/backgroundImage/resultDetailBackgroundConservative.png',
     cards: [
       {
@@ -36,7 +37,7 @@ const sections = [
   },
   {
     title: '自由市場主義派',
-    bgImage:
+    bgimage:
       '/backgroundImage/resultDetailBackgroundLiberal.png',
     cards: [
       {
@@ -63,7 +64,7 @@ const sections = [
   },
   {
     title: '進歩的国家主義派',
-    bgImage:
+    bgimage:
       '/backgroundImage/resultDetailBackgroundProgressive.png',
     cards: [
       {
@@ -90,7 +91,7 @@ const sections = [
   },
   {
     title: '国際協力重視派',
-    bgImage:
+    bgimage:
       'backgroundImage/resultDetailBackgroundInternational.png',
     cards: [
       {
@@ -141,7 +142,7 @@ function ListResult() {
         {sections.map((section, index) => (
           <SectionContent
             key={index}
-            bgImage={section.bgImage}
+            bgimage={section.bgimage}
           >
             <SectionTitle>{section.title}</SectionTitle>
             <CardWrapper>
@@ -171,27 +172,41 @@ const Wrapper = styled.div`
 
 const Title = styled.h1`
   text-align: center;
-  padding-top: 10px;
+  padding-top: 50px;
   font-size: 3rem;
+
+  @media (max-width: ${BREAKPOINTS.SP}) {
+    font-size: 2rem;
+    padding-top: 150px;
+  }
 `;
 
-const SectionContent = styled.div<{ bgImage: string }>`
+const SectionContent = styled.div<{ bgimage: string }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   height: 100vh;
-  background-image: url(${(props) => props.bgImage});
+  background-image: url(${(props) => props.bgimage});
   background-size: cover;
   background-repeat: no-repeat;
   padding: 40px;
+
+  @media (max-width: ${BREAKPOINTS.SP}) {
+    padding: 30px 0 0;
+  }
 `;
 
 const SectionTitle = styled.h2`
   font-size: 2.5rem;
   text-align: center;
   padding-top: 150px;
+
+  @media (max-width: ${BREAKPOINTS.SP}) {
+    margin-top: 70px;
+    font-size: 2rem;
+  }
 `;
 
 const CardWrapper = styled.div`
@@ -200,6 +215,11 @@ const CardWrapper = styled.div`
   margin: 0 auto;
   padding: 0;
   justify-content: center;
+  gap: 20px;
+
+  @media (max-width: ${BREAKPOINTS.SP}) {
+    gap: 20px;
+  }
 `;
 
 const CardContainer = styled.div`
@@ -208,15 +228,24 @@ const CardContainer = styled.div`
   align-items: center;
   padding: 20px;
   text-align: center;
+
+  @media (max-width: ${BREAKPOINTS.SP}) {
+    width: 45%;
+  }
 `;
 
 const StyledImage = styled(Image)`
   border-radius: 50%;
   object-fit: cover;
 `;
+
 const Label = styled.p`
   margin-top: 10px;
   font-size: 1.8rem;
   margin: 0 auto;
   text-align: center;
+
+  @media (max-width: ${BREAKPOINTS.SP}) {
+    font-size: 1.2rem;
+  }
 `;
