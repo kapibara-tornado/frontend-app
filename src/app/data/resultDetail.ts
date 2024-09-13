@@ -60,7 +60,7 @@ export const ResultDetail: ResultDetailInfo[] = [
   {
     id: 8,
     genre: '国際関係',
-    genreImage: '/result/type4  .png',
+    genreImage: '/result/type4.png',
     yourType: 'N型（愛国主義）',
     typeDescription:
       '愛国主義派のあなたは、これはテストです。これはテストです。これはテストです。',
