@@ -13,6 +13,7 @@ export const useResult = () => {
 
   useEffect(() => {
     const scores = getCookie('scores');
+    console.log("Scores:", scores);
 
     // 1.5秒間のタイムアウトを設定
     const timeoutId = setTimeout(() => {
@@ -25,6 +26,7 @@ export const useResult = () => {
         const parsed = JSON.parse(scores);
         setParsedScores(parsed);
         const id = getMBTIId(parsed);
+        console.log("MBTI ID:", id);
         setResultedId(id);
         setLoading(false); // クッキーが見つかったらローディングを終了
         clearTimeout(timeoutId); // タイムアウトを解除

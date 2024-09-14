@@ -24,13 +24,13 @@ export const useQuestions = (questions: Question[]) => {
   const currentQuestion = questions[currentQuestionIndex];
 
   const onClickGoodHandler = () => {
-    console.log('good');
     const updatedScores = { ...scores };
 
     currentQuestion.options.yes.forEach((option) => {
       updatedScores[option.value] += option.point;
     });
-
+    
+    console.log('Scores after Good:', updatedScores);
     // スコアを更新
     setScores(updatedScores);
     // 次の質問へ
@@ -55,6 +55,8 @@ export const useQuestions = (questions: Question[]) => {
 
     // スコアを更新
     setScores(updatedScores);
+    console.log('Scores after Bad:', updatedScores);
+
     // 次の質問へ
     if (currentQuestionIndex >= questions.length - 1) {
       setCookie(
