@@ -13,11 +13,15 @@ export const ScoreBar = ({
   direction: 'left' | 'right';
   id: number;
 }) => {
-  const percentage = Math.min(
+    const percentage = Math.min(
     Math.round((score / 3) * 100),
     100
   );
+  console.log("score:", score);
+  console.log("Percentage:", percentage);
   const type = ResultDetail.find((type) => type.id === id);
+  console.log("TYPE:", type);
+  // console.log("ScoreBarTypeID:", type.id);
   if (!type) {
     return null;
   }
@@ -42,10 +46,22 @@ export const ScoreBar = ({
               <p>P</p>
             </TypeFlex>
           )}
+          {type.id === 2 && (
+            <TypeFlex>
+              <p>E</p>
+              <p>P</p>
+            </TypeFlex>
+          )}
           {type.id === 3 && (
             <TypeFlex>
               <p>A</p>
-              <p>L</p>
+              <p>S</p>
+            </TypeFlex>
+          )}
+          {type.id === 4 && (
+            <TypeFlex>
+              <p>A</p>
+              <p>S</p>
             </TypeFlex>
           )}
           {type.id === 5 && (
@@ -54,7 +70,19 @@ export const ScoreBar = ({
               <p>L</p>
             </TypeFlex>
           )}
+          {type.id === 6 && (
+            <TypeFlex>
+              <p>C</p>
+              <p>L</p>
+            </TypeFlex>
+          )}
           {type.id === 7 && (
+            <TypeFlex>
+              <p>N</p>
+              <p>I</p>
+            </TypeFlex>
+          )}
+          {type.id === 8 && (
             <TypeFlex>
               <p>N</p>
               <p>I</p>
@@ -70,11 +98,19 @@ const getColorById = (id: number) => {
   switch (id) {
     case 1:
       return '#97ac12';
+    case 2:
+      return '#97ac12';
     case 3:
+      return '#6d2cc9';
+    case 4:
       return '#6d2cc9';
     case 5:
       return '#b22a2a';
+    case 6:
+      return '#b22a2a';
     case 7:
+      return '#0b8697';
+    case 8:
       return '#0b8697';
   }
 };
