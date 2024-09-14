@@ -14,7 +14,7 @@ import Link from 'next/link';
 function Result() {
   const { parsedScores, resultedId, loading, timeout } =
     useResult();
-
+  
   // ローディング中の画面
   if (loading) {
     return (
