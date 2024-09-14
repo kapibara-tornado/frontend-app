@@ -24,6 +24,7 @@ import { Scores } from '@/types/types';
 // C vs L
 // I vs N
 
+
 export const getMBTIId = (scores: Scores | undefined) => {
   if (!scores) {
     return 1;
