@@ -1,6 +1,6 @@
 'use server';
 
-import fs from 'fs';
+import * as https from 'https';
 
 const host = process.env.PRINTER_HOST || ''; // e.g. xxxx.xxxxx.xxx
 const client_id = process.env.CLIENT_ID || ''; // Your client ID
@@ -54,10 +54,10 @@ const authenticate = async (): Promise<AuthResponse> => {
   });
 
   if (response.status !== 200)
-    throw new Error('Failed to authenticate');
+    throw new Error('[1]: Failed to authenticate');
 
   const result = (await response.json()) as AuthResponse;
-  console.log('認証完了');
+  console.log('[OK][1]: 認証完了');
 
   return result;
 };
@@ -86,11 +86,11 @@ const createPrintJob = async (
   });
 
   if (response.status !== 201)
-    throw new Error('Failed to create print job');
+    throw new Error('[2]: Failed to create print job');
 
   const result =
     (await response.json()) as PrintJobResponse;
-  console.log('印刷ジョブ作成完了');
+  console.log('[OK][2]: 印刷ジョブ作成完了');
 
   return result;
 };
@@ -99,30 +99,72 @@ const createPrintJob = async (
 const uploadFile = async (
   access_token: string,
   base_uri: string,
-  pdfData: Buffer
+  buffer: Buffer,
+  subject_id: string,
+  job_id: string
 ) => {
   const fileName = 'kapibara_tornado.pdf';
   const upload_uri = `${base_uri}&File=${fileName}`;
 
-  // TODO: ここでおちてる
-  const response = await fetch(upload_uri, {
+  const maxFileSize = 20 * 1024 * 1024; // 20MB
+
+  // ファイルサイズをチェック
+  if (buffer.length > maxFileSize) {
+    console.error('[3]: File size exceeds the limit');
+    process.exit(1);
+  }
+  console.log('[OK][3-1]: ファイルサイズチェック完了');
+
+  // HTTPリクエストオプションを設定
+  const options: https.RequestOptions = {
     method: 'POST',
     headers: {
       Host: host,
       Accept: accept,
       Authorization: `Bearer ${access_token}`,
+      'Content-Length': buffer.length,
       'Content-Type': 'application/octet-stream',
     },
-    body: pdfData,
+  };
+
+  const req = https.request(upload_uri, options, (res) => {
+    let responseBody = '';
+
+    // データを受け取る
+    res.on('data', (chunk) => {
+      responseBody += chunk;
+    });
+
+    // レスポンスの処理完了時
+    res.on('end', async () => {
+      console.log('[OK][3-2]ファイルアップロード完了');
+
+      // HTTPステータスコードの確認
+      if (res.statusCode !== 200) {
+        console.error(
+          'Upload failed with status code:',
+          res.statusCode
+        );
+        process.exit(1);
+      } else {
+        const printResult = await executePrint(
+          access_token,
+          subject_id,
+          job_id
+        );
+        return printResult;
+      }
+    });
   });
 
-  if (response.status !== 200)
-    throw new Error('Failed to upload file');
+  // リクエストのエラー処理
+  req.on('error', (error) => {
+    console.error('[3]', error);
+    process.exit(1);
+  });
 
-  const result = await response.json();
-  console.log('ファイルアップロード完了');
-
-  return result;
+  req.write(buffer);
+  req.end();
 };
 
 // 4. 印刷を実行
@@ -146,15 +188,15 @@ const executePrint = async (
     throw new Error('Failed to execute print');
 
   const result = await response.json();
-  console.log('印刷実行完了');
+  console.log('[OK][4]: 印刷実行完了');
 
   return result;
 };
 
-// ============================== 本体 ==================================
 // 印刷ジョブを処理する例
-export const handlePrintJob = async () => {
+export const handlePrintJob = async (base64: string) => {
   try {
+    const buffer = Buffer.from(base64, 'base64');
     const authResult = await authenticate();
     const { access_token, subject_id } = authResult;
 
@@ -164,19 +206,13 @@ export const handlePrintJob = async () => {
     );
     const { upload_uri, id: job_id } = printJobResult;
 
-    console.log('upload_uri:', upload_uri);
     await uploadFile(
       access_token,
       upload_uri,
-      fs.readFileSync('src/utils/epson/SampleDoc.pdf')
-    ); // ファイルパスを調整
-
-    const printResult = await executePrint(
-      access_token,
+      buffer,
       subject_id,
       job_id
     );
-    return printResult;
   } catch (error) {
     console.error('Print job failed:', error);
   }

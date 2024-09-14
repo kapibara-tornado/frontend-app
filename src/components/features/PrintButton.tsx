@@ -1,19 +1,17 @@
 'use client';
-import { handlePrintJob } from '@/utils/epson/epson_print';
-import { useState } from 'react';
 import styled from 'styled-components';
 
-export const PrintButton = () => {
-  const [loading, setLoading] = useState(false);
+type Props = {
+  onClick: () => void;
+  loading: boolean;
+};
 
-  const handlePrint = async () => {
-    setLoading(true);
-    await handlePrintJob();
-    setLoading(false);
-  };
-
+export const PrintButton = ({
+  onClick,
+  loading,
+}: Props) => {
   return (
-    <Printbutton onClick={handlePrint} disabled={loading}>
+    <Printbutton onClick={onClick} disabled={loading}>
       診断結果
       <br />
       Print
