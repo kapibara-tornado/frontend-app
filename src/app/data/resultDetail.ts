@@ -29,7 +29,7 @@ export const ResultDetail: ResultDetailInfo[] = [
     id: 4,
     genre: '政府の役割',
     genreImage: '/result/type2.png',
-    yourType: 'S型（自由主義）',
+    yourType: 'L型（自由主義）',
     typeDescription:
       '自由主義派のあなたは、これはテストです。これはテストです。これはテストです。',
   },
