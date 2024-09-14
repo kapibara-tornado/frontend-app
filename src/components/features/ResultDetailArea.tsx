@@ -28,7 +28,7 @@ export const ResultDetailArea = ({
             />
           </Data>
           <Explanation>
-            <YourType colorId={id}>
+            <YourType colorid={String(id)}>
               {type.yourType}
             </YourType>
             <TypeDescription>
@@ -70,20 +70,20 @@ const Explanation = styled.div`
 `;
 
 const StyledImage = styled(Image)`
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+padding-top: 40px;
 `;
 
-const YourType = styled.div<{ colorId: number }>`
+const YourType = styled.div<{ colorid: string }>`
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
   padding-top: 50px;
-  color: ${({ colorId }) =>
-    colorId === 1 || colorId === 2
+  color: ${({ colorid }) =>
+    colorid === '1' || colorid === '2'
       ? '#97ac12'
-      : colorId === 3 || colorId === 4
+      : colorid === '3' || colorid === '4'
       ? '#6d2cc9'
-      : colorId === 5 || colorId === 6
+      : colorid === '5' || colorid === '6'
       ? '#b22a2a'
       : '#0b8697'};
 `;

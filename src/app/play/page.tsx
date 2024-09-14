@@ -21,6 +21,7 @@ function Play() {
   const progress =
     ((currentQuestionIndex + 1) / totalQuestions) * 100;
 
+
   return (
     <Wrapper>
       <ProgressBarWithCount
