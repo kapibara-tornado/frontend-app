@@ -53,7 +53,9 @@ export const determineIdsBasedOnScores = (
   parsedScores: Scores | undefined
 ) => {
   if (!parsedScores) return [0, 0, 0, 0];
+
   const ids = [];
+
   if (parsedScores.E > parsedScores.P) {
     ids.push(1);
   } else {
@@ -74,6 +76,7 @@ export const determineIdsBasedOnScores = (
   } else {
     ids.push(8);
   }
+
   console.log("ids:", ids);
   return ids;
 };

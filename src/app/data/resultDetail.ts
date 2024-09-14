@@ -1,4 +1,8 @@
 import { ResultDetailInfo } from '@/types/types';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2f6461bc0295276b1942586834ab6360c06aee08
 export const ResultDetail: ResultDetailInfo[] = [
   {
     id: 1,

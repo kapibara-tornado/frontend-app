@@ -12,12 +12,15 @@ import {
   getDirection,
   getScore,
 } from './logics';
+
 export const SimpleSlider = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const { parsedScores } = useResult();
+
   console.log("result detail parsedScores:", parsedScores);
   const idsForResultDetailArea =
     determineIdsBasedOnScores(parsedScores);
+
   console.log("idsForResultDetailArea:", idsForResultDetailArea);
   // console.log("getScore:", getScore(1, parsedScores));
   // console.log("Direction:", getDirection(1, parsedScores));
@@ -73,12 +76,15 @@ const StyledSlider = styled(Slider)`
   .slick-list {
     margin: 0 -10px;
   }
+
   .slick-slide > div {
     padding: 0 10px;
   }
+
   .slick-dots.custom-dots {
     bottom: -50px;
   }
+
   .slick-dots.custom-dots li {
     margin: 0 10px;
   }
@@ -91,6 +97,7 @@ const Dot = styled.div<{ active: 'true' | 'false' }>`
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.3s ease;
+
   &:hover {
     background-color: #333;
   }
