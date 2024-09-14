@@ -41,6 +41,8 @@ export interface Question {
     | 'nationalismVsInternationalism';
   title: string;
   question: string;
+  questionImage: string;
+  questionAlt: string;
   options: {
     // 今後の拡張性を考慮して、配列にしている
     yes: [

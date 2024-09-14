@@ -21,6 +21,7 @@ function Play() {
   const progress =
     ((currentQuestionIndex + 1) / totalQuestions) * 100;
 
+
   return (
     <Wrapper>
       <ProgressBarWithCount
@@ -31,10 +32,10 @@ function Play() {
       <QuestionArea>
         <ImageWrapper>
           <Image
-            src="/static.jpeg"
+            src={currentQuestion.questionImage}
             width={300}
             height={200}
-            alt="sample"
+            alt={currentQuestion.questionAlt}
           />
         </ImageWrapper>
         <Question>{currentQuestion.question}</Question>
