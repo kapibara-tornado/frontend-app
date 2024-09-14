@@ -1,17 +1,45 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import { PrintButton } from '@/components/features/PrintButton';
+import { usePrintDocument } from './hooks/printDocument';
+import { useEffect, useState } from 'react';
 
 function PrintDemo() {
-  return(
+  const [input, setInput] =
+    useState<HTMLCollectionOf<Element> | null>(null);
+  const { printDocument, loading } =
+    usePrintDocument(input);
+
+  useEffect(() => {
+    setInput(
+      document.getElementsByClassName('invoicePages')
+    );
+  }, []);
+
+  // エプソンからのQA後に本番環境でも印刷可能にする
+  const printDocumentHandler = async () => {
+    if (process.env.NODE_ENV === 'development') {
+      await printDocument();
+    } else {
+      alert('印刷機能は開発環境のみ利用可能です');
+    }
+  };
+
+  return (
     <div>
       <Wrapper>
         <Title>印刷機能デモ</Title>
-        <PrintButton>
-          診断結果<br />Print
-        </PrintButton>
+
+        <PrintButton
+          onClick={printDocumentHandler}
+          loading={loading}
+        />
+
+        <div className="invoicePages" id="invoicePageOne">
+          <h1>トルネードハッカソン</h1>
+          <p>カピバラ</p>
+        </div>
       </Wrapper>
     </div>
   );
@@ -29,26 +57,4 @@ const Title = styled.h1`
   text-align: center;
   padding-top: 10px;
   font-size: 3rem;
-`;
-
-const PrintButton = styled.button`
-  background-color: red;
-  border: 2px solid red;
-  color: white;
-  font-size: 1.5rem;
-  padding: 3px 6px;
-  cursor: pointer;
-  text-align: center;
-  border-radius: 15px; 
-  line-height: 1.5;
-  transition: background-color 0.3s, transform 0.2s;
-
-  &:hover {
-    background-color: darkred;
-  }
-
-  &:active {
-    background-color: #a00000;
-    transform: scale(0.95);
-  }
 `;
