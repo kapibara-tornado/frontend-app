@@ -24,3 +24,8 @@
     list-style: none;
 }
 
+.content {
+    display: flex;
+    text-align: center;
+    padding: 20px 0;
+}
