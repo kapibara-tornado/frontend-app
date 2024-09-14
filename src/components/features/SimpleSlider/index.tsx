@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -13,14 +12,15 @@ import {
   getDirection,
   getScore,
 } from './logics';
-
 export const SimpleSlider = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const { parsedScores } = useResult();
-
+  console.log("result detail parsedScores:", parsedScores);
   const idsForResultDetailArea =
     determineIdsBasedOnScores(parsedScores);
-
+  console.log("idsForResultDetailArea:", idsForResultDetailArea);
+  // console.log("getScore:", getScore(1, parsedScores));
+  // console.log("Direction:", getDirection(1, parsedScores));
   const settings = {
     dots: true,
     infinite: true,
@@ -34,23 +34,23 @@ export const SimpleSlider = () => {
     ),
     dotsClass: 'slick-dots custom-dots',
   };
-
   return (
     <SliderContainer>
       <StyledSlider {...settings}>
         {parsedScores &&
-          Array.from({ length: 4 }).map((_, index) => (
+          Array.from({ length: 4 }).map((_, index) => ( //添え字が0から始まる
             <div key={index}>
               <ResultDetailArea
                 id={idsForResultDetailArea[index]}
               />
               <ScoreBar
-                score={getScore(index, parsedScores)}
+                score={getScore(index + 1, parsedScores)}
                 direction={getDirection(
-                  index,
+                  index + 1,
                   parsedScores
                 )}
-                id={index * 2 + 1}
+                // id={index * 2 + 1}
+                id = {idsForResultDetailArea[index]}
               />
             </div>
           ))}
@@ -58,7 +58,6 @@ export const SimpleSlider = () => {
     </SliderContainer>
   );
 };
-
 const SliderContainer = styled.div`
   max-width: 1000px;
   height: 620px;
@@ -70,25 +69,20 @@ const SliderContainer = styled.div`
   overflow: hidden;
   position: relative;
 `;
-
 const StyledSlider = styled(Slider)`
   .slick-list {
     margin: 0 -10px;
   }
-
   .slick-slide > div {
     padding: 0 10px;
   }
-
   .slick-dots.custom-dots {
     bottom: -50px;
   }
-
   .slick-dots.custom-dots li {
     margin: 0 10px;
   }
 `;
-
 const Dot = styled.div<{ active: 'true' | 'false' }>`
   width: 20px;
   height: 20px;
@@ -97,7 +91,6 @@ const Dot = styled.div<{ active: 'true' | 'false' }>`
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.3s ease;
-
   &:hover {
     background-color: #333;
   }
