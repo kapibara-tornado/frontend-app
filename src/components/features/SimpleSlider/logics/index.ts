@@ -40,11 +40,11 @@ export const getDirection = (
         ? 'left'
         : 'right';
     case 3:
-      return parsedScores.L > parsedScores.C
+      return parsedScores.C > parsedScores.L
         ? 'left'
         : 'right';
     case 4:
-      return parsedScores.I > parsedScores.N
+      return parsedScores.N > parsedScores.I
         ? 'left'
         : 'right';
     default:
@@ -79,5 +79,7 @@ export const determineIdsBasedOnScores = (
   } else {
     ids.push(8);
   }
+
+  console.log("ids:", ids);
   return ids;
 };
