@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 import {
   Cross1Icon,
   HamburgerMenuIcon,
@@ -147,6 +148,9 @@ const NavItem = styled.li`
   padding: 10px 0;
   border-bottom: 1px solid #ccc;
   width: 100%;
+  &:hover{
+    background-color: #f0f0f0;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -155,6 +159,10 @@ const StyledLink = styled(Link)`
   display: block;
   width: 100%;
   font-size: 1.2rem;
+
+  &:hover {
+    color: #007bff;
+  }
 `;
 
 const KapibaraImage = styled(Image)`
