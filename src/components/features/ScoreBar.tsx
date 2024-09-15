@@ -2,6 +2,7 @@
 import { ResultDetail } from '@/app/data/resultDetail';
 import React from 'react';
 import styled from 'styled-components';
+import { BREAKPOINTS } from '../Responsive';
 export const ScoreBar = ({
   score,
   direction,
@@ -11,7 +12,7 @@ export const ScoreBar = ({
   direction: 'left' | 'right';
   id: number;
 }) => {
-    const percentage = Math.min(
+  const percentage = Math.min(
     Math.round((score / 3) * 100),
     100
   );
@@ -22,7 +23,7 @@ export const ScoreBar = ({
   return (
     <div>
       <ScoreBarWrapper>
-      <ScoreInfo>
+        <ScoreInfo>
           <PercentageText>{percentage}%</PercentageText>
           <TypeText id={id} />
         </ScoreInfo>
@@ -124,7 +125,7 @@ const getTypeText = (id: number) => {
     case 5:
       return 'のリベラル型';
     case 6:
-      return '保守型';
+      return 'の保守型';
     case 7:
       return 'の国際主義型';
     case 8:
@@ -166,6 +167,10 @@ const PercentageText = styled.span`
   font-weight: bold;
   padding-left: 150px;
   display: block;
+
+  @media (max-width: ${BREAKPOINTS.SP}) {
+    padding: 0;
+  }
 `;
 const TypeTextSpan = styled.span`
   margin-left: 10px;

@@ -12,6 +12,7 @@ import {
   getDirection,
   getScore,
 } from './logics';
+import { BREAKPOINTS } from '@/components/Responsive';
 export const SimpleSlider = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const { parsedScores } = useResult();
@@ -35,21 +36,26 @@ export const SimpleSlider = () => {
     <SliderContainer>
       <StyledSlider {...settings}>
         {parsedScores &&
-          Array.from({ length: 4 }).map((_, index) => ( //添え字が0から始まる
-            <div key={index}>
-              <ResultDetailArea
-                id={idsForResultDetailArea[index]}
-              />
-              <ScoreBar
-                score={getScore(index + 1, parsedScores)}
-                direction={getDirection(
-                  index + 1,
-                  parsedScores
-                )}
-                id = {idsForResultDetailArea[index]}
-              />
-            </div>
-          ))}
+          Array.from({ length: 4 }).map(
+            (
+              _,
+              index //添え字が0から始まる
+            ) => (
+              <div key={index}>
+                <ResultDetailArea
+                  id={idsForResultDetailArea[index]}
+                />
+                <ScoreBar
+                  score={getScore(index + 1, parsedScores)}
+                  direction={getDirection(
+                    index + 1,
+                    parsedScores
+                  )}
+                  id={idsForResultDetailArea[index]}
+                />
+              </div>
+            )
+          )}
       </StyledSlider>
     </SliderContainer>
   );
@@ -64,6 +70,10 @@ const SliderContainer = styled.div`
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   position: relative;
+
+  @media (max-width: ${BREAKPOINTS.SP}) {
+    margin: 15px;
+  }
 `;
 const StyledSlider = styled(Slider)`
   .slick-list {
