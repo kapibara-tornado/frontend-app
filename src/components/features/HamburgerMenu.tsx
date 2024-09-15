@@ -53,7 +53,7 @@ export const HamburgerMenu = ({ isResult }: Props) => {
                 )}
                 <NavItem>
                   <StyledLink
-                    href={'/listresult'}
+                    href={'/result/list'}
                     onClick={onClose}
                   >
                     診断結果一覧

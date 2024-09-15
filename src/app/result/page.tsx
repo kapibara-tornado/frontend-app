@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 // 診断結果ページ
-function Result() {
+function List() {
   const { parsedScores, resultedId, loading, timeout } =
     useResult();
 
@@ -57,7 +57,7 @@ function Result() {
   );
 }
 
-export default Result;
+export default List;
 
 const LoadingWrapper = styled.div`
   display: flex;

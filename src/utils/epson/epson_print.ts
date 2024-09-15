@@ -2,12 +2,11 @@
 
 import * as https from 'https';
 
-const host = process.env.PRINTER_HOST || ''; // e.g. xxxx.xxxxx.xxx
-const client_id = process.env.CLIENT_ID || ''; // Your client ID
-const secret = process.env.SECRET || ''; // Your secret
-const device = process.env.DEVICE || ''; // Your device ID
+const host = process.env.PRINTER_HOST || '';
+const client_id = process.env.CLIENT_ID || '';
+const secret = process.env.SECRET || '';
+const device = process.env.DEVICE || '';
 const accept = 'application/json;charset=utf-8';
-const protocol = '1.1';
 
 // Function for basic auth header
 const getAuthHeader = () => {
