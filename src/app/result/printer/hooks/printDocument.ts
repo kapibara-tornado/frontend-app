@@ -91,7 +91,7 @@ export const usePrintDocument = (
     if (process.env.NODE_ENV === 'development') {
       pdf.save('download.pdf');
     }
-    toast('印刷が完了しました');
+    toast('印刷が承認されました');
     setLoading(false);
   };
 

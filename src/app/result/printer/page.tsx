@@ -1,7 +1,10 @@
 'use client';
 
 import styled from 'styled-components';
-import { BREAKPOINTS } from '@/components/Responsive';
+import {
+  BREAKPOINTS,
+  PcViewOnly,
+} from '@/components/Responsive';
 import { useResult } from '@/usecases/useResult';
 import {
   determineIdsBasedOnScores,
@@ -55,6 +58,7 @@ function ResultPrinter() {
   const type = YourTypes.find(
     (type) => type.id === resultedId
   );
+
   if (!type || !parsedScores) return null;
 
   const printDocumentHandler = async () => {
@@ -69,29 +73,41 @@ function ResultPrinter() {
         $printHeight={printHeight}
         $printWidth={printWidth}
       >
-        <Title>{type.typeCharacter}</Title>
-        <CharacterImage
-          src={type.characterImage}
-          alt="Character Image"
-          width={100}
-          height={100}
-        />
-        <TypeCard>
-          {idsForResultDetailArea.map((id, index) => (
-            <TypeCardSection key={id}>
-              <p>{index + 1}.</p>
+        <PCHalfWrapper>
+          <PcViewOnly>
+            <TypeAlphabet>{type.typeAlphabet}</TypeAlphabet>
+          </PcViewOnly>
+          <Title>{type.typeCharacter}</Title>
+          <CharacterImage
+            src={type.characterImage}
+            alt="Character Image"
+            width={100}
+            height={100}
+          />
+          <PcViewOnly>
+            <TypeDescription>
+              {type.feature}
+            </TypeDescription>
+          </PcViewOnly>
+        </PCHalfWrapper>
+        <PCHalfWrapper>
+          <TypeCard>
+            {idsForResultDetailArea.map((id, index) => (
+              <TypeCardSection key={id}>
+                <p>{index + 1}.</p>
 
-              <ScoreBar
-                score={getScore(index + 1, parsedScores)}
-                direction={getDirection(
-                  index + 1,
-                  parsedScores
-                )}
-                id={idsForResultDetailArea[index]}
-              />
-            </TypeCardSection>
-          ))}
-        </TypeCard>
+                <ScoreBar
+                  score={getScore(index + 1, parsedScores)}
+                  direction={getDirection(
+                    index + 1,
+                    parsedScores
+                  )}
+                  id={idsForResultDetailArea[index]}
+                />
+              </TypeCardSection>
+            ))}
+          </TypeCard>
+        </PCHalfWrapper>
       </Wrapper>
       <BottomButton>
         <PrintButton
@@ -117,7 +133,7 @@ const Wrapper = styled.div<{
   background-size: cover;
   background-position: center;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: ${(props) => props.$printHeight}px;
   width: ${(props) => props.$printWidth}px;
@@ -125,18 +141,26 @@ const Wrapper = styled.div<{
 
   @media screen and (max-width: ${BREAKPOINTS.SP}) {
     background-image: url('/backgroundImage/indexMobileBackground.png');
+    flex-direction: column;
   }
 `;
 
 const Title = styled.h1`
   font-size: 1.5rem;
   text-align: center;
-  padding: 80px 0 40px 0;
+  padding: 40px 0 40px 0;
 `;
 
 const CharacterImage = styled(Image)`
   border-radius: 50%;
   object-fit: cover;
+  width: 200px;
+  height: 200px;
+
+  @media screen and (max-width: ${BREAKPOINTS.SP}) {
+    width: 100px;
+    height: 100px;
+  }
 `;
 
 const TypeCard = styled.div``;
@@ -149,6 +173,19 @@ const TypeCardSection = styled.div`
   margin-top: 20px;
 `;
 
+const TypeAlphabet = styled.h1`
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+`;
+
+const TypeDescription = styled.p`
+  font-size: 1.2rem;
+  padding-top: 90px;
+  text-align: left;
+`;
+
 const BottomButton = styled.div`
   position: absolute;
   bottom: 50px;
@@ -157,5 +194,18 @@ const BottomButton = styled.div`
 
   @media screen and (max-width: ${BREAKPOINTS.SP}) {
     bottom: 30px;
+  }
+`;
+
+const PCHalfWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  max-width: 512px;
+
+  @media screen and (max-width: ${BREAKPOINTS.SP}) {
+    width: 100%;
   }
 `;
