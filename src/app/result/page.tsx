@@ -39,8 +39,8 @@ function List() {
           <ImageWrapper>
             <Image
             src="/badkapibara.png"
-            width={450}
-            height={300}
+            width={300}
+            height={200}
             alt="kapibara"
             />
           </ImageWrapper>
@@ -125,7 +125,7 @@ const DefaultContainer = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  padding-top: 100px;
+  padding-top: 80px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -133,6 +133,7 @@ const ImageWrapper = styled.div`
 
   @media screen and (max-width: ${BREAKPOINTS.SP}) {
     width: 70%;
+    padding-top: 100px;
     justify-content: center;
     padding-bottom: 5px;
     margin-bottom: 10px;
@@ -149,8 +150,8 @@ const TextContainer = styled.div`
   text-align: center;
   width: 100%;
   margin: -15px auto;
-  max-width: 1000px;
-  min-height: 400px;
+  max-width: 600px;
+  min-height: 280px;
   display: flex;
   flex-direction: column;
   justify-content: center;
