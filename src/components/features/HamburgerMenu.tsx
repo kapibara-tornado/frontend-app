@@ -61,7 +61,7 @@ export const HamburgerMenu = ({ isResult }: Props) => {
                 </NavItem>
                 <NavItem>
                   <StyledLink
-                    href={'/printdemo'}
+                    href={'/result/printer'}
                     onClick={onClose}
                   >
                     印刷

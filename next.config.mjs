@@ -3,6 +3,11 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '20mb',
+    },
+  },
 };
 
 // punycode に関する DeprecationWarning だけ無視する処理を追加

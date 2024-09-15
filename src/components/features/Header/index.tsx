@@ -50,7 +50,7 @@ export const Header = () => {
             </li>
             <li>
               <Button variant="link" size={'lg'}>
-                <Link href={'/printdemo'}>印刷</Link>
+                <Link href={'/result/printer'}>印刷</Link>
               </Button>
             </li>
           </NavList>

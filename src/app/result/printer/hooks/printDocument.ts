@@ -1,3 +1,5 @@
+'use client';
+
 import { handlePrintJob } from '@/utils/epson/epson_print';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';

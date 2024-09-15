@@ -11,7 +11,7 @@ export const ScoreBar = ({
   direction: 'left' | 'right';
   id: number;
 }) => {
-    const percentage = Math.min(
+  const percentage = Math.min(
     Math.round((score / 3) * 100),
     100
   );
@@ -22,7 +22,7 @@ export const ScoreBar = ({
   return (
     <div>
       <ScoreBarWrapper>
-      <ScoreInfo>
+        <ScoreInfo>
           <PercentageText>{percentage}%</PercentageText>
           <TypeText id={id} />
         </ScoreInfo>

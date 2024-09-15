@@ -12,9 +12,7 @@ import { YourTypes } from '@/app/data/yourTypesData';
 //政治版mbti
 export const TypeCard = ({ id }: { id: number }) => {
   const type = YourTypes.find((type) => type.id === id);
-  if (!type) {
-    return null;
-  }
+  if (!type) return null;
   return (
     <CardContainer>
       <StyledCard>
