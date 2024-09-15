@@ -29,52 +29,52 @@ export const getMBTIId = (scores: Scores | undefined) => {
     return 1;
   }
   const { E, P, A, S, L, C, I, N } = scores;
-  if (E > P && A > S && C > L && I > N) {
+  if (E > P && A > S && C > L && I < N) {
     return 1;
   }
-  if (E > P && A > S && C > L && I < N) {
+  if (E > P && A > S && C > L && I > N) {
     return 2;
   }
-  if (E > P && A > S && C < L && I > N) {
+  if (E > P && A > S && C < L && I < N) {
     return 3;
   }
-  if (E > P && A > S && C < L && I < N) {
+  if (E > P && A > S && C < L && I > N) {
     return 4;
   }
-  if (E > P && A < S && C > L && I > N) {
+  if (E > P && A < S && C > L && I < N) {
     return 5;
   }
-  if (E > P && A < S && C > L && I < N) {
+  if (E > P && A < S && C > L && I > N) {
     return 6;
   }
-  if (E > P && A < S && C < L && I > N) {
+  if (E > P && A < S && C < L && I < N) {
     return 7;
   }
-  if (E > P && A < S && C < L && I < N) {
+  if (E > P && A < S && C < L && I > N) {
     return 8;
   }
-  if (E < P && A > S && C > L && I > N) {
+  if (E < P && A > S && C > L && I < N) {
     return 9;
   }
-  if (E < P && A > S && C > L && I < N) {
+  if (E < P && A > S && C > L && I > N) {
     return 10;
   }
-  if (E < P && A > S && C < L && I > N) {
+  if (E < P && A > S && C < L && I < N) {
     return 11;
   }
-  if (E < P && A > S && C < L && I < N) {
+  if (E < P && A > S && C < L && I > N) {
     return 12;
   }
-  if (E < P && A < S && C > L && I > N) {
+  if (E < P && A < S && C > L && I < N) {
     return 13;
   }
-  if (E < P && A < S && C > L && I < N) {
+  if (E < P && A < S && C > L && I > N) {
     return 14;
   }
-  if (E < P && A < S && C < L && I > N) {
+  if (E < P && A < S && C < L && I < N) {
     return 15;
   }
-  if (E < P && A < S && C < L && I < N) {
+  if (E < P && A < S && C < L && I > N) {
     return 16;
   }
   return 1;
