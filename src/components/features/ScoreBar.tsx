@@ -15,11 +15,7 @@ export const ScoreBar = ({
     Math.round((score / 3) * 100),
     100
   );
-  console.log("score:", score);
-  console.log("Percentage:", percentage);
   const type = ResultDetail.find((type) => type.id === id);
-  console.log("TYPE:", type);
-  // console.log("ScoreBarTypeID:", type.id);
   if (!type) {
     return null;
   }
@@ -94,21 +90,21 @@ export const ScoreBar = ({
 const getColorById = (id: number) => {
   switch (id) {
     case 1:
-      return '#97AC12';
+      return '#97ac12';
     case 2:
-      return '#97AC12';
+      return '#97aC12';
     case 3:
-      return '#6D2CC9';
+      return '#6d2cc9';
     case 4:
-      return '#6D2CC9';
+      return '#6d2cc9';
     case 5:
-      return '#B22A2A';
+      return '#b22a2a';
     case 6:
-      return '#B22A2A';
+      return '#b22a2a';
     case 7:
-      return '#0B8697';
+      return '#0b8697';
     case 8:
-      return '#0B8697';
+      return '#0b8697';
   }
 };
 const TypeText = ({ id }: { id: number }) => {
@@ -143,7 +139,7 @@ const ScoreBarWrapper = styled.div`
 `;
 const BarContainer = styled.div`
   width: 70%;
-  background-color: #E0E0E0;
+  background-color: #e0e0e0;
   border-radius: 10px;
   overflow: hidden;
   margin: 0 auto;

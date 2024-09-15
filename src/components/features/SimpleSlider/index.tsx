@@ -15,12 +15,9 @@ import {
 export const SimpleSlider = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const { parsedScores } = useResult();
-  console.log("result detail parsedScores:", parsedScores);
   const idsForResultDetailArea =
     determineIdsBasedOnScores(parsedScores);
-  console.log("idsForResultDetailArea:", idsForResultDetailArea);
-  // console.log("getScore:", getScore(1, parsedScores));
-  // console.log("Direction:", getDirection(1, parsedScores));
+
   const settings = {
     dots: true,
     infinite: true,
@@ -49,7 +46,6 @@ export const SimpleSlider = () => {
                   index + 1,
                   parsedScores
                 )}
-                // id={index * 2 + 1}
                 id = {idsForResultDetailArea[index]}
               />
             </div>
