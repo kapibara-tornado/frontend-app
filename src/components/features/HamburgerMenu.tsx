@@ -48,13 +48,13 @@ export const HamburgerMenu = ({ isResult }: Props) => {
                 </CloseButton>
               </FlexEnd>
               <NavList>
-                <NavItem isActive={pathname === '/'}>
+                <NavItem $isActive={pathname === '/'}>
                   <StyledLink href={'/'} onClick={onClose}>
                     ホーム
                   </StyledLink>
                 </NavItem>
                 {isResult && (
-                  <NavItem isActive={pathname === '/result'}>
+                  <NavItem $isActive={pathname === '/result'}>
                     <StyledLink
                       href={'/result'}
                       onClick={onClose}
@@ -63,7 +63,7 @@ export const HamburgerMenu = ({ isResult }: Props) => {
                     </StyledLink>
                   </NavItem>
                 )}
-                <NavItem isActive={pathname === '/listresult'}>
+                <NavItem $isActive={pathname === '/listresult'}>
                   <StyledLink
                     href={'/listresult'}
                     onClick={onClose}
@@ -71,7 +71,7 @@ export const HamburgerMenu = ({ isResult }: Props) => {
                     診断結果一覧
                   </StyledLink>
                 </NavItem>
-                <NavItem isActive={pathname === '/printdemo'}>
+                <NavItem $isActive={pathname === '/printdemo'}>
                   <StyledLink
                     href={'/printdemo'}
                     onClick={onClose}
@@ -155,13 +155,13 @@ const NavList = styled.ul`
   text-align: center;
 `;
 
-const NavItem = styled.li<{isActive: boolean}>`
+const NavItem = styled.li<{$isActive: boolean}>`
   padding: 10px 0;
   border-bottom: 1px solid #ccc;
   width: 100%;
   color: #333;
-  ${({ isActive }) =>
-    isActive &&
+  ${({$isActive }) =>
+    $isActive &&
     `
     background-color: #f0f0f0;
     color: #007bff;
