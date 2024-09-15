@@ -30,10 +30,6 @@ interface PrintJobResponse {
 // 1. 認証
 const authenticate = async (): Promise<AuthResponse> => {
   const auth_uri = `https://${host}/api/1/printing/oauth2/auth/token?subject=printer`;
-
-  console.log('HOST:', host);
-  console.log('AUTH_URI:', auth_uri);
-
   const body = new URLSearchParams({
     grant_type: 'password',
     username: device,

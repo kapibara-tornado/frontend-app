@@ -4,6 +4,18 @@ import { handlePrintJob } from '@/utils/epson/epson_print';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { useState } from 'react';
+import { toast } from 'sonner';
+
+/**
+ * ピクセルをミリメートルに変換
+ * @param px - ピクセル数
+ * @param dpi - デバイスのDPI（解像度）
+ * @returns ミリメートル
+ */
+const pxToMm = (px: number, dpi: number = 96): number => {
+  const inchToMm = 25.4;
+  return (px / dpi) * inchToMm;
+};
 
 /**
  * 印刷処理を行うカスタムフック
@@ -16,7 +28,9 @@ import { useState } from 'react';
  * const { printDocument, loading } = usePrintDocument(input);
  */
 export const usePrintDocument = (
-  input: HTMLCollectionOf<Element> | null
+  input: HTMLCollectionOf<Element> | null,
+  printWidth: number,
+  printHeight: number
 ) => {
   const [loading, setLoading] = useState<boolean>(false);
   const printDocument = async () => {
@@ -47,8 +61,8 @@ export const usePrintDocument = (
         'JPEG',
         0,
         0,
-        210,
-        148,
+        pxToMm(printWidth),
+        pxToMm(printHeight),
         'pdf',
         'NONE',
         0
@@ -68,7 +82,7 @@ export const usePrintDocument = (
       await handlePrintJob(base64);
     } catch (error) {
       console.error(error);
-      alert('印刷に失敗しました');
+      toast('印刷に失敗しました');
       setLoading(false);
       return;
     }
@@ -77,6 +91,7 @@ export const usePrintDocument = (
     if (process.env.NODE_ENV === 'development') {
       pdf.save('download.pdf');
     }
+    toast('印刷が完了しました');
     setLoading(false);
   };
 

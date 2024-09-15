@@ -74,6 +74,5 @@ export const determineIdsBasedOnScores = (
   } else {
     ids.push(8);
   }
-  console.log("ids:", ids);
   return ids;
 };

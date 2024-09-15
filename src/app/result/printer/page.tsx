@@ -17,16 +17,39 @@ import { PrintButton } from '@/components/features/PrintButton';
 
 function ResultPrinter() {
   const { parsedScores, resultedId } = useResult();
+  const [printWidth, setPrintWidth] = useState<number>(0);
+  const [printHeight, setPrintHeight] = useState<number>(0);
   const [input, setInput] =
     useState<HTMLCollectionOf<Element> | null>(null);
-  const { printDocument, loading } =
-    usePrintDocument(input);
+  const { printDocument, loading } = usePrintDocument(
+    input,
+    printWidth,
+    printHeight
+  );
 
   useEffect(() => {
     setInput(
       document.getElementsByClassName('invoicePages')
     );
+
+    setPrintWidth(window.innerWidth);
+    setPrintHeight(window.innerHeight);
   }, []);
+
+  // 縦横幅変えた時の処理
+  useEffect(() => {
+    const handleResize = () => {
+      setPrintWidth(window.innerWidth);
+      setPrintHeight(window.innerHeight);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const idsForResultDetailArea =
     determineIdsBasedOnScores(parsedScores);
   const type = YourTypes.find(
@@ -34,59 +57,71 @@ function ResultPrinter() {
   );
   if (!type || !parsedScores) return null;
 
-  // エプソンからのQA後に本番環境でも印刷可能にする
   const printDocumentHandler = async () => {
-    if (process.env.NODE_ENV === 'development') {
-      await printDocument();
-    } else {
-      alert('印刷機能は開発環境のみ利用可能です');
-    }
+    await printDocument();
   };
 
   return (
-    <Wrapper className="invoicePages" id="invoicePageOne">
-      <Title>{type.typeCharacter}</Title>
-      <CharacterImage
-        src={type.characterImage}
-        alt="Character Image"
-        width={100}
-        height={100}
-      />
-      <TypeCard>
-        {idsForResultDetailArea.map((id, index) => (
-          <TypeCardSection key={id}>
-            <p>{index + 1}.</p>
+    <Container>
+      <Wrapper
+        className="invoicePages"
+        id="invoicePageOne"
+        $printHeight={printHeight}
+        $printWidth={printWidth}
+      >
+        <Title>{type.typeCharacter}</Title>
+        <CharacterImage
+          src={type.characterImage}
+          alt="Character Image"
+          width={100}
+          height={100}
+        />
+        <TypeCard>
+          {idsForResultDetailArea.map((id, index) => (
+            <TypeCardSection key={id}>
+              <p>{index + 1}.</p>
 
-            <ScoreBar
-              score={getScore(index + 1, parsedScores)}
-              direction={getDirection(
-                index + 1,
-                parsedScores
-              )}
-              id={idsForResultDetailArea[index]}
-            />
-          </TypeCardSection>
-        ))}
-      </TypeCard>
-      <PrintButton
-        onClick={printDocumentHandler}
-        loading={loading}
-      />
-    </Wrapper>
+              <ScoreBar
+                score={getScore(index + 1, parsedScores)}
+                direction={getDirection(
+                  index + 1,
+                  parsedScores
+                )}
+                id={idsForResultDetailArea[index]}
+              />
+            </TypeCardSection>
+          ))}
+        </TypeCard>
+      </Wrapper>
+      <BottomButton>
+        <PrintButton
+          onClick={printDocumentHandler}
+          loading={loading}
+        />
+      </BottomButton>
+    </Container>
   );
 }
 
 export default ResultPrinter;
 
-const Wrapper = styled.div`
+const Container = styled.div`
+  position: relative;
+`;
+
+const Wrapper = styled.div<{
+  $printHeight: number;
+  $printWidth: number;
+}>`
   background-image: url('/backgroundImage/indexBackground.png');
   background-size: cover;
   background-position: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-  width: 100%;
+  height: ${(props) => props.$printHeight}px;
+  width: ${(props) => props.$printWidth}px;
+  margin: 0 auto;
 
   @media screen and (max-width: ${BREAKPOINTS.SP}) {
     background-image: url('/backgroundImage/indexMobileBackground.png');
@@ -112,4 +147,15 @@ const TypeCardSection = styled.div`
   align-items: center;
   width: 100%;
   margin-top: 20px;
+`;
+
+const BottomButton = styled.div`
+  position: absolute;
+  bottom: 50px;
+  left: 51%;
+  transform: translateX(-50%);
+
+  @media screen and (max-width: ${BREAKPOINTS.SP}) {
+    bottom: 30px;
+  }
 `;
