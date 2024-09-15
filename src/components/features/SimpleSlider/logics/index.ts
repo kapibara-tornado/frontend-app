@@ -1,5 +1,4 @@
 import { Scores } from '@/types/types';
-
 export const getScore = (
   i: number,
   parsedScores: Scores
@@ -25,7 +24,6 @@ export const getScore = (
       return 1;
   }
 };
-
 export const getDirection = (
   i: number,
   parsedScores: Scores
@@ -40,25 +38,22 @@ export const getDirection = (
         ? 'left'
         : 'right';
     case 3:
-      return parsedScores.L > parsedScores.C
+      return parsedScores.C > parsedScores.L
         ? 'left'
         : 'right';
     case 4:
-      return parsedScores.I > parsedScores.N
+      return parsedScores.N > parsedScores.I
         ? 'left'
         : 'right';
     default:
       return 'left';
   }
 };
-
 export const determineIdsBasedOnScores = (
   parsedScores: Scores | undefined
 ) => {
   if (!parsedScores) return [0, 0, 0, 0];
-
   const ids = [];
-
   if (parsedScores.E > parsedScores.P) {
     ids.push(1);
   } else {
@@ -79,5 +74,6 @@ export const determineIdsBasedOnScores = (
   } else {
     ids.push(8);
   }
+  console.log("ids:", ids);
   return ids;
 };

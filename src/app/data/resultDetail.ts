@@ -1,5 +1,4 @@
 import { ResultDetailInfo } from '@/types/types';
-
 export const ResultDetail: ResultDetailInfo[] = [
   {
     id: 1,

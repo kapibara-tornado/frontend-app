@@ -1,9 +1,7 @@
 'use client';
-
 import { ResultDetail } from '@/app/data/resultDetail';
 import React from 'react';
 import styled from 'styled-components';
-
 export const ScoreBar = ({
   score,
   direction,
@@ -13,7 +11,7 @@ export const ScoreBar = ({
   direction: 'left' | 'right';
   id: number;
 }) => {
-  const percentage = Math.min(
+    const percentage = Math.min(
     Math.round((score / 3) * 100),
     100
   );
@@ -42,13 +40,31 @@ export const ScoreBar = ({
               <p>P</p>
             </TypeFlex>
           )}
+          {type.id === 2 && (
+            <TypeFlex>
+              <p>E</p>
+              <p>P</p>
+            </TypeFlex>
+          )}
           {type.id === 3 && (
             <TypeFlex>
               <p>A</p>
-              <p>L</p>
+              <p>S</p>
+            </TypeFlex>
+          )}
+          {type.id === 4 && (
+            <TypeFlex>
+              <p>A</p>
+              <p>S</p>
             </TypeFlex>
           )}
           {type.id === 5 && (
+            <TypeFlex>
+              <p>C</p>
+              <p>L</p>
+            </TypeFlex>
+          )}
+          {type.id === 6 && (
             <TypeFlex>
               <p>C</p>
               <p>L</p>
@@ -60,30 +76,41 @@ export const ScoreBar = ({
               <p>I</p>
             </TypeFlex>
           )}
+          {type.id === 8 && (
+            <TypeFlex>
+              <p>N</p>
+              <p>I</p>
+            </TypeFlex>
+          )}
         </ShowType>
       </ScoreBarWrapper>
     </div>
   );
 };
-
 const getColorById = (id: number) => {
   switch (id) {
     case 1:
       return '#97ac12';
+    case 2:
+      return '#97aC12';
     case 3:
+      return '#6d2cc9';
+    case 4:
       return '#6d2cc9';
     case 5:
       return '#b22a2a';
+    case 6:
+      return '#b22a2a';
     case 7:
+      return '#0b8697';
+    case 8:
       return '#0b8697';
   }
 };
-
 const TypeText = ({ id }: { id: number }) => {
   const text = getTypeText(id);
   return <TypeTextSpan>{text}</TypeTextSpan>;
 };
-
 const getTypeText = (id: number) => {
   switch (id) {
     case 1:
@@ -106,12 +133,10 @@ const getTypeText = (id: number) => {
       return '';
   }
 };
-
 const ScoreBarWrapper = styled.div`
   width: 100%;
   text-align: left;
 `;
-
 const BarContainer = styled.div`
   width: 70%;
   background-color: #e0e0e0;
@@ -119,13 +144,11 @@ const BarContainer = styled.div`
   overflow: hidden;
   margin: 0 auto;
 `;
-
 const ScoreInfo = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 `;
-
 const Bar = styled.div<{
   percentage: number;
   direction: 'left' | 'right';
@@ -138,30 +161,25 @@ const Bar = styled.div<{
   border-radius: 10px;
   float: ${({ direction }) => direction};
 `;
-
 const PercentageText = styled.span`
   color: #333;
   font-weight: bold;
   padding-left: 150px;
   display: block;
 `;
-
 const TypeTextSpan = styled.span`
   margin-left: 10px;
   color: #666;
   font-weight: normal;
 `;
-
 const ShowType = styled.div`
   margin-top: 10px;
   width: 70%;
   margin: 10px auto 0;
 `;
-
 const TypeFlex = styled.div`
   display: flex;
   justify-content: space-between;
-
   p {
     margin: 0;
     font-weight: bold;
