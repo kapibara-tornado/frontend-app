@@ -43,7 +43,7 @@ export const Header = () => {
             )}
             <li>
               <Button variant="link" size={'lg'}>
-                <Link href={'/listresult'}>
+                <Link href={'/result/list'}>
                   診断結果一覧
                 </Link>
               </Button>
