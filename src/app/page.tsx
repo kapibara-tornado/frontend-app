@@ -118,6 +118,7 @@ const StartButton = styled(Link)`
   transition: all 0.3s ease;
   display: inline-block;
   font-weight: bold;
+  z-index: 10;
 
   &:hover {
     transform: translateY(-3px);
