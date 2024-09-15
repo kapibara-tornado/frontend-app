@@ -179,10 +179,10 @@ const TextContainer = styled.div`
 
 const ConceptText = styled.p`
   color: #333;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-style: normal;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: 70px;
+  padding-right: 70px;
 
   @media screen and (max-width: ${BREAKPOINTS.SP}) {
     font-size: 1.3rem;
