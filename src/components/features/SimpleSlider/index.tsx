@@ -36,30 +36,26 @@ export const SimpleSlider = () => {
     <SliderContainer>
       <StyledSlider {...settings}>
         {parsedScores &&
-          Array.from({ length: 4 }).map(
-            (
-              _,
-              index //添え字が0から始まる
-            ) => (
-              <div key={index}>
-                <ResultDetailArea
-                  id={idsForResultDetailArea[index]}
-                />
-                <ScoreBar
-                  score={getScore(index + 1, parsedScores)}
-                  direction={getDirection(
-                    index + 1,
-                    parsedScores
-                  )}
-                  id={idsForResultDetailArea[index]}
-                />
-              </div>
-            )
-          )}
+          Array.from({ length: 4 }).map((_, index) => ( //添え字が0から始まる
+            <div key={index}>
+              <ResultDetailArea
+                id={idsForResultDetailArea[index]}
+              />
+              <ScoreBar
+                score={getScore(index + 1, parsedScores)}
+                direction={getDirection(
+                  index + 1,
+                  parsedScores
+                )}
+                id = {idsForResultDetailArea[index]}
+              />
+            </div>
+          ))}
       </StyledSlider>
     </SliderContainer>
   );
 };
+
 const SliderContainer = styled.div`
   max-width: 1000px;
   height: 620px;
@@ -75,6 +71,7 @@ const SliderContainer = styled.div`
     margin: 15px;
   }
 `;
+
 const StyledSlider = styled(Slider)`
   .slick-list {
     margin: 0 -10px;
@@ -89,6 +86,7 @@ const StyledSlider = styled(Slider)`
     margin: 0 10px;
   }
 `;
+
 const Dot = styled.div<{ active: 'true' | 'false' }>`
   width: 20px;
   height: 20px;
