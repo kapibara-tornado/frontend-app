@@ -78,9 +78,21 @@ function Play() {
         <Question>{currentQuestion.question}</Question>
       </QuestionArea>
       <Buttons>
-        <BadButton onClick={handleBadClick}>Bad</BadButton>
+        <BadButton onClick={handleBadClick}>
+          <Image
+            src={'/buttons/badbutton.png'}
+            alt="badbutton"
+            width={120}
+            height={120}
+          />
+        </BadButton>
         <GoodButton onClick={handleGoodClick}>
-          Good
+          <Image
+            src={'/buttons/goodbutton.png'}
+            alt="badbutton"
+            width={120}
+            height={120}
+          />
         </GoodButton>
       </Buttons>
     </Wrapper>
@@ -146,56 +158,51 @@ const Question = styled.p`
 const Buttons = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-around;
-  margin-top: 50px;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 200px;
+
+  @media screen and (max-width: ${BREAKPOINTS.SP}) {
+    gap: 70px;
+  }
 `;
 
 const GoodButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-weight: 800;
-  background-color: #3cb371;
-  border-radius: 50%;
-  line-height: 150px;
-  width: 150px;
-  height: 150px;
-  padding: 0;
-  font-size: 1.5rem;
-  transition: background-color 0.3s;
-  &:hover {
-    background-color: #2e8b57;
-  }
+  transition: transform 0.2s;
 
+  &:hover {
+    transform: scale(1.1);
+
+    @media screen and (max-width: ${BREAKPOINTS.SP}) {
+      transform: none;
+    }
+  }
   @media screen and (max-width: ${BREAKPOINTS.SP}) {
-    width: 64px;
-    height: 64px;
-    font-size: 1rem;
+    width: 80px;
+    height: 80px;
+
+    &:active {
+      transform: scale(0.9);
+    }
   }
 `;
 
 const BadButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-weight: 800;
-  background-color: #dc143c;
-  border-radius: 50%;
-  line-height: 150px;
-  width: 150px;
-  height: 150px;
-  padding: 0;
-  font-size: 1.5rem;
-  transition: background-color 0.8s;
-  &:hover {
-    background-color: #a10b2d;
-  }
+  transition: transform 0.2s;
 
+  &:hover {
+    transform: scale(1.1);
+
+    @media screen and (max-width: ${BREAKPOINTS.SP}) {
+      transform: none;
+    }
+  }
   @media screen and (max-width: ${BREAKPOINTS.SP}) {
-    width: 64px;
-    height: 64px;
-    font-size: 1rem;
+    width: 80px;
+    height: 80px;
+
+    &:active {
+      transform: scale(0.9);
+    }
   }
 `;
