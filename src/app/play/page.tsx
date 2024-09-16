@@ -51,13 +51,7 @@ function Play() {
   };
 
   return (
-    <Wrapper
-      initial={PageTransition.initial}
-      animate={PageTransition.animate}
-      exit={PageTransition.exit}
-      variants={PageTransition.variants}
-      transition={PageTransition.transition}
-    >
+    <Wrapper {...PageTransition}>
       <ProgressBarWithCount
         progress={progress}
         currentQuestionIndex={currentQuestionIndex}

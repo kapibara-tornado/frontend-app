@@ -27,13 +27,7 @@ const ResultDetail = () => {
     return <ResultNothing />;
   }
   return (
-    <Wrapper
-      initial={PageTransition.initial}
-      animate={PageTransition.animate}
-      exit={PageTransition.exit}
-      variants={PageTransition.variants}
-      transition={PageTransition.transition}
-    >
+    <Wrapper {...PageTransition}>
       <SimpleSlider />
     </Wrapper>
   );

@@ -95,13 +95,7 @@ function ResultPrinter() {
   }
 
   return (
-    <Container
-      initial={PageTransition.initial}
-      animate={PageTransition.animate}
-      exit={PageTransition.exit}
-      variants={PageTransition.variants}
-      transition={PageTransition.transition}
-    >
+    <Container {...PageTransition}>
       <Wrapper
         className="invoicePages"
         id="invoicePageOne"

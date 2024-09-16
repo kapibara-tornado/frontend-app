@@ -14,13 +14,7 @@ import { motion } from 'framer-motion';
 //indexページ
 export default function Home() {
   return (
-    <Wrapper
-      initial={PageTransition.initial}
-      animate={PageTransition.animate}
-      exit={PageTransition.exit}
-      variants={PageTransition.variants}
-      transition={PageTransition.transition}
-    >
+    <Wrapper {...PageTransition}>
       <Container>
         <ConceptText>
           あなたは<NoBreakText>どのタイプ？</NoBreakText>

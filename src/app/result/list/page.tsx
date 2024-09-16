@@ -9,13 +9,7 @@ import { motion } from 'framer-motion';
 
 function ListResult() {
   return (
-    <Wrapper
-      initial={PageTransition.initial}
-      animate={PageTransition.animate}
-      exit={PageTransition.exit}
-      variants={PageTransition.variants}
-      transition={PageTransition.transition}
-    >
+    <Wrapper {...PageTransition}>
       <Title>診断結果一覧</Title>
       {resultSections.map((section, index) => (
         <SectionContent

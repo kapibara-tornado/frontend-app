@@ -36,13 +36,7 @@ function List() {
   }
 
   return (
-    <Wrapper
-      initial={PageTransition.initial}
-      animate={PageTransition.animate}
-      exit={PageTransition.exit}
-      variants={PageTransition.variants}
-      transition={PageTransition.transition}
-    >
+    <Wrapper {...PageTransition}>
       <BackgroundImage resultedId={resultedId}>
         <Title>診断結果</Title>
         <Container>
