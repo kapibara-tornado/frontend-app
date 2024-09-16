@@ -31,8 +31,8 @@ function Play() {
 
   const swipeVariants = {
     hidden: { x: 0, opacity: 1 },
-    swipeLeft: { x: '-100vw', opacity: 0 },
-    swipeRight: { x: '100vw', opacity: 0 },
+    swipeLeft: { x: '-60vw', opacity: 0 },
+    swipeRight: { x: '60vw', opacity: 0 },
   };
 
   useEffect(() => {
