@@ -7,7 +7,7 @@ import { useQuestions } from '@/usecases/useQuestions';
 import { ProgressBarWithCount } from '@/components/features/ProgressBarWithCount';
 import { BREAKPOINTS } from '@/components/Responsive';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { PageTransition } from '@/components/PageTransition';
 
 //質問回答画面
