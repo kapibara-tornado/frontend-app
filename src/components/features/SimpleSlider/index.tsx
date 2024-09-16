@@ -12,6 +12,7 @@ import {
   getDirection,
   getScore,
 } from './logics';
+import { BREAKPOINTS } from '@/components/Responsive';
 
 export const SimpleSlider = () => {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -60,6 +61,7 @@ export const SimpleSlider = () => {
     </SliderContainer>
   );
 };
+
 const SliderContainer = styled.div`
   max-width: 1000px;
   height: 620px;
@@ -70,7 +72,12 @@ const SliderContainer = styled.div`
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   position: relative;
+
+  @media (max-width: ${BREAKPOINTS.SP}) {
+    margin: 15px;
+  }
 `;
+
 const StyledSlider = styled(Slider)`
   .slick-list {
     margin: 0 -10px;
@@ -85,6 +92,7 @@ const StyledSlider = styled(Slider)`
     margin: 0 10px;
   }
 `;
+
 const Dot = styled.div<{ active: 'true' | 'false' }>`
   width: 20px;
   height: 20px;

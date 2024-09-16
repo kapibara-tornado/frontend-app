@@ -7,8 +7,8 @@ export const questions: Question[] = [
     type: 'economicVsProgressive',
     title: '経済重視 (E) vs. 進歩的価値観 (P)',
     question:
-      '企業やベンチャーが新しい技術やサービスを自由に開発できる環境が重要だと思う。',
-    questionImage: '/result/type1.png',
+      '企業やベンチャーが新しい技術やサービスを自由に開発できる環境が重要だと思うか？',
+    questionImage: '/question/type1.png',
     questionAlt: 'type1',
     options: {
       yes: [
@@ -30,8 +30,8 @@ export const questions: Question[] = [
     type: 'economicVsProgressive',
     title: '経済重視 (E) vs. 進歩的価値観 (P)',
     question:
-      '経済成長のためには、環境問題への対策を後回しにするのもやむを得ないと思う。',
-    questionImage: '/result/type1.png',
+      '経済成長のためには、環境問題への対策を後回しにするのもやむを得ないと思うか？',
+    questionImage: '/question/type1.png',
     questionAlt: 'type1',
     options: {
       yes: [
@@ -53,8 +53,8 @@ export const questions: Question[] = [
     type: 'economicVsProgressive',
     title: '経済重視 (E) vs. 進歩的価値観 (P)',
     question:
-      '格差の是正よりも、全体の経済成長を優先するべきだと思う。',
-    questionImage: '/result/type1.png',
+      '格差の是正よりも、全体の経済成長を優先するべきだと思うか？',
+    questionImage: '/question/type1.png',
     questionAlt: 'type1',
     options: {
       yes: [
@@ -78,8 +78,8 @@ export const questions: Question[] = [
     type: 'authoritarianVsLibertarian',
     title: '権威主義 (A) vs. 自由主義 (S)',
     question:
-      'インターネット上の有害情報を制限するために、政府の規制が必要だと思う。',
-    questionImage: '/result/type2.png',
+      'インターネット上の有害情報を制限するために、政府の規制が必要だと思うか？',
+    questionImage: '/question/type2.png',
     questionAlt: 'type2',
     options: {
       yes: [
@@ -101,8 +101,8 @@ export const questions: Question[] = [
     type: 'authoritarianVsLibertarian',
     title: '権威主義 (A) vs. 自由主義 (S)',
     question:
-      '個人情報を守るためには、政府がプライバシーに介入することも許容されるべきだと思う。',
-    questionImage: '/result/type2.png',
+      '個人情報を守るためには、政府がプライバシーに介入することも許容されるべきだと思うか？',
+    questionImage: '/question/type2.png',
     questionAlt: 'type2',
     options: {
       yes: [
@@ -124,8 +124,8 @@ export const questions: Question[] = [
     type: 'authoritarianVsLibertarian',
     title: '権威主義 (A) vs. 自由主義 (S)',
     question:
-      '若者が政治に参加しやすくするために、政府がSNSやネット上での活動を推進するべきだと思う。',
-    questionImage: '/result/type2.png',
+      '若者が政治に参加しやすくするために、政府がSNSやネット上での活動を推進するべきだと思うか？',
+    questionImage: '/question/type2.png',
     questionAlt: 'type2',
     options: {
       yes: [
@@ -149,8 +149,8 @@ export const questions: Question[] = [
     type: 'conservativeVsLiberal',
     title: '保守 (C) vs. リベラル (L)',
     question:
-      '同性婚やLGBTQ+の権利を法的に保障することは重要だと思う。',
-    questionImage: '/result/type3.png',
+      '同性婚やLGBTQ+の権利を法的に保障することは重要だと思うか？',
+    questionImage: '/question/type3.png',
     questionAlt: 'type3',
     options: {
       yes: [
@@ -172,8 +172,8 @@ export const questions: Question[] = [
     type: 'conservativeVsLiberal',
     title: '保守 (C) vs. リベラル (L)',
     question:
-      '性別やジェンダーに関係なく、平等な機会が保障されるべきだと思う。',
-    questionImage: '/result/type3.png',
+      '性別やジェンダーに関係なく、平等な機会が保障されるべきだと思うか？',
+    questionImage: '/question/type3.png',
     questionAlt: 'type3',
     options: {
       yes: [
@@ -195,8 +195,9 @@ export const questions: Question[] = [
     type: 'conservativeVsLiberal',
     title: '保守 (C) vs. リベラル (L)',
     question:
-      '日本の伝統文化や慣習は現代社会でも守られるべきだと思う。',
-    questionImage: '/result/type3.png',
+      '日本の伝統文化や慣習は現代社会でも守られるべきだと思うか？',
+    questionImage: '/question/type3.png',
+
     questionAlt: 'type3',
     options: {
       yes: [
@@ -220,8 +221,8 @@ export const questions: Question[] = [
     type: 'nationalismVsInternationalism',
     title: '国家主義 (N) vs. 国際主義 (I)',
     question:
-      '日本は国際的な問題解決に積極的に参加するべきだと思う。',
-    questionImage: '/result/type4.png',
+      '日本は国際的な問題解決に積極的に参加するべきだと思うか？',
+    questionImage: '/question/type4.png',
     questionAlt: 'type4',
     options: {
       yes: [
@@ -243,8 +244,8 @@ export const questions: Question[] = [
     type: 'nationalismVsInternationalism',
     title: '国家主義 (N) vs. 国際主義 (I)',
     question:
-      '日本の若者が海外で学ぶ機会を増やすために、政府が支援すべきだと思う。',
-    questionImage: '/result/type4.png',
+      '日本の若者が海外で学ぶ機会を増やすために、政府が支援すべきだと思うか？',
+    questionImage: '/question/type4.png',
     questionAlt: 'type4',
     options: {
       yes: [
@@ -266,8 +267,8 @@ export const questions: Question[] = [
     type: 'nationalismVsInternationalism',
     title: '国家主義 (N) vs. 国際主義 (I)',
     question:
-      'グローバル化が進む中で、他国との連携は避けられないと思う。',
-    questionImage: '/result/type4.png',
+      'グローバル化が進む中で、他国との連携は避けられないと思うか？',
+    questionImage: '/question/type4.png',
     questionAlt: 'type4',
     options: {
       yes: [

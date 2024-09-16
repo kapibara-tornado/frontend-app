@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   Cross1Icon,
   HamburgerMenuIcon,
@@ -13,6 +14,13 @@ type Props = {
 
 export const HamburgerMenu = ({ isResult }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [currentPath, setCurrentPath] = useState('');
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -21,6 +29,10 @@ export const HamburgerMenu = ({ isResult }: Props) => {
   const onClose = () => {
     setIsModalOpen(false);
   };
+
+  if(!isMounted){
+    return null;
+  }
 
   return (
     <Nav>
@@ -36,13 +48,15 @@ export const HamburgerMenu = ({ isResult }: Props) => {
                 </CloseButton>
               </FlexEnd>
               <NavList>
-                <NavItem>
+                <NavItem $isActive={pathname === '/'}>
                   <StyledLink href={'/'} onClick={onClose}>
                     ホーム
                   </StyledLink>
                 </NavItem>
+
                 <NavItem>
-                  <StyledLink
+                  <NavItem $isActive={pathname === '/result/list'}>
+                    <StyledLink
                     href={'/result/list'}
                     onClick={onClose}
                   >
@@ -51,7 +65,7 @@ export const HamburgerMenu = ({ isResult }: Props) => {
                 </NavItem>
                 {isResult && (
                   <>
-                    <NavItem>
+                    <NavItem $isActive={pathname === '/result'}>
                       <StyledLink
                         href={'/result'}
                         onClick={onClose}
@@ -59,7 +73,8 @@ export const HamburgerMenu = ({ isResult }: Props) => {
                         結果
                       </StyledLink>
                     </NavItem>
-                    <NavItem>
+                        
+                    <NavItem $isActive={pathname === '/result/printer'}>
                       <StyledLink
                         href={'/result/printer'}
                         onClick={onClose}
@@ -145,15 +160,23 @@ const NavList = styled.ul`
   text-align: center;
 `;
 
-const NavItem = styled.li`
+const NavItem = styled.li<{$isActive: boolean}>`
   padding: 10px 0;
   border-bottom: 1px solid #ccc;
   width: 100%;
+  color: #333;
+  ${({$isActive }) =>
+    $isActive &&
+    `
+    background-color: #f0f0f0;
+    color: #007bff;
+    border-radius: 5px;
+  `}
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #333;
+  color: inherit;
   display: block;
   width: 100%;
   font-size: 1.2rem;

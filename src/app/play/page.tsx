@@ -6,6 +6,8 @@ import { questions } from '../data/questions';
 import { useQuestions } from '@/usecases/useQuestions';
 import { ProgressBarWithCount } from '@/components/features/ProgressBarWithCount';
 import { BREAKPOINTS } from '@/components/Responsive';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 //質問回答画面
 function Play() {
@@ -21,6 +23,32 @@ function Play() {
   const progress =
     ((currentQuestionIndex + 1) / totalQuestions) * 100;
 
+  const [swipeDirection, setSwipeDirection] = useState<
+    'left' | 'right' | null
+  >(null);
+
+  const swipeVariants = {
+    hidden: { x: 0, opacity: 1 },
+    swipeLeft: { x: '-100vw', opacity: 0 },
+    swipeRight: { x: '100vw', opacity: 0 },
+  };
+
+  const handleBadClick = () => {
+    setSwipeDirection('left');
+    setTimeout(() => {
+      onClickBadHandler();
+      setSwipeDirection(null);
+    }, 500);
+  };
+
+  const handleGoodClick = () => {
+    setSwipeDirection('right');
+    setTimeout(() => {
+      onClickGoodHandler();
+      setSwipeDirection(null);
+    }, 500);
+  };
+
   return (
     <Wrapper>
       <ProgressBarWithCount
@@ -28,7 +56,17 @@ function Play() {
         currentQuestionIndex={currentQuestionIndex}
         totalQuestions={totalQuestions}
       />
-      <QuestionArea>
+      <QuestionArea
+        variants={swipeVariants}
+        animate={
+          swipeDirection
+            ? swipeDirection === 'right'
+              ? 'swipeRight'
+              : 'swipeLeft'
+            : 'hidden'
+        }
+        initial="hidden"
+      >
         <ImageWrapper>
           <Image
             src={currentQuestion.questionImage}
@@ -40,10 +78,8 @@ function Play() {
         <Question>{currentQuestion.question}</Question>
       </QuestionArea>
       <Buttons>
-        <BadButton onClick={onClickBadHandler}>
-          Bad
-        </BadButton>
-        <GoodButton onClick={onClickGoodHandler}>
+        <BadButton onClick={handleBadClick}>Bad</BadButton>
+        <GoodButton onClick={handleGoodClick}>
           Good
         </GoodButton>
       </Buttons>
@@ -64,13 +100,15 @@ const Wrapper = styled.div`
   height: 100vh;
   width: 100%;
   padding: 60px;
+  position: relative;
+  overflow: hidden;
 
   @media screen and (max-width: ${BREAKPOINTS.SP}) {
     padding: 30px;
   }
 `;
 
-const QuestionArea = styled.div`
+const QuestionArea = styled(motion.div)`
   background-color: #fff;
   border-radius: 27px;
   padding: 40px;
@@ -111,6 +149,7 @@ const Buttons = styled.div`
   justify-content: space-around;
   margin-top: 50px;
 `;
+
 const GoodButton = styled.button`
   display: flex;
   justify-content: center;
