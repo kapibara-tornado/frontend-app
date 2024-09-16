@@ -3,8 +3,27 @@
 import styled from 'styled-components';
 import React from 'react';
 import { SimpleSlider } from '@/components/features/SimpleSlider';
+import { useResult } from '@/usecases/useResult';
+import Loader from '@/components/features/Loader';
+import { ResultNothing } from '@/components/features/ResultNothing';
 
 const ResultDetail = () => {
+  const { parsedScores, resultedId, loading, timeout } =
+    useResult();
+
+  // ローディング中の画面
+  if (loading) {
+    return (
+      <LoadingWrapper>
+        <Loader />
+      </LoadingWrapper>
+    );
+  }
+
+  // 1.5秒経過してクッキーが取得できなかった場合
+  if (!parsedScores && timeout) {
+    return <ResultNothing />;
+  }
   return (
     <Wrapper>
       <SimpleSlider />
@@ -13,6 +32,13 @@ const ResultDetail = () => {
 };
 
 export default ResultDetail;
+
+const LoadingWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
 
 const Wrapper = styled.div`
   background-image: url('/backgroundImage/resultDetailBackground.png');

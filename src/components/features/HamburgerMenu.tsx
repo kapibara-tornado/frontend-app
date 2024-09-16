@@ -7,6 +7,7 @@ import {
   HamburgerMenuIcon,
 } from '@radix-ui/react-icons';
 import Image from 'next/image';
+import { Button } from '../ui/button';
 
 type Props = {
   isResult: boolean;
@@ -15,7 +16,6 @@ type Props = {
 export const HamburgerMenu = ({ isResult }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const [currentPath, setCurrentPath] = useState('');
   const pathname = usePathname();
 
   useEffect(() => {
@@ -48,47 +48,54 @@ export const HamburgerMenu = ({ isResult }: Props) => {
                 </CloseButton>
               </FlexEnd>
               <NavList>
-                <NavItem $isActive={pathname === '/'}>
-                  <StyledLink href={'/'} onClick={onClose}>
-                    ホーム
-                  </StyledLink>
-                </NavItem>
-                <NavItem
-                  $isActive={pathname === '/result/list'}
-                >
-                  <StyledLink
-                    href={'/result/list'}
+                <li>
+                  <NavItem
+                    $isActive={pathname === '/'}
+                    variant={'link'}
                     onClick={onClose}
                   >
-                    診断結果一覧
-                  </StyledLink>
-                </NavItem>
-                {isResult && (
-                  <>
-                    <NavItem
-                      $isActive={pathname === '/result'}
-                    >
-                      <StyledLink
-                        href={'/result'}
-                        onClick={onClose}
-                      >
-                        結果
-                      </StyledLink>
-                    </NavItem>
-                    <NavItem
-                      $isActive={
-                        pathname === '/result/printer'
-                      }
-                    >
-                      <StyledLink
-                        href={'/result/printer'}
-                        onClick={onClose}
-                      >
-                        印刷
-                      </StyledLink>
-                    </NavItem>
-                  </>
-                )}
+                    <StyledLink href={'/'}>
+                      ホーム
+                    </StyledLink>
+                  </NavItem>
+                </li>
+                <li>
+                  <NavItem
+                    variant={'link'}
+                    onClick={onClose}
+                    $isActive={pathname === '/result/list'}
+                  >
+                    <StyledLink href={'/result/list'}>
+                      診断結果一覧
+                    </StyledLink>
+                  </NavItem>
+                </li>
+                <li>
+                  <NavItem
+                    variant={'link'}
+                    onClick={onClose}
+                    disabled={!isResult}
+                    $isActive={pathname === '/result'}
+                  >
+                    <StyledLink href={'/result'}>
+                      結果
+                    </StyledLink>
+                  </NavItem>
+                </li>
+                <li>
+                  <NavItem
+                    variant={'link'}
+                    onClick={onClose}
+                    disabled={!isResult}
+                    $isActive={
+                      pathname === '/result/printer'
+                    }
+                  >
+                    <StyledLink href={'/result/printer'}>
+                      印刷
+                    </StyledLink>
+                  </NavItem>
+                </li>
               </NavList>
               <KapibaraImage
                 src="/kapibara.svg"
@@ -165,8 +172,8 @@ const NavList = styled.ul`
   text-align: center;
 `;
 
-const NavItem = styled.li<{ $isActive: boolean }>`
-  padding: 10px 0;
+const NavItem = styled(Button)<{ $isActive: boolean }>`
+  padding: 25px 0;
   border-bottom: 1px solid #ccc;
   width: 100%;
   color: #333;

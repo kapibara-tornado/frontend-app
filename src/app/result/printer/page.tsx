@@ -16,9 +16,17 @@ import { ScoreBar } from '@/components/features/ScoreBar';
 import { useEffect, useState } from 'react';
 import { usePrintDocument } from './hooks/printDocument';
 import { PrintButton } from '@/components/features/PrintButton';
+import Loader from '@/components/features/Loader';
+import { ResultNothing } from '@/components/features/ResultNothing';
 
 function ResultPrinter() {
-  const { parsedScores, resultedId } = useResult();
+  const {
+    parsedScores,
+    resultedId,
+    loading: resultLoading,
+    timeout,
+  } = useResult();
+
   const [printWidth, setPrintWidth] = useState<number>(0);
   const [printHeight, setPrintHeight] = useState<number>(0);
   const [dpi, setDpi] = useState(0);
@@ -66,11 +74,23 @@ function ResultPrinter() {
     (type) => type.id === resultedId
   );
 
-  if (!type || !parsedScores) return null;
-
   const printDocumentHandler = async () => {
     await printDocument();
   };
+
+  // ローディング中の画面
+  if (resultLoading) {
+    return (
+      <LoadingWrapper>
+        <Loader />
+      </LoadingWrapper>
+    );
+  }
+
+  // 1.5秒経過してクッキーが取得できなかった場合
+  if (!parsedScores || !type || timeout) {
+    return <ResultNothing />;
+  }
 
   return (
     <Container>
@@ -127,6 +147,13 @@ function ResultPrinter() {
 }
 
 export default ResultPrinter;
+
+const LoadingWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
 
 const Container = styled.div`
   position: relative;

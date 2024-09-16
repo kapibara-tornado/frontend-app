@@ -15,26 +15,26 @@ export default function Home() {
   return (
     <Wrapper>
       <Container>
-      <ConceptText>
-        あなたのどのタイプ？
+        <ConceptText>
+          あなたは<NoBreakText>どのタイプ？</NoBreakText>
         </ConceptText>
         <ImageWrapper>
-        <Slideshow>
-          <Slide
-            src="/Home/home1.png"
-            alt="home1"
-            duration={3000}
-          ></Slide>
-          <Slide
-            src="/Home/home2.png"
-            alt="home2"
-            duration={3000}
-          ></Slide>
-          <Slide
-            src="/Home/home3.png"
-            alt="home3"
-            duration={3000}
-          ></Slide>
+          <Slideshow>
+            <Slide
+              src="/Home/home1.png"
+              alt="home1"
+              duration={3000}
+            ></Slide>
+            <Slide
+              src="/Home/home2.png"
+              alt="home2"
+              duration={3000}
+            ></Slide>
+            <Slide
+              src="/Home/home3.png"
+              alt="home3"
+              duration={3000}
+            ></Slide>
           </Slideshow>
         </ImageWrapper>
         <StartButton href={'/play'}>
@@ -70,7 +70,7 @@ const Container = styled.div`
   text-align: center;
   width: 100%;
   max-width: 1000px;
-  min-height: 700px;
+  min-height: 550px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -134,16 +134,6 @@ const StartButton = styled(Link)`
     margin-top: 10px;
     margin-bottom: 10px;
   }
-`;
-
-const ColoredBoldText = styled.span`
-  color: #1e90ff;
-  font-weight: bold;
-  white-space: nowrap;
-`;
-
-const ColoredText = styled.span`
-  color: #00bfff;
 `;
 
 // 改行させない文字

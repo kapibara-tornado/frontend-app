@@ -4,15 +4,15 @@ import {
   MobileViewOnly,
   PcViewOnly,
 } from '@/components/Responsive';
-import { useResult } from '@/usecases/useResult';
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { HamburgerMenu } from '../HamburgerMenu';
 import { Button } from '@/components/ui/button';
+import { useCookie } from '@/usecases/useCookie';
 
 export const Header = () => {
-  const { parsedScores } = useResult();
+  const { cookieValue } = useCookie('scores');
   return (
     <>
       <Container>
@@ -41,27 +41,29 @@ export const Header = () => {
                 </Link>
               </Button>
             </li>
-            {parsedScores && (
-              <>
-                <li>
-                  <Button variant="link" size={'lg'}>
-                    <Link href={'/result'}>結果</Link>
-                  </Button>
-                </li>
-                <li>
-                  <Button variant="link" size={'lg'}>
-                    <Link href={'/result/printer'}>
-                      印刷
-                    </Link>
-                  </Button>
-                </li>
-              </>
-            )}
+            <li>
+              <Button
+                variant="link"
+                size={'lg'}
+                disabled={!cookieValue}
+              >
+                <Link href={'/result'}>結果</Link>
+              </Button>
+            </li>
+            <li>
+              <Button
+                variant="link"
+                size={'lg'}
+                disabled={!cookieValue}
+              >
+                <Link href={'/result/printer'}>印刷</Link>
+              </Button>
+            </li>
           </NavList>
         </PcViewOnly>
         <MobileViewOnly>
           <HamburgerMenu
-            isResult={parsedScores ? true : false}
+            isResult={cookieValue ? true : false}
           />
         </MobileViewOnly>
       </Container>
