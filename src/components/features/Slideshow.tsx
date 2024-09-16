@@ -66,7 +66,6 @@ const Slideshow: React.FC<SlideshowProps> = ({ children }) => {
 
 // スライドのスタイル
 const SlidesContainer = styled.div`
-  // position: absolute;
   width: 100%;
   height: 100%;
   align-items: center;
@@ -77,10 +76,8 @@ const SlidesContainer = styled.div`
 
 // スライドの画像スタイル
 const SlideImageWrapper = styled.div`
-  // position: absolute;
-  padding-bottom: 320px;
-  // top: 0;
-  // left: 0;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -90,10 +87,7 @@ const SlideImageWrapper = styled.div`
 `;
 
 const MobileSlideImageWrapper = styled.div`
-  // position: absolute;
-  padding-bottom: 250px;
-  // top: 0;
-  // left: 0;
+  padding-bottom: 200px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -102,7 +96,7 @@ const MobileSlideImageWrapper = styled.div`
   overflow: hidden;
 `;
 // スライドのコンポーネント
-const Slide: React.FC<SlideProps> = ({ src, alt, width = 500, height = 300,duration, style }) => (
+const Slide: React.FC<SlideProps> = ({ src, alt, width = 450, height = 300,duration, style }) => (
   <div>
   <PcViewOnly>
   <SlideImageWrapper style={style}>
@@ -111,7 +105,7 @@ const Slide: React.FC<SlideProps> = ({ src, alt, width = 500, height = 300,durat
       alt={alt}
       width={width}
       height={height}
-      />
+    />
   </SlideImageWrapper>
   </PcViewOnly>
   <MobileViewOnly>
@@ -119,8 +113,8 @@ const Slide: React.FC<SlideProps> = ({ src, alt, width = 500, height = 300,durat
     <Image
       src={src}
       alt={alt}
-      width={width}
-      height={height}
+      width={300}
+      height={200}
       />
     </MobileSlideImageWrapper>
   </MobileViewOnly>

@@ -5,34 +5,40 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { BREAKPOINTS } from '@/components/Responsive';
+import {
+  Slideshow,
+  Slide,
+} from '@/components/features/Slideshow';
 
 //indexページ
 export default function Home() {
   return (
     <Wrapper>
       <Container>
-        <ImageWrapper>
-          <Image
-            src="/logo.svg"
-            width={450}
-            height={300}
-            alt="logo"
-          />
-        </ImageWrapper>
-        <ConceptText>
-          Politics&Personalities(
-          <NoBreakText>
-            <ColoredText>政治</ColoredText>&times;
-            <ColoredText>性格診断</ColoredText>
-          </NoBreakText>
-          )とは、 あなたがどういった
-          <ColoredBoldText>政治的な考え方</ColoredBoldText>
-          をするのか診断します。
-          <br />
-          政治がわからない/判断できない人の手助けをするツールです。
+      <ConceptText>
+        あなたのどのタイプ？
         </ConceptText>
+        <ImageWrapper>
+        <Slideshow>
+          <Slide
+            src="/Home/home1.png"
+            alt="home1"
+            duration={3000}
+          ></Slide>
+          <Slide
+            src="/Home/home2.png"
+            alt="home2"
+            duration={3000}
+          ></Slide>
+          <Slide
+            src="/Home/home3.png"
+            alt="home3"
+            duration={3000}
+          ></Slide>
+          </Slideshow>
+        </ImageWrapper>
         <StartButton href={'/play'}>
-          診断スタート→
+          政治×性格診断→
         </StartButton>
       </Container>
     </Wrapper>
@@ -87,13 +93,15 @@ const ImageWrapper = styled.div`
 
 const ConceptText = styled.p`
   color: #333;
-  font-size: 1.8rem;
+  font-size: 3rem;
   font-style: normal;
   padding-left: 40px;
   padding-right: 40px;
+  margin-bottom: 400px;
 
   @media screen and (max-width: ${BREAKPOINTS.SP}) {
-    font-size: 1rem;
+    margin-top: 300px;
+    font-size: 1.6rem;
     margin-bottom: 10px;
   }
 `;
@@ -110,6 +118,7 @@ const StartButton = styled(Link)`
   transition: all 0.3s ease;
   display: inline-block;
   font-weight: bold;
+  z-index: 10;
 
   &:hover {
     transform: translateY(-3px);
