@@ -161,30 +161,48 @@ const Buttons = styled.div`
   justify-content: center;
   margin-top: 40px;
   gap: 200px;
+
+  @media screen and (max-width: ${BREAKPOINTS.SP}) {
+    gap: 70px;
+  }
 `;
 
 const GoodButton = styled.button`
-  transition: transform 0.2s, background-color 0.2s;
+  transition: transform 0.2s;
 
   &:hover {
     transform: scale(1.1);
-  }
 
+    @media screen and (max-width: ${BREAKPOINTS.SP}) {
+      transform: none;
+    }
+  }
   @media screen and (max-width: ${BREAKPOINTS.SP}) {
-    width: 64px;
-    height: 64px;
+    width: 80px;
+    height: 80px;
+
+    &:active {
+      transform: scale(0.9);
+    }
   }
 `;
 
 const BadButton = styled.button`
-  transition: transform 0.2s, background-color 0.2s;
+  transition: transform 0.2s;
 
   &:hover {
     transform: scale(1.1);
-  }
 
+    @media screen and (max-width: ${BREAKPOINTS.SP}) {
+      transform: none;
+    }
+  }
   @media screen and (max-width: ${BREAKPOINTS.SP}) {
-    width: 64px;
-    height: 64px;
+    width: 80px;
+    height: 80px;
+
+    &:active {
+      transform: scale(0.9);
+    }
   }
 `;
