@@ -154,7 +154,7 @@ const Bar = styled.div<{
 }>`
   width: ${({ percentage }) => percentage}%;
   background-color: ${({ id }) => getColorById(id)};
-  height: 30px;
+  height: 20px;
   transition: width 0.3s ease;
   border-radius: 10px;
   float: ${({ direction }) => direction};

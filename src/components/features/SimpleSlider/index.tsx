@@ -12,6 +12,7 @@ import {
   getDirection,
   getScore,
 } from './logics';
+
 export const SimpleSlider = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const { parsedScores } = useResult();
@@ -35,21 +36,26 @@ export const SimpleSlider = () => {
     <SliderContainer>
       <StyledSlider {...settings}>
         {parsedScores &&
-          Array.from({ length: 4 }).map((_, index) => ( //添え字が0から始まる
-            <div key={index}>
-              <ResultDetailArea
-                id={idsForResultDetailArea[index]}
-              />
-              <ScoreBar
-                score={getScore(index + 1, parsedScores)}
-                direction={getDirection(
-                  index + 1,
-                  parsedScores
-                )}
-                id = {idsForResultDetailArea[index]}
-              />
-            </div>
-          ))}
+          Array.from({ length: 4 }).map(
+            (
+              _,
+              index //添え字が0から始まる
+            ) => (
+              <div key={index}>
+                <ResultDetailArea
+                  id={idsForResultDetailArea[index]}
+                />
+                <ScoreBar
+                  score={getScore(index + 1, parsedScores)}
+                  direction={getDirection(
+                    index + 1,
+                    parsedScores
+                  )}
+                  id={idsForResultDetailArea[index]}
+                />
+              </div>
+            )
+          )}
       </StyledSlider>
     </SliderContainer>
   );

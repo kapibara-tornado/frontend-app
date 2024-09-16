@@ -30,7 +30,8 @@ const pxToMm = (px: number, dpi: number = 96): number => {
 export const usePrintDocument = (
   input: HTMLCollectionOf<Element> | null,
   printWidth: number,
-  printHeight: number
+  printHeight: number,
+  dpi: number
 ) => {
   const [loading, setLoading] = useState<boolean>(false);
   const printDocument = async () => {
@@ -61,8 +62,8 @@ export const usePrintDocument = (
         'JPEG',
         0,
         0,
-        pxToMm(printWidth),
-        pxToMm(printHeight),
+        pxToMm(printWidth, dpi),
+        pxToMm(printHeight, dpi),
         'pdf',
         'NONE',
         0
@@ -86,11 +87,7 @@ export const usePrintDocument = (
       setLoading(false);
       return;
     }
-
-    // [dev環境のみ実行] 生成したPDFを保存
-    if (process.env.NODE_ENV === 'development') {
-      pdf.save('download.pdf');
-    }
+    pdf.save('download.pdf');
     toast('印刷が承認されました');
     setLoading(false);
   };

@@ -41,16 +41,6 @@ export const HamburgerMenu = ({ isResult }: Props) => {
                     ホーム
                   </StyledLink>
                 </NavItem>
-                {isResult && (
-                  <NavItem>
-                    <StyledLink
-                      href={'/result'}
-                      onClick={onClose}
-                    >
-                      結果
-                    </StyledLink>
-                  </NavItem>
-                )}
                 <NavItem>
                   <StyledLink
                     href={'/result/list'}
@@ -59,14 +49,26 @@ export const HamburgerMenu = ({ isResult }: Props) => {
                     診断結果一覧
                   </StyledLink>
                 </NavItem>
-                <NavItem>
-                  <StyledLink
-                    href={'/result/printer'}
-                    onClick={onClose}
-                  >
-                    印刷
-                  </StyledLink>
-                </NavItem>
+                {isResult && (
+                  <>
+                    <NavItem>
+                      <StyledLink
+                        href={'/result'}
+                        onClick={onClose}
+                      >
+                        結果
+                      </StyledLink>
+                    </NavItem>
+                    <NavItem>
+                      <StyledLink
+                        href={'/result/printer'}
+                        onClick={onClose}
+                      >
+                        印刷
+                      </StyledLink>
+                    </NavItem>
+                  </>
+                )}
               </NavList>
               <KapibaraImage
                 src="/kapibara.svg"

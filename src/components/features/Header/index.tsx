@@ -34,13 +34,6 @@ export const Header = () => {
                 <Link href={'/'}>ホーム</Link>
               </Button>
             </li>
-            {parsedScores && (
-              <li>
-                <Button variant="link" size={'lg'}>
-                  <Link href={'/result'}>結果</Link>
-                </Button>
-              </li>
-            )}
             <li>
               <Button variant="link" size={'lg'}>
                 <Link href={'/result/list'}>
@@ -48,11 +41,22 @@ export const Header = () => {
                 </Link>
               </Button>
             </li>
-            <li>
-              <Button variant="link" size={'lg'}>
-                <Link href={'/result/printer'}>印刷</Link>
-              </Button>
-            </li>
+            {parsedScores && (
+              <>
+                <li>
+                  <Button variant="link" size={'lg'}>
+                    <Link href={'/result'}>結果</Link>
+                  </Button>
+                </li>
+                <li>
+                  <Button variant="link" size={'lg'}>
+                    <Link href={'/result/printer'}>
+                      印刷
+                    </Link>
+                  </Button>
+                </li>
+              </>
+            )}
           </NavList>
         </PcViewOnly>
         <MobileViewOnly>

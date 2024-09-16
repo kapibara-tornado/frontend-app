@@ -12,7 +12,6 @@ import {
   getScore,
 } from '@/components/features/SimpleSlider/logics';
 import { YourTypes } from '@/app/data/yourTypesData';
-import Image from 'next/image';
 import { ScoreBar } from '@/components/features/ScoreBar';
 import { useEffect, useState } from 'react';
 import { usePrintDocument } from './hooks/printDocument';
@@ -22,12 +21,14 @@ function ResultPrinter() {
   const { parsedScores, resultedId } = useResult();
   const [printWidth, setPrintWidth] = useState<number>(0);
   const [printHeight, setPrintHeight] = useState<number>(0);
+  const [dpi, setDpi] = useState(0);
   const [input, setInput] =
     useState<HTMLCollectionOf<Element> | null>(null);
   const { printDocument, loading } = usePrintDocument(
     input,
     printWidth,
-    printHeight
+    printHeight,
+    dpi
   );
 
   useEffect(() => {
@@ -51,6 +52,12 @@ function ResultPrinter() {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
+  }, []);
+
+  useEffect(() => {
+    // devicePixelRatioを取得してstateに保存
+    const pixelRatio = window.devicePixelRatio;
+    setDpi(pixelRatio * 96); // 96はCSSの標準DPIとしてよく使われる値
   }, []);
 
   const idsForResultDetailArea =
@@ -81,8 +88,8 @@ function ResultPrinter() {
           <CharacterImage
             src={type.characterImage}
             alt="Character Image"
-            width={100}
-            height={100}
+            width={1000}
+            height={1000}
           />
           <PcViewOnly>
             <TypeDescription>
@@ -129,6 +136,7 @@ const Wrapper = styled.div<{
   $printHeight: number;
   $printWidth: number;
 }>`
+  position: relative;
   background-image: url('/backgroundImage/indexBackground.png');
   background-size: cover;
   background-position: center;
@@ -148,18 +156,27 @@ const Wrapper = styled.div<{
 const Title = styled.h1`
   font-size: 1.5rem;
   text-align: center;
-  padding: 40px 0 40px 0;
+  padding: 35px 0 20px 0;
+
+  @media screen and (max-width: ${BREAKPOINTS.SP}) {
+    font-size: 1.2rem;
+    padding: 35px 0 10px 0;
+  }
 `;
 
-const CharacterImage = styled(Image)`
+// PDF化する際にNext.jsのImageコンポーネントだと崩れるため、imgタグを使用
+const CharacterImage = styled.img`
   border-radius: 50%;
   object-fit: cover;
   width: 200px;
   height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   @media screen and (max-width: ${BREAKPOINTS.SP}) {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
   }
 `;
 
@@ -177,7 +194,6 @@ const TypeAlphabet = styled.h1`
   text-align: center;
   font-size: 2rem;
   color: #333;
-  margin-bottom: 10px;
 `;
 
 const TypeDescription = styled.p`
