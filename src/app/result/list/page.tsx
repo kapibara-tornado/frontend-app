@@ -4,10 +4,12 @@ import styled from 'styled-components';
 import { BREAKPOINTS } from '@/components/Responsive';
 import { ResultCard } from '@/components/features/ResultCard';
 import { resultSections } from '@/app/data/resultSections';
+import { PageTransition } from '@/components/PageTransition';
+import { motion } from 'framer-motion';
 
 function ListResult() {
   return (
-    <Wrapper>
+    <Wrapper {...PageTransition}>
       <Title>診断結果一覧</Title>
       {resultSections.map((section, index) => (
         <SectionContent
@@ -33,7 +35,7 @@ function ListResult() {
 
 export default ListResult;
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
 `;

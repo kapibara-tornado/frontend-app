@@ -8,8 +8,9 @@ import { ProgressBarWithCount } from '@/components/features/ProgressBarWithCount
 import { BREAKPOINTS } from '@/components/Responsive';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { PageTransition } from '@/components/PageTransition';
 
-//質問回答画面
+// 質問回答画面
 function Play() {
   const {
     currentQuestion,
@@ -18,7 +19,7 @@ function Play() {
     onClickGoodHandler,
   } = useQuestions(questions);
 
-  const totalQuestions = questions.length; //総質問数
+  const totalQuestions = questions.length; // 総質問数
 
   const progress =
     ((currentQuestionIndex + 1) / totalQuestions) * 100;
@@ -71,7 +72,7 @@ function Play() {
   };
 
   return (
-    <Wrapper>
+    <Wrapper {...PageTransition}>
       <ProgressBarWithCount
         progress={progress}
         currentQuestionIndex={currentQuestionIndex}
@@ -80,7 +81,7 @@ function Play() {
       <QuestionArea
         variants={swipeVariants}
         animate={
-          isMobile && swipeDirection 
+          isMobile && swipeDirection
             ? swipeDirection === 'right'
               ? 'swipeRight'
               : 'swipeLeft'
@@ -122,7 +123,7 @@ function Play() {
 
 export default Play;
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   background-image: url('/backgroundImage/questionBackground.png');
   background-position: center;
   background-size: cover;
