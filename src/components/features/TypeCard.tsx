@@ -1,7 +1,6 @@
 import {
   Card,
   CardContent,
-  CardDescription,
   CardTitle,
 } from '@/components/ui/card';
 import React from 'react';
@@ -17,7 +16,7 @@ export const TypeCard = ({ id }: { id: number }) => {
     <CardContainer>
       <StyledCard>
         <CardTitle>あなたのタイプ</CardTitle>
-        <CardContent>
+        <CardContent className="p-0">
           <ContentHeader>
             <CharacterImage
               src={type.characterImage}
@@ -70,10 +69,9 @@ const StyledCard = styled(Card)`
 
 const ContentHeader = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 20px;
-  margin: 20px;
+  justify-content: space-evenly;
+  margin-top: 20px;
 `;
 
 const TypeInfo = styled.div`
@@ -95,15 +93,16 @@ const TypeCharacter = styled.h2`
   margin-bottom: 20px;
 `;
 
-const Explanation = styled(CardDescription)`
-  padding: 15px;
+const Explanation = styled.span`
+  color: #64748b;
+  line-height: 1.5;
 `;
 
 const DescriptionTitle = styled.span`
   font-weight: 700;
   color: #0070f3;
   display: block;
-  margin-bottom: 10px;
+  margin: 15px 0 7px 0;
 `;
 
 const CharacterImage = styled(Image)`
