@@ -105,6 +105,7 @@ const Title = styled.h1`
 const Container = styled.div`
   display: flex;
   justify-content: space-around;
+  margin: 0 60px;
 
   @media screen and (max-width: ${BREAKPOINTS.SP}) {
     flex-direction: column;
