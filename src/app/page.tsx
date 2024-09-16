@@ -3,17 +3,24 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import Image from 'next/image';
 import { BREAKPOINTS } from '@/components/Responsive';
 import {
   Slideshow,
   Slide,
 } from '@/components/features/Slideshow';
+import { PageTransition } from '@/components/PageTransition';
+import { motion } from 'framer-motion';
 
 //indexページ
 export default function Home() {
   return (
-    <Wrapper>
+    <Wrapper
+      initial={PageTransition.initial}
+      animate={PageTransition.animate}
+      exit={PageTransition.exit}
+      variants={PageTransition.variants}
+      transition={PageTransition.transition}
+    >
       <Container>
         <ConceptText>
           あなたは<NoBreakText>どのタイプ？</NoBreakText>
@@ -45,7 +52,7 @@ export default function Home() {
   );
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   background-image: url('/backgroundImage/indexBackground.png');
   background-size: cover;
   background-position: center;

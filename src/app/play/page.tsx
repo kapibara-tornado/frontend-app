@@ -8,6 +8,7 @@ import { ProgressBarWithCount } from '@/components/features/ProgressBarWithCount
 import { BREAKPOINTS } from '@/components/Responsive';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { PageTransition } from '@/components/PageTransition';
 
 //質問回答画面
 function Play() {
@@ -50,7 +51,13 @@ function Play() {
   };
 
   return (
-    <Wrapper>
+    <Wrapper
+      initial={PageTransition.initial}
+      animate={PageTransition.animate}
+      exit={PageTransition.exit}
+      variants={PageTransition.variants}
+      transition={PageTransition.transition}
+    >
       <ProgressBarWithCount
         progress={progress}
         currentQuestionIndex={currentQuestionIndex}
@@ -101,7 +108,7 @@ function Play() {
 
 export default Play;
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   background-image: url('/backgroundImage/questionBackground.png');
   background-position: center;
   background-size: cover;

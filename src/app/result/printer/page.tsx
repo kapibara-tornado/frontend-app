@@ -18,6 +18,8 @@ import { usePrintDocument } from './hooks/printDocument';
 import { PrintButton } from '@/components/features/PrintButton';
 import Loader from '@/components/features/Loader';
 import { ResultNothing } from '@/components/features/ResultNothing';
+import { PageTransition } from '@/components/PageTransition';
+import { motion } from 'framer-motion';
 
 function ResultPrinter() {
   const {
@@ -93,7 +95,13 @@ function ResultPrinter() {
   }
 
   return (
-    <Container>
+    <Container
+      initial={PageTransition.initial}
+      animate={PageTransition.animate}
+      exit={PageTransition.exit}
+      variants={PageTransition.variants}
+      transition={PageTransition.transition}
+    >
       <Wrapper
         className="invoicePages"
         id="invoicePageOne"
@@ -155,7 +163,7 @@ const LoadingWrapper = styled.div`
   height: 100vh;
 `;
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   position: relative;
 `;
 

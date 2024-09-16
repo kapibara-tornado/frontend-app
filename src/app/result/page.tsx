@@ -10,6 +10,8 @@ import { BREAKPOINTS } from '@/components/Responsive';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ResultNothing } from '@/components/features/ResultNothing';
+import { PageTransition } from '@/components/PageTransition';
+import { motion } from 'framer-motion';
 
 // 診断結果ページ
 function List() {
@@ -34,7 +36,13 @@ function List() {
   }
 
   return (
-    <Wrapper>
+    <Wrapper
+      initial={PageTransition.initial}
+      animate={PageTransition.animate}
+      exit={PageTransition.exit}
+      variants={PageTransition.variants}
+      transition={PageTransition.transition}
+    >
       <BackgroundImage resultedId={resultedId}>
         <Title>診断結果</Title>
         <Container>
@@ -66,7 +74,7 @@ const LoadingWrapper = styled.div`
   height: 100vh;
 `;
 
-const Wrapper = styled.div``;
+const Wrapper = styled(motion.div)``;
 
 const Title = styled.h1`
   font-size: 2.8rem;

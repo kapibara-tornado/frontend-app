@@ -6,6 +6,8 @@ import { SimpleSlider } from '@/components/features/SimpleSlider';
 import { useResult } from '@/usecases/useResult';
 import Loader from '@/components/features/Loader';
 import { ResultNothing } from '@/components/features/ResultNothing';
+import { PageTransition } from '@/components/PageTransition';
+import { motion } from 'framer-motion';
 
 const ResultDetail = () => {
   const { parsedScores, resultedId, loading, timeout } =
@@ -25,7 +27,13 @@ const ResultDetail = () => {
     return <ResultNothing />;
   }
   return (
-    <Wrapper>
+    <Wrapper
+      initial={PageTransition.initial}
+      animate={PageTransition.animate}
+      exit={PageTransition.exit}
+      variants={PageTransition.variants}
+      transition={PageTransition.transition}
+    >
       <SimpleSlider />
     </Wrapper>
   );
@@ -40,7 +48,7 @@ const LoadingWrapper = styled.div`
   height: 100vh;
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   background-image: url('/backgroundImage/resultDetailBackground.png');
   background-size: cover;
   background-position: center;
