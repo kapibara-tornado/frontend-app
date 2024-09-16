@@ -23,7 +23,7 @@ export const SimilarPoliticianCard = ({
     <CardContainer>
       <StyledCard>
         <CardTitle>あなたの考え方に似た政治家</CardTitle>
-        <CardContent>
+        <CardContent className="p-0">
           <ContentHeader>
             <PoliticianImage
               src={type.politicianImage}
@@ -68,14 +68,19 @@ const StyledCard = styled(Card)`
 const ContentHeader = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 50px;
-  margin-top: 40px;
+  justify-content: space-evenly;
+  margin-top: 20px;
 `;
 
 const PoliticianImage = styled(Image)`
   border-radius: 50%;
   object-fit: cover;
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const PoliticianInfo = styled.div`
@@ -102,6 +107,6 @@ const PartyName = styled.h2`
 const Explanation = styled.span`
   color: #64748b;
   display: inline-block;
-  margin-top: 60px;
-  line-height: 30px;
+  margin-top: 20px;
+  line-height: 1.5;
 `;
