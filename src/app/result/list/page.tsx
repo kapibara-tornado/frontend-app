@@ -12,7 +12,7 @@ function ListResult() {
       {resultSections.map((section, index) => (
         <SectionContent
           key={index}
-          bgimage={section.bgimage}
+          $bgImage={section.bgimage}
         >
           <SectionTitle>{section.title}</SectionTitle>
           <CardWrapper>
@@ -44,7 +44,7 @@ const Title = styled.h1`
   padding: 80px 0 40px 0;
 `;
 
-const SectionContent = styled.div<{ bgimage: string }>`
+const SectionContent = styled.div<{ $bgImage: string }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,7 +52,7 @@ const SectionContent = styled.div<{ bgimage: string }>`
   gap: 20px;
   width: 100%;
   height: 100vh;
-  background-image: url(${(props) => props.bgimage});
+  background-image: url(${(props) => props.$bgImage});
   background-size: cover;
   background-repeat: no-repeat;
   padding: 0 40px;
