@@ -92,7 +92,7 @@ function Play() {
         <ImageWrapper>
           <Image
             src={currentQuestion.questionImage}
-            width={300}
+            width={200}
             height={200}
             alt={currentQuestion.questionAlt}
           />
