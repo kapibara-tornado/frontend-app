@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { PageTransition } from '@/components/PageTransition';
 
-//質問回答画面
+// 質問回答画面
 function Play() {
   const {
     currentQuestion,
@@ -19,7 +19,7 @@ function Play() {
     onClickGoodHandler,
   } = useQuestions(questions);
 
-  const totalQuestions = questions.length; //総質問数
+  const totalQuestions = questions.length; // 総質問数
 
   const progress =
     ((currentQuestionIndex + 1) / totalQuestions) * 100;
