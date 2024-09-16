@@ -134,6 +134,7 @@ const getTypeText = (id: number) => {
 };
 const ScoreBarWrapper = styled.div`
   width: 100%;
+  min-width: 250px;
   text-align: left;
 `;
 const BarContainer = styled.div`
