@@ -82,6 +82,12 @@ const Explanation = styled.div`
 
 const StyledImage = styled(Image)`
   padding-top: 40px;
+
+  @media (max-width: ${BREAKPOINTS.SP}) {
+    padding: 0;
+    width: 180px;
+    object-fit: cover;
+  }
 `;
 
 const YourType = styled.div<{ $colorId: string }>`
@@ -110,5 +116,6 @@ const TypeDescription = styled.p`
 
   @media (max-width: ${BREAKPOINTS.SP}) {
     padding: 30px 0;
+    font-size: 1rem;
   }
 `;
