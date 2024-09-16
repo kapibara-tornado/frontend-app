@@ -11,7 +11,6 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 
-
 // 診断結果ページ
 function List() {
   const { parsedScores, resultedId, loading, timeout } =
@@ -33,32 +32,32 @@ function List() {
     timeout
   ) {
     return (
-    <Wrapper>
-      <BackgroundImage resultedId={0}>
-        <DefaultContainer>
-          <ImageWrapper>
-            <Image
-            src="/badkapibara.png"
-            width={300}
-            height={200}
-            alt="kapibara"
-            />
-          </ImageWrapper>
-        </DefaultContainer>
+      <Wrapper>
+        <BackgroundImage resultedId={0}>
+          <DefaultContainer>
+            <ImageWrapper>
+              <Image
+                src="/badkapibara.png"
+                width={300}
+                height={200}
+                alt="kapibara"
+              />
+            </ImageWrapper>
+          </DefaultContainer>
           <TextContainer>
-          <ConceptText>
-            <NoBreakText>
-              診断できませんでした
-            </NoBreakText>
-            <br />
-            <NoBreakText>
-              もう一度お試しください
-            </NoBreakText>
-          </ConceptText>
+            <ConceptText>
+              <NoBreakText>
+                診断できませんでした
+              </NoBreakText>
+              <br />
+              <NoBreakText>
+                もう一度お試しください
+              </NoBreakText>
+            </ConceptText>
           </TextContainer>
-      </BackgroundImage>
-    </Wrapper>
-  );
+        </BackgroundImage>
+      </Wrapper>
+    );
   }
 
   return (
@@ -110,6 +109,7 @@ const Container = styled.div`
   @media screen and (max-width: ${BREAKPOINTS.SP}) {
     flex-direction: column;
     justify-content: center;
+    margin: 0;
   }
 `;
 
@@ -118,7 +118,7 @@ const DefaultContainer = styled.div`
   justify-content: space-around;
   flex-direction: column;
   bottom: 0;
-  
+
   @media screen and (max-width: ${BREAKPOINTS.SP}) {
     flex-direction: column;
     justify-content: center;
@@ -150,7 +150,7 @@ const TextContainer = styled.div`
   border-radius: 27px;
   text-align: center;
   width: 100%;
-  margin: -15px auto;
+  margin: 0 auto;
   max-width: 600px;
   min-height: 280px;
   display: flex;
@@ -160,13 +160,12 @@ const TextContainer = styled.div`
   word-break: break-all;
   z-index: 1;
 
-  @media screen and (max-width: ${BREAKPOINTS.SP}){
+  @media screen and (max-width: ${BREAKPOINTS.SP}) {
     display: flex;
     background-color: #fff;
     border-radius: 27px;
     text-align: center;
     width: 80%;
-    margin: -15px auto;
     max-width: 500px;
     min-height: 200px;
     display: flex;
