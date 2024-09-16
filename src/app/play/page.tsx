@@ -78,9 +78,21 @@ function Play() {
         <Question>{currentQuestion.question}</Question>
       </QuestionArea>
       <Buttons>
-        <BadButton onClick={handleBadClick}>Bad</BadButton>
+        <BadButton onClick={handleBadClick}>
+          <Image
+            src={'/buttons/badbutton.png'}
+            alt="badbutton"
+            width={120}
+            height={120}
+          />
+        </BadButton>
         <GoodButton onClick={handleGoodClick}>
-          Good
+          <Image
+            src={'/buttons/goodbutton.png'}
+            alt="badbutton"
+            width={120}
+            height={120}
+          />
         </GoodButton>
       </Buttons>
     </Wrapper>
@@ -146,56 +158,33 @@ const Question = styled.p`
 const Buttons = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-around;
-  margin-top: 50px;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 200px;
 `;
 
 const GoodButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-weight: 800;
-  background-color: #3cb371;
-  border-radius: 50%;
-  line-height: 150px;
-  width: 150px;
-  height: 150px;
-  padding: 0;
-  font-size: 1.5rem;
-  transition: background-color 0.3s;
+  transition: transform 0.2s, background-color 0.2s;
+
   &:hover {
-    background-color: #2e8b57;
+    transform: scale(1.1);
   }
 
   @media screen and (max-width: ${BREAKPOINTS.SP}) {
     width: 64px;
     height: 64px;
-    font-size: 1rem;
   }
 `;
 
 const BadButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-weight: 800;
-  background-color: #dc143c;
-  border-radius: 50%;
-  line-height: 150px;
-  width: 150px;
-  height: 150px;
-  padding: 0;
-  font-size: 1.5rem;
-  transition: background-color 0.8s;
+  transition: transform 0.2s, background-color 0.2s;
+
   &:hover {
-    background-color: #a10b2d;
+    transform: scale(1.1);
   }
 
   @media screen and (max-width: ${BREAKPOINTS.SP}) {
     width: 64px;
     height: 64px;
-    font-size: 1rem;
   }
 `;
