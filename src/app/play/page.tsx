@@ -28,26 +28,47 @@ function Play() {
     'left' | 'right' | null
   >(null);
 
+  const [isMobile, setIsMobile] = useState(false);
+
   const swipeVariants = {
     hidden: { x: 0, opacity: 1 },
-    swipeLeft: { x: '-100vw', opacity: 0 },
-    swipeRight: { x: '100vw', opacity: 0 },
+    swipeLeft: { x: '-60vw', opacity: 0 },
+    swipeRight: { x: '60vw', opacity: 0 },
   };
 
+  useEffect(() => {
+    // モバイル判定
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= parseInt(BREAKPOINTS.SP));
+    };
+
+    handleResize(); 
+    window.addEventListener('resize', handleResize); 
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const handleBadClick = () => {
-    setSwipeDirection('left');
-    setTimeout(() => {
+    if (isMobile) {
+      setSwipeDirection('left');
+      setTimeout(() => {
+        onClickBadHandler();
+        setSwipeDirection(null);
+      }, 500);
+    } else {
       onClickBadHandler();
-      setSwipeDirection(null);
-    }, 500);
+    }
   };
 
   const handleGoodClick = () => {
-    setSwipeDirection('right');
-    setTimeout(() => {
+    if (isMobile) { 
+      setSwipeDirection('right');
+      setTimeout(() => {
+        onClickGoodHandler();
+        setSwipeDirection(null);
+      }, 500);
+    } else {
       onClickGoodHandler();
-      setSwipeDirection(null);
-    }, 500);
+    }
   };
 
   return (
@@ -60,7 +81,7 @@ function Play() {
       <QuestionArea
         variants={swipeVariants}
         animate={
-          swipeDirection
+          isMobile && swipeDirection
             ? swipeDirection === 'right'
               ? 'swipeRight'
               : 'swipeLeft'
