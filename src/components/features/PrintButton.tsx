@@ -1,5 +1,6 @@
 'use client';
-import styled from 'styled-components';
+import { Loader2 } from 'lucide-react';
+import { Button } from '../ui/button';
 
 type Props = {
   onClick: () => void;
@@ -11,32 +12,12 @@ export const PrintButton = ({
   loading,
 }: Props) => {
   return (
-    <Printbutton onClick={onClick} disabled={loading}>
-      診断結果
-      <br />
-      Print
-    </Printbutton>
+    <Button onClick={onClick} disabled={loading}>
+      {!loading ? (
+        '診断結果印刷'
+      ) : (
+        <Loader2 className="h-5 w-5 animate-spin" />
+      )}
+    </Button>
   );
 };
-
-const Printbutton = styled.button`
-  background-color: red;
-  border: 2px solid red;
-  color: white;
-  font-size: 1.5rem;
-  padding: 3px 6px;
-  cursor: pointer;
-  text-align: center;
-  border-radius: 15px;
-  line-height: 1.5;
-  transition: background-color 0.3s, transform 0.2s;
-
-  &:hover {
-    background-color: darkred;
-  }
-
-  &:active {
-    background-color: #a00000;
-    transform: scale(0.95);
-  }
-`;

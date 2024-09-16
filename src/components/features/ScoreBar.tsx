@@ -21,71 +21,69 @@ export const ScoreBar = ({
     return null;
   }
   return (
-    <div>
-      <ScoreBarWrapper>
-        <ScoreInfo>
-          <PercentageText>{percentage}%</PercentageText>
-          <TypeText id={id} />
-        </ScoreInfo>
-        <BarContainer>
-          <Bar
-            percentage={percentage}
-            direction={direction}
-            id={id}
-          />
-        </BarContainer>
-        <ShowType>
-          {type.id === 1 && (
-            <TypeFlex>
-              <p>E</p>
-              <p>P</p>
-            </TypeFlex>
-          )}
-          {type.id === 2 && (
-            <TypeFlex>
-              <p>E</p>
-              <p>P</p>
-            </TypeFlex>
-          )}
-          {type.id === 3 && (
-            <TypeFlex>
-              <p>A</p>
-              <p>S</p>
-            </TypeFlex>
-          )}
-          {type.id === 4 && (
-            <TypeFlex>
-              <p>A</p>
-              <p>S</p>
-            </TypeFlex>
-          )}
-          {type.id === 5 && (
-            <TypeFlex>
-              <p>C</p>
-              <p>L</p>
-            </TypeFlex>
-          )}
-          {type.id === 6 && (
-            <TypeFlex>
-              <p>C</p>
-              <p>L</p>
-            </TypeFlex>
-          )}
-          {type.id === 7 && (
-            <TypeFlex>
-              <p>N</p>
-              <p>I</p>
-            </TypeFlex>
-          )}
-          {type.id === 8 && (
-            <TypeFlex>
-              <p>N</p>
-              <p>I</p>
-            </TypeFlex>
-          )}
-        </ShowType>
-      </ScoreBarWrapper>
-    </div>
+    <ScoreBarWrapper>
+      <ScoreInfo>
+        <PercentageText>{percentage}%</PercentageText>
+        <TypeText id={id} />
+      </ScoreInfo>
+      <BarContainer>
+        <Bar
+          percentage={percentage}
+          direction={direction}
+          id={id}
+        />
+      </BarContainer>
+      <ShowType>
+        {type.id === 1 && (
+          <TypeFlex>
+            <p>E</p>
+            <p>P</p>
+          </TypeFlex>
+        )}
+        {type.id === 2 && (
+          <TypeFlex>
+            <p>E</p>
+            <p>P</p>
+          </TypeFlex>
+        )}
+        {type.id === 3 && (
+          <TypeFlex>
+            <p>A</p>
+            <p>S</p>
+          </TypeFlex>
+        )}
+        {type.id === 4 && (
+          <TypeFlex>
+            <p>A</p>
+            <p>S</p>
+          </TypeFlex>
+        )}
+        {type.id === 5 && (
+          <TypeFlex>
+            <p>C</p>
+            <p>L</p>
+          </TypeFlex>
+        )}
+        {type.id === 6 && (
+          <TypeFlex>
+            <p>C</p>
+            <p>L</p>
+          </TypeFlex>
+        )}
+        {type.id === 7 && (
+          <TypeFlex>
+            <p>N</p>
+            <p>I</p>
+          </TypeFlex>
+        )}
+        {type.id === 8 && (
+          <TypeFlex>
+            <p>N</p>
+            <p>I</p>
+          </TypeFlex>
+        )}
+      </ShowType>
+    </ScoreBarWrapper>
   );
 };
 const getColorById = (id: number) => {
@@ -136,10 +134,11 @@ const getTypeText = (id: number) => {
 };
 const ScoreBarWrapper = styled.div`
   width: 100%;
+  min-width: 250px;
   text-align: left;
 `;
 const BarContainer = styled.div`
-  width: 70%;
+  width: 90%;
   background-color: #e0e0e0;
   border-radius: 10px;
   overflow: hidden;
@@ -157,7 +156,7 @@ const Bar = styled.div<{
 }>`
   width: ${({ percentage }) => percentage}%;
   background-color: ${({ id }) => getColorById(id)};
-  height: 30px;
+  height: 20px;
   transition: width 0.3s ease;
   border-radius: 10px;
   float: ${({ direction }) => direction};
@@ -179,7 +178,7 @@ const TypeTextSpan = styled.span`
 `;
 const ShowType = styled.div`
   margin-top: 10px;
-  width: 70%;
+  width: 90%;
   margin: 10px auto 0;
 `;
 const TypeFlex = styled.div`

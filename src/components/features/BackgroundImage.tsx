@@ -3,54 +3,58 @@
 import styled from 'styled-components';
 
 interface BackgroundImageProps {
-  resultedId: number;
+  bgURL?: string;
+  resultedId?: number;
   children: React.ReactNode;
 }
 
 export const BackgroundImage = ({
+  bgURL,
   resultedId,
   children,
 }: BackgroundImageProps) => {
   let backgroundImagePath: string =
-    '/backgroundImage/defaultBackground.png';
+    bgURL || '/backgroundImage/defaultBackground.png';
 
   //idに基づいて画像パスを決定
-  switch (true) {
-    case [1, 2, 9, 10].includes(resultedId):
-      backgroundImagePath =
-        '/backgroundImage/resultBackgroundConservative.png';
-      break;
-    case [5, 6, 13, 14].includes(resultedId):
-      backgroundImagePath =
-        '/backgroundImage/resultBackgroundLiberal.png';
-      break;
-    case [3, 7, 11, 15].includes(resultedId):
-      backgroundImagePath =
-        '/backgroundImage/resultBackgroundProgressive.png';
-      break;
-    case [4, 8, 12, 16].includes(resultedId):
-      backgroundImagePath =
-        '/backgroundImage/resultBackgroundInternational.png';
-      break;
-    default:
-      backgroundImagePath =
-        '/backgroundImage/defaultBackground.png';
+  if (resultedId) {
+    switch (true) {
+      case [1, 2, 9, 10].includes(resultedId):
+        backgroundImagePath =
+          '/backgroundImage/resultBackgroundConservative.png';
+        break;
+      case [5, 6, 13, 14].includes(resultedId):
+        backgroundImagePath =
+          '/backgroundImage/resultBackgroundLiberal.png';
+        break;
+      case [3, 7, 11, 15].includes(resultedId):
+        backgroundImagePath =
+          '/backgroundImage/resultBackgroundProgressive.png';
+        break;
+      case [4, 8, 12, 16].includes(resultedId):
+        backgroundImagePath =
+          '/backgroundImage/resultBackgroundInternational.png';
+        break;
+      default:
+        backgroundImagePath =
+          '/backgroundImage/defaultBackground.png';
+    }
   }
 
   return (
     <div>
-      <Wrapper bdimagepath={backgroundImagePath}>
+      <Wrapper $bdImagePath={backgroundImagePath}>
         {children}
       </Wrapper>
     </div>
   );
 };
 
-const Wrapper = styled.div<{ bdimagepath: string }>`
+const Wrapper = styled.div<{ $bdImagePath: string }>`
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
-  background-image: url(${(props) => props.bdimagepath});
+  background-image: url(${(props) => props.$bdImagePath});
 
   // コンポーネント内でスクロールさせる
   overflow-y: scroll;

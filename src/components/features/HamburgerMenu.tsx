@@ -30,7 +30,7 @@ export const HamburgerMenu = ({ isResult }: Props) => {
     setIsModalOpen(false);
   };
 
-  if(!isMounted){
+  if (!isMounted) {
     return null;
   }
 
@@ -53,17 +53,9 @@ export const HamburgerMenu = ({ isResult }: Props) => {
                     ホーム
                   </StyledLink>
                 </NavItem>
-                {isResult && (
-                  <NavItem $isActive={pathname === '/result'}>
-                    <StyledLink
-                      href={'/result'}
-                      onClick={onClose}
-                    >
-                      結果
-                    </StyledLink>
-                  </NavItem>
-                )}
-                <NavItem $isActive={pathname === '/listresult'}>
+                <NavItem
+                  $isActive={pathname === '/result/list'}
+                >
                   <StyledLink
                     href={'/result/list'}
                     onClick={onClose}
@@ -71,14 +63,32 @@ export const HamburgerMenu = ({ isResult }: Props) => {
                     診断結果一覧
                   </StyledLink>
                 </NavItem>
-                <NavItem $isActive={pathname === '/printdemo'}>
-                  <StyledLink
-                    href={'/printdemo'}
-                    onClick={onClose}
-                  >
-                    印刷
-                  </StyledLink>
-                </NavItem>
+                {isResult && (
+                  <>
+                    <NavItem
+                      $isActive={pathname === '/result'}
+                    >
+                      <StyledLink
+                        href={'/result'}
+                        onClick={onClose}
+                      >
+                        結果
+                      </StyledLink>
+                    </NavItem>
+                    <NavItem
+                      $isActive={
+                        pathname === '/result/printer'
+                      }
+                    >
+                      <StyledLink
+                        href={'/result/printer'}
+                        onClick={onClose}
+                      >
+                        印刷
+                      </StyledLink>
+                    </NavItem>
+                  </>
+                )}
               </NavList>
               <KapibaraImage
                 src="/kapibara.svg"
@@ -155,12 +165,12 @@ const NavList = styled.ul`
   text-align: center;
 `;
 
-const NavItem = styled.li<{$isActive: boolean}>`
+const NavItem = styled.li<{ $isActive: boolean }>`
   padding: 10px 0;
   border-bottom: 1px solid #ccc;
   width: 100%;
   color: #333;
-  ${({$isActive }) =>
+  ${({ $isActive }) =>
     $isActive &&
     `
     background-color: #f0f0f0;
